@@ -6,11 +6,13 @@
 
 \section{함수 호출}
 \label{functionchap}
-\index{function call}
+\index{함수 호출}
+%\index{function call}
 
-프로그래밍 문맥에서, {\bf 함수(function)}는 연산을 수행하는 일련의 명명된 명령문이다. 
-함수를 정의할 때, 이름과 일련의 명령문을 명시한다. 후에, 함수를 이름으로 ''호출(call)''할 수 있다.
-이미 {\bf 함수 호출(function call)}의 예제를 살펴 보았다.  
+프로그래밍 문맥에서, {\bf 함수(function)}는 연산을 수행하는 명명된 일련의 문장이다. 
+함수를 정의할 때, 이름과 일련의 문장을 명기한다. 
+나중에, 함수를 이름으로 ''호출(call)''한다.
+이미 {\bf 함수 호출(function call)}의 예제를 살펴봤다.
 
 \beforeverb
 \begin{verbatim}
@@ -19,22 +21,28 @@
 \end{verbatim}
 \afterverb
 %
-함수명은 {\tt type}이다. 괄호안의 표현식을 함수의 {\bf 인수(argument)}라고 한다. 
-인수는 함수의 입력값으로 함수 내부로 전달되는 값이나 변수이다. 앞의 {\tt type} 함수의 결과값은 인수의 형(type)이다.
 
-\index{parentheses!argument in}
+함수명은 {\tt type}이다. 
+괄호안의 표현식을 함수의 {\bf 인자(argument)}라고 한다. 
+인자는 함수 입력으로 함수 내부로 전달되는 값이나 변수이다. 
+앞선 {\tt type} 함수에 대한 결과는 인자의 형(type)이다.
 
-통상 함수가 인수를 받아 결과를 돌려준다고 한다. 결과를 {\bf 결과값(return value)}이라고 부른다.
+\index{괄호!인자}
+%\index{parentheses!argument in}
 
-\index{argument}
-\index{return value}
+통상 함수가 인자를 ''받아'' 결과를 ''반환''한다. 결과를 {\bf 결과값(return value)}이라 부른다.
+
+\index{인자}
+\index{반환값}
+%\index{argument}
+%\index{return value}
 
 \section{내장(Built-in) 함수}
 
-파이썬에는 함수를 정의할 필요없이 사용할 수 있는 많은 중요 내장함수가 있다.
-파이썬을 처음 만든 사람이 공통의 문제를 해결할 수 있는 함수를 작성해서 여러분이 사용할 수 있도록 파이썬에 포함을 했습니다.
+함수를 정의할 필요없이 사용할 수 있는 내장함수가 파이썬에는 많다.
+공통의 문제를 해결할 수 있는 함수를 파이썬을 창시자(Guido van Rossum)가 작성해서 누구나 사용할 수 있도록 파이썬에 포함했다.
 
-{\tt max}와 {\tt min} 함수는 리스트의 최소값과 최대값을 각기 계산해서 여러분에게 보여줍니다.
+{\tt max}와 {\tt min} 함수는 리스트 최소값과 최대값을 각각 계산해서 출력한다.
 
 \beforeverb
 \begin{verbatim}
@@ -46,11 +54,12 @@
 \end{verbatim}
 \afterverb
 %
-{\tt max} 함수는 문자열의 "가장 큰 문자", 상기 예제에서는 ''w'', 
-{\tt min}함수는 최소 문자를, 상기 예제에서는 공백, 출력합니다.
 
-또 다른 매우 자주 사용되는 내장 함수는 얼마나 많은 항목이 있는지 출력하는 {\tt len}함수가 있습니다.
-만약 {\tt len} 함수의 인수가 문자열이면 문자열의 문자 갯수를 반환합니다.
+{\tt max} 함수는 문자열의 "가장 큰 문자", 상기 예제에서 ''w'', 
+{\tt min} 함수는 최소 문자를, 상기 예제에서는 공백, 출력한다.
+
+매우 자주 사용되는 또 다른 내장 함수는 얼마나 많은 항목이 있는지 출력하는 {\tt len} 함수가 있다.
+만약 {\tt len} 함수의 인수가 문자열이면 문자열에 있는 문자 갯수를 반환한다.
 
 \beforeverb
 \begin{verbatim}
@@ -61,14 +70,16 @@
 \afterverb
 %
 
-이들 함수는 문자열에만 한정된 것이 아니라, 뒷장에서 보듯이 다양하게 다양한 자료형에 사용될 수 있습니다.
+이들 함수는 문자열에만 국한된 것이 아니라, 뒷장에서 보듯이 다양한 자료형에 사용된다.
 
-내장함수의 이름은 사전에 점유된 예약어로 다뤄야 하고, 예를 들어 ''max''를 변수명으로 사용을 피해야 합니다.
+내장함수 이름은 사전에 점유된 예약어로 취급해야 한다. 예를 들어 ''max''를 변수명으로 사용하지 말아야 한다.
 
 
-\section{형 변환 함수}
-\index{conversion!type}
-\index{type conversion}
+\section{형(type) 변환 함수}
+\index{변환!형(type)}
+\index{형 변환}
+%\index{conversion!type}
+%\index{type conversion}
 
 % from Elkner:
 % comment on whether these things are _really_ functions?
@@ -78,11 +89,13 @@
 % they are on the list of ``built-in functions'' so I am
 % willing to call them functions.
 
-파이썬은 A형(type)에서 B형(type)으로 값을 변환하는 내장 함수를 제공합니다.
-{\tt int}함수는 임의의 값을 입력 받아 변환이 가능하면 정수형으로 변환하고, 그렇지 않으면 불평을 합니다.
+이런 형(type)에서 저런 형(type)으로 값을 변환하는 내장 함수가 파이썬에는 있다.
+{\tt int}함수는 임의의 값을 입력받아 변환이 가능하면 정수형으로 변환하고, 그렇지 않으면 오류가 발생한다.
 
-\index{int function}
-\index{function!int}
+\index{int 함수}
+\index{함수!int}
+%\index{int function}
+%\index{function!int}
 
 \beforeverb
 \begin{verbatim}
@@ -94,7 +107,7 @@ ValueError: invalid literal for int(): Hello
 \afterverb
 %
 
-{\tt int}는 부동 소수점 값을 정수로 변환할 수 있지만 소수점 이하를 절사합니다.
+{\tt int}는 부동 소수점 값을 정수로 변환할 수 있지만 소수점 이하를 절사한다.
 
 \beforeverb
 \begin{verbatim}
@@ -106,10 +119,12 @@ ValueError: invalid literal for int(): Hello
 \afterverb
 %
 
-{\tt float}는 정수와 문자열을 부동 소수점으로 변환합니다.
+{\tt float}는 정수와 문자열을 부동 소수점으로 변환한다.
 
-\index{float function}
-\index{function!float}
+\index{float 함수}
+\index{함수!float}
+%\index{float function}
+%\index{function!float}
 
 \beforeverb
 \begin{verbatim}
@@ -121,10 +136,12 @@ ValueError: invalid literal for int(): Hello
 \afterverb
 %
 
-마지막으로, {\tt str}은 인수를 문자열로 변환합니다.
+마지막으로, {\tt str}은 인자를 문자열로 변환한다.
 
-\index{str function}
-\index{function!str}
+\index{str 함수}
+\index{함수!str}
+%\index{str function}
+%\index{function!str}
 
 \beforeverb
 \begin{verbatim}
@@ -138,26 +155,40 @@ ValueError: invalid literal for int(): Hello
 
 \section{난수(Random numbers)}
 
-\index{random number}
-\index{number, random}
-\index{deterministic}
-\index{pseudorandom}
+\index{난수}
+\index{숫자, 랜덤}
+\index{결정적}
+\index{의사 난수}
+%\index{random number}
+%\index{number, random}
+%\index{deterministic}
+%\index{pseudorandom}
 
-동일한 입력을 받을 때, 대부분의 컴퓨터는 매번 동일한 출력값을 생성하기 때문에 {\bf 결정적(deterministic)}이라고 합니다.
-결정론이 대체로 좋은데 왜냐하면, 동일한 계산은 동일한 결과를 기대할 수 있기 때문입니다. 하지만, 어떤 어플리케이션에서는 컴퓨터가 예측불가능하길 바랍니다. 게임이 좋은 예이고, 더 많은 예를 찾을 수 있습니다. 
-프로그램을 온전하게 비결정론적으로 만드는 것은 쉽지 않은 것으로 밝혀졌지만, 비결정론적인 것처럼 보이게 하는 방법은 있습니다. {\bf 의사 난수(pseudorandom numbers)}를 생성하는 알고리즘을 사용하는 방법이 그 중 하나입니다. 의사 난수는 이미 결정된 연산에 의해서 생성된다는 점에서 
-진정한 의미의 난수는 아니지만,이렇게 생성된 숫자를 진정한 난수와 구별하기는 불가능에 가깝다.
+동일한 입력을 받을 때, 대부분의 컴퓨터는 매번 동일한 출력값을 생성하기 때문에 {\bf 결정적(deterministic)}이라고 한다.
+결정론이 대체로 좋은 것이다. 왜냐하면, 동일한 결과를 얻는데 동일한 계산을 기대하기 때문입니다. 
+하지만, 어떤 응용프로그램에 대해서 컴퓨터가 예측불가능하길 바란다. 
+게임이 좋은 예가 되고, 더 많은 예는 얼마든지 많다.
 
-\index{random module}
-\index{module!random}
+진실되게 프로그램을 비결정론적으로 만드는 것이 쉽지 않은 것으로 밝혀졌지만, 
+적어도 비결정론적인 것처럼 보이게 하는 방법은 있다. 
+{\bf 의사 난수(pseudorandom numbers)}를 생성하는 {\bf 알고리즘}을 사용하는 것이 방법 중의 하나다. 
+의사 난수는 이미 결정된 연산에 의해서 생성된다는 점에서 진정한 의미의 난수는 아니지만, 
+이렇게 생성된 숫자만 봐서는 진정한 난수와 구별하는 것은 불가능에 가깝다.
 
-{\tt random} 모듈은 의사 난수를 생성하는 함수를 제공한다. (이하 의사 난수 대신 ''난수(random)''로 간략히 부르기로 한다.)
+\index{random 모듈}
+\index{모듈!random}
+%\index{random module}
+%\index{module!random}
 
-\index{random function}
-\index{function!random}
+{\tt random} 모듈안에 의사 난수를 생성하는 함수가 있다. 
+(이하 의사 난수 대신 ''랜덤(random)''으로 간략히 부르기로 한다.)
 
-{\tt random} 함수는 0.0과 1.0 사이의 부동 소수점 난수를 반환한다. {\tt random} 함수는 0.0은 생성하지만 1.0은 생성하지 않는다.
-매번 {\tt random} 함수를 호출할 때 마다 이미 생성된 난수열에서 하나씩 하나씩 뽑아 쓰게 됩니다. 샘플로 다음 반복문을 실행해 봅시다.
+\index{random 함수}
+\index{함수!random}
+
+{\tt random} 함수는 0.0 과 1.0 사이 부동 소수점 난수를 반환한다. {\tt random} 함수는 0.0 은 포함하지만 1.0은 포함하지 않는다.
+매번 {\tt random} 함수를 호출할 때 마다, 이미 생성된 아주 긴 난수열에서 하나씩 하나씩 뽑아 쓰다. 
+사례로 다음 반복문을 실행하자.
 
 \beforeverb
 \begin{verbatim}
@@ -170,7 +201,7 @@ for i in range(10):
 \afterverb
 %
 
-프로그램이 0.0과 1.0을 포함하지 않는 최대 1.0에서 10개의 난수 리스트를 생성합니다.
+상기 프로그램은 0.0 에서 1.0 구간(단,  1.0은 포함하지 않음)에서 10개 난수 리스트를 생성한다.
 
 \beforeverb
 \begin{verbatim}
@@ -193,12 +224,14 @@ for i in range(10):
 한번 이상 프로그램을 실행하여 보고, 어떤 난수가 생성되는지 다시 살펴보세요.
 \end{ex}
 
-{\tt random}함수는 난수를 다루는 단지 많은 함수 중의 하나입니다.
-{\tt randint} 함수는 {\tt 최저(low)}와 {\tt 최고(high)} 매개 변수를 입력받아
-{\tt 최저값(low)}와 {\tt 최고값(high)}을 포함하는 두 사이의 정수를 반환합니다.
+{\tt random} 함수는 난수를 다루는 많은 함수 중의 하나다.
+{\tt randint} 함수는 {\tt 최저(low)}와 {\tt 최고(high)} 매개 변수를 입력받아 
+{\tt 최저값(low)}과 {\tt 최고값(high)} 사이 (최저값과, 최저값 모두 포함) 정수를 반환한다.
 
-\index{randint function}
-\index{function!randint}
+\index{randint 함수}
+\index{함수!randint}
+%\index{randint function}
+%\index{function!randint}
 
 \beforeverb
 \begin{verbatim}
@@ -210,10 +243,12 @@ for i in range(10):
 \afterverb
 %
 
-무작위로 배열로부터 하나의 숫자를 뽑아내기 위해서, {\tt choice}를 사용합니다.
+무작위로 특정 열에서 하나의 요소를 뽑아내기 위해, {\tt choice}를 사용한다.
 
-\index{choice function}
-\index{function!choice}
+\index{choice 함수}
+\index{함수!choice}
+%\index{choice function}
+%\index{function!choice}
 
 \beforeverb
 \begin{verbatim}
@@ -226,17 +261,20 @@ for i in range(10):
 \afterverb
 %
 
-{\tt random} 모듈은 정규분포, 지수분포, 감마분포 및 몇가지 추가된 연속형 분포에서
-난수를 생성할 수 있는 함수도 제공합니다.
+또한 {\tt random} 모듈은 정규분포, 지수분포, 감마분포 및 기타 연속형 분포에서 난수를 생성하는 함수도 제공한다.
 
 \section{수학 함수}
-\index{math function}
-\index{function, math}
-\index{module}
-\index{module object}
+\index{수학 함수}
+\index{함수, 수학}
+\index{모듈}
+\index{모듈 객체}
+%\index{math function}
+%\index{function, math}
+%\index{module}
+%\index{module object}
 
-파이썬은 가장 친숙한 수학 함수를 제공하는 수학 모듈이 있습니다.
-수학 모듈을 사용하기 전에, 수학 모듈 가져오기를 실행합니다.
+파이썬은 가장 친숙한 수학 함수를 제공하는 수학 모듈이 있다.
+수학 모듈을 사용하기 전에, 수학 모듈 가져오기를 실행한다.
 
 \beforeverb
 \begin{verbatim}
@@ -245,7 +283,8 @@ for i in range(10):
 \afterverb
 %
 
-이 명령문은 math 모듈 개체를 생성한다. 모듈 개체를 출력하면, 모듈 개체에 대한 정보를 얻을 수 있다.
+상기 명령문은 math 라는 {\bf 모듈 객체}를 생성한다. 
+모듈 객체를 출력하면, 모듈 객체에 대한 정보를 얻을 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -255,10 +294,12 @@ for i in range(10):
 \afterverb
 %
 
-모듈 개체는 모듈에 정의된 함수와 변수를 담고 있다. 함수 중에 하나에 접근하기 위해서, 점으로 구분되는 모듈의 이름과 함수의 이름을 명시해야 한다.
+모듈 객체는 모듈에 정의된 함수와 변수를 담고 있다. 
+함수 중에서 한 함수에 접근하기 위해서는, 모듈 이름과 함수 이름을 명시해야 하는데, 둘은 점(구두점)으로 구분된다.
 이런 형식을 {\bf 점 표기법(dot notation)}이라고 부른다.
 
-\index{dot notation}
+\index{점 표기법}
+%\index{dot notation}
 
 \beforeverb
 \begin{verbatim}
@@ -271,18 +312,25 @@ for i in range(10):
 \afterverb
 %
 
-첫 예제는 로그 지수 10으로 신호 대비 소음 비율을  계산한다.
-수학 모듈은 자연 로그를 {\tt log}함수를 호출해서 사용할 수 있도록 제공한다.
+첫 예제는 신호-대-소음비의 로그 밑이 10 을 계산한다.
+수학 모듈이 자연 로그를 {\tt log} 함수를 호출해서 사용할 수 있도록 제공한다.
 
-\index{log function}
-\index{function!log}
-\index{sine function}
-\index{radian}
-\index{trigonometric function}
-\index{function, trigonometric}
+\index{로그 함수}
+\index{함수!로그}
+\index{사인 함수}
+\index{라디안}
+\index{삼각 함수}
+\index{함수, 삼각법}
+%\index{log function}
+%\index{function!log}
+%\index{sine function}
+%\index{radian}
+%\index{trigonometric function}
+%\index{function, trigonometric}
 
-두 번째 예제는 라디안의 사인값을 찾는 것이다. 변수의 이름이 힌트로 {\tt sin}과 다른 삼각 함수({\tt cos}, {\tt tan} 등)는 라디안을 인수로 받는다.
-도수에서 라디안으로 변환하기 위해서 360으로 나누고 $2\pi$를 곱한다.
+두 번째 예제는 라디안의 사인값을 찾는 것이다. 
+변수의 이름이 힌트를 주는데, {\tt sin}과 다른 삼각함수({\tt cos}, {\tt tan} 등)는 라디안을 인자로 받는다.
+도(degree)에서 라디안(radian)으로 변환하기 위해서 360으로 나누고 $2\pi$를 곱한다.
 
 \beforeverb
 \begin{verbatim}
@@ -294,14 +342,17 @@ for i in range(10):
 \afterverb
 %
 
-{\tt math.pi} 표현문은 수학 모듈에서 {\tt pi} 변수를 얻고, $\pi$와 근사적으로 동일하고 15 자리수까지 정확하다. 
+{\tt math.pi} 표현식은 수학 모듈에서 {\tt pi} 변수를 얻는데, $\pi$ 값과 비교하여 15 자리수까지 정확하고 근사적으로 수렴한다.
 
-\index{pi}
+\index{원주율}
+%\index{pi}
 
-삼각함수를 배웠다면, 앞의 연산 결과를 2를 루트를 씌우고 2로 나누어서 비교한다.
+삼각함수를 배웠다면, 앞선 연산 결과를 2에 루트를 씌우고 2로 나누어 비교 검증한다.
 
-\index{sqrt function}
-\index{function!sqrt}
+\index{sqrt 함수}
+\index{함수!sqrt}
+%\index{sqrt function}
+%\index{function!sqrt}
 
 \beforeverb
 \begin{verbatim}
@@ -310,7 +361,6 @@ for i in range(10):
 \end{verbatim}
 \afterverb
 %
-
 
 \section{신규 함수 추가}
 
