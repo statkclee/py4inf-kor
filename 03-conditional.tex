@@ -3,14 +3,18 @@
 
 \chapter{조건부 실행}
 
-\section{불 연산식(Boolean expressions)}
-\index{boolean expression}
-\index{expression!boolean}
-\index{logical operator}
-\index{operator!logical}
+\section{불 표현식(Boolean expressions)}
+\index{불 표현식}
+\index{표현식!불}
+\index{논리 연산자}
+\index{연산자!논리}
+%\index{boolean expression}
+%\index{expression!boolean}
+%\index{logical operator}
+%\index{operator!logical}
 
-{\bf 불 연산식(boolean expression)}은 참(True) 혹은 거짓(False)를 가진 연산 표현식이다. 
-다음 예제는 {\tt ==} 연산자를 사용하는데 두개의 피연산자를 비교하여 값이 동일하면 {\tt 참(True)}, 그렇지 않으면 {\tt 거짓(False)}을 출력한다.
+{\bf 불 표현식(boolean expression)}은 참(True) 혹은 거짓(False)를 지닌 표현식이다. 
+다음 예제는 {\tt ==} 연산자를 사용하여 두 개 피연산자를 비교하여 값이 동일하면 {\tt 참(True)}, 그렇지 않으면 {\tt 거짓(False)}을 산출한다.
 
 \beforeverb
 \begin{verbatim}
@@ -22,14 +26,20 @@ False
 \afterverb
 %
 
-{\tt 참(True)}과 {\tt 거짓(False)}은 {\tt 불(bool)}형식에 속하는 특별한 값들이고, 문자열은 아니다.
+{\tt 참(True)}과 {\tt 거짓(False)}은 {\tt 불(bool)}형(type)에 속하는 특별한 값이지만, 문자열은 아니다.
 
-\index{True special value}
-\index{False special value}
-\index{special value!True}
-\index{special value!False}
-\index{bool type}
-\index{type!bool}
+\index{참 특별 값}
+\index{거짓 특별 값}
+\index{특별 값!참}
+\index{특별 값!거짓}
+\index{불 형}
+\index{형!불}
+%\index{True special value}
+%\index{False special value}
+%\index{special value!True}
+%\index{special value!False}
+%\index{bool type}
+%\index{type!bool}
 
 \beforeverb
 \begin{verbatim}
@@ -41,7 +51,7 @@ False
 \afterverb
 %
 
-{\tt ==}연산자는 {\bf 비교(comparison operators)} 연산자 중의 하나이고, 다른 연산자는 다음과 같다.
+{\tt ==}연산자는 {\bf 비교 연산자(comparison operators)} 중 하나이고, 다른 연산자는 다음과 같다.
 
 \beforeverb
 \begin{verbatim}
@@ -55,40 +65,50 @@ False
 \end{verbatim}
 \afterverb
 %
-여러분에게 이들 연산자가 친숙할지 모르지만, 파이썬 기호는 수학 기호와는 다르다. 
-일반적인 오류에는 비교의 같다의 의미로 {\tt ==} 연산자 대신에 {\tt =}를 사용하는 것이다.
-{\tt =} 연산자는 할당 연산자이고, {\tt ==}연산자는 비교 연산자이다. {\tt =<}, {\tt =>} 비교 연산자는 파이썬에는 없다.
+상기 연산자가 친숙할지 모르지만, 파이썬 기호는 수학 기호와 다르다. 
+일반적인 오류로 비교를 해서 동일하다는 의미로 {\tt ==} 연산자 대신에 {\tt =}를 사용하는 것이다.
+{\tt =} 연산자는 할당 연산자이고, {\tt ==}연산자는 비교 연산자다. 
+{\tt =<}, {\tt =>} 같은 비교 연산자는 파이썬에는 없다.
 
-\index{comparison operator}
-\index{operator!comparison}
-
+\index{비교 연산자}
+\index{연산자!비교}
+%\index{comparison operator}
+%\index{operator!comparison}
 
 \section {논리 연산자}
-\index{logical operator}
-\index{operator!logical}
+\index{논리 연산자}
+\index{연산자!논리}
+%\index{logical operator}
+%\index{operator!logical}
 
-
-
-3개의 {\bf 논리 연산자(logical operators)}: {\tt and}, {\tt
-or}, {\tt not}가 있다. 논리 연산자 의미는 영어 의미와 유사하다. 예를 들어,
+세개 {\bf 논리 연산자(logical operators)}: {\tt and}, {\tt or}, {\tt not} 가 있다. 
+논리 연산자 의미는 영어 의미와 유사하다. 예를 들어,
 
 {\tt x > 0 and x < 10} 
 
-{\tt x}이 0 보다 크다. \emph{그리고(and)}, 10 보다 작으면 참이다.
+{\tt x} 가 0 보다 크다. \emph{그리고(and)}, 10 보다 작으면 참이다.
 
-\index{and operator}
-\index{or operator}
-\index{not operator}
-\index{operator!and}
-\index{operator!or}
-\index{operator!not}
+\index{and 연산자}
+\index{or 연산자}
+\index{not 연산자}
+\index{연산자!and}
+\index{연산자!or}
+\index{연산자!not}
 
+%\index{and operator}
+%\index{or operator}
+%\index{not operator}
+%\index{operator!and}
+%\index{operator!or}
+%\index{operator!not}
 
-{\tt n\%2 == 0 or n\%3 == 0}은 두 조건문 중의 하나만 참이되면, 즉, 숫자가 2 \emph{혹은(or)} 3으로 나누어진다면 참이다.
+{\tt n\%2 == 0 or n\%3 == 0}은 두 조건문 중의 하나만 참이 되면, 즉, 숫자가 2 \emph{혹은(or)} 3으로 나누어지면 참이다.
 
-마지막으로 {\tt not} 연산자는 불 연산 표현을 부정한다. {\tt x > y}이 거짓이면, {\tt not (x > y)}은 참이다. 즉, {\tt x}이 {\tt y} 보다 작거나 같으면 참이다.
+마지막으로 {\tt not} 연산자는 불 연산 표현식을 부정한다. 
+{\tt x > y} 가 거짓이면, {\tt not (x > y)}은 참이다. 즉, {\tt x}이 {\tt y} 보다 작거나 같으면 참이다.
 
-엄밀히 말해서, 논리 연산자의 두 피연산자는 모두 불 연산 표현이여야 하지만, 파이썬은 그렇게 엄격하지는 않는다. 어떤 0이 아닌 숫자 모두 "true"로 해석된다.
+엄밀히 말해서, 논리 연산자의 두 피연산자는 모두 불 표현식이지만, 파이썬에서 그다지 엄격하지는 않다. 
+0 이 아닌 임의의 숫자 모두 "참(true)"으로 해석된다.
 
 \beforeverb
 \begin{verbatim}
@@ -97,19 +117,27 @@ True
 \end{verbatim}
 \afterverb
 %
-이러한 유연함이 유용할 수 있으나, 혼란을 줄 수도 있으니 유의해서 사용해야 됩니다. 무슨 일을 하고 있는지 정확하게 알지 못한다면 피하는게 좋습니다.
+
+이러한 유연함이 유용할 수 있으나, 혼란을 줄 수도 있으니 유의해서 사용해야 한다. 
+무슨 일을 하고 있는지 정확하게 알지 못한다면 피하는게 상책이다.
 
 \section{조건문 실행}
 %\label{conditional execution}
 
-\index{conditional statement}
-\index{statement!conditional}
-\index{if statement}
-\index{statement!if}
-\index{conditional execution}
+\index{조건문}
+\index{문장!조건}
+\index{if문}
+\index{문장!if}
+\index{조건문 실행}
+%\index{conditional statement}
+%\index{statement!conditional}
+%\index{if statement}
+%\index{statement!if}
+%\index{conditional execution}
 
-유용한 프로그램을 작성하기 위해서는 조건을 확인하고 조건에 따라 프로그램의 실행을 바꿀 수 있어야 한다.  
-{\bf 조건문(Conditional statements)}은 그럴 수 있는 능력을 부여한다. 가장 간단한 형태는  {\tt if} 문이다.
+유용한 프로그램을 작성하기 위해서 거의 항상 조건을 확인하고 조건에 따라 프로그램 실행을 바꿀 수 있어야 한다.
+{\bf 조건문(Conditional statements)}은 그러한 능력을 부여한다. 
+가장 간단한 형태는  {\tt if} 문이다.
 
 \beforeverb
 \begin{verbatim}
@@ -118,27 +146,34 @@ if x > 0 :
 \end{verbatim}
 \afterverb
 %
-{\tt if}문 뒤에 불 연산 표현문을 {\bf 조건(condition)}이라고 한다.
+{\tt if}문 뒤에 불 표현식(boolean expression)을 {\bf 조건(condition)}이라고 한다.
 
 \beforefig
 \centerline{\includegraphics[height=1.75in]{figs2/if.eps}}
 \afterfig
 
-만약 조건문이 참이면, 들여쓰기 된 스테이트먼트가 실행된다. 만약 조건문이 거짓이면, 들여쓰기 된 스테이트먼트의 실행을 생략한다.
+만약 조건문이 참이면, 들여쓰기 된 문장이 실행된다. 
+만약 조건문이 거짓이면, 들여쓰기 된 문장의 실행을 건너뛴다.
 
-\index{condition}
-\index{compound statement}
-\index{statement!compound}
+\index{조건}
+\index{복합 문장}
+\index{문장!복합}
+%\index{condition}
+%\index{compound statement}
+%\index{statement!compound}
 
-{\tt if}문은 함수 정의나 {\tt for} 반복문과 동일한 구조를 가진다.
-{\tt if}문은 콜론(:)으로 끝나는 헤더 머리부문과 들여쓰기 블록으로 구성된다.
-{\tt if}문과 같은 구문을 한 줄 이상에 걸쳐 작성되기 때문에 {\bf 복합문(compound statements)}이라고 한다.
+{\tt if}문은 함수 정의, {\tt for} 반복문과 동일한 구조를 가진다.
+{\tt if}문은 콜론(:)으로 끝나는 헤더 머리부문과 들여쓰기된 몸통 블록(block)으로 구성된다.
+{\tt if}문처럼 문장이 한 줄 이상에 걸쳐 작성되기 때문에 {\bf 복합 문장(compound statements)}이라고 한다.
 
-{\tt if}문 본문에 실행 명령문의 제한은 없으나 최소한 한 줄은 있어야 한다.
-때때로, 본문에 하나의 실행명령문이 없는 경우가 있다. 아직 코드를 작성하지 않고 자리를 잡아 놓는 경우로, 아무것도 수행하지 않는 {\tt pass}문을 사용할 수 있다.
+{\tt if}문 몸통 부문에 작성되는 실행 문장 숫자에 제한은 없으나 최소한 한 줄은 있어야 한다.
+때때로, 몸통 부문에 어떤 문장도 없는 경우가 있다. 
+아직 코드를 작성하지 않아서 자리만 잡아 놓는 경우로, 아무것도 수행하지 않는 {\tt pass}문을 사용할 수 있다.
 
-\index{pass statement}
-\index{statement!pass}
+\index{pass 문장}
+\index{문장!pass}
+%\index{pass statement}
+%\index{statement!pass}
 
 \beforeverb
 \begin{verbatim}
@@ -147,7 +182,9 @@ if x < 0 :
 \end{verbatim}
 \afterverb
 %
-if문을 파이썬 인터프리터에서 타이핑하고 엔터를 치게 되면 명령 프롬프트가 갈매기 세마리에서 점 세개로 바뀌어 본문을 작성중에 있다는 것을 다음과 같이 보여줍니다.
+if문을 파이썬 인터프리터에서 타이핑하고 엔터를 치게 되면, 
+명령 프롬프트가 갈매기 세마리에서 점 세개로 바뀐다. 
+따라서 다음과 같이 if문 몸통 부분을 작성중에 있다는 것을 나타낸다.
 
 \beforeverb
 \begin{verbatim}
@@ -164,11 +201,16 @@ Small
 \section{대안 실행}
 %\label{alternative execution}
 
-\index{alternative execution}
-\index{else keyword}
-\index{keyword!else}
+\index{대안 실행}
+\index{else 예약어}
+\index{예약어!else}
+%\index{alternative execution}
+%\index{else keyword}
+%\index{keyword!else}
 
-{\tt if}문의 두 번째 형태는 {\bf 대안 실행(alternative execution)}으로 두 가지 경우의 수가 존재하고, 조건이 어느 방향인지를 결정한다. 구문(Syntax)은 아래와 같다.   
+{\tt if}문의 두 번째 형태는 {\bf 대안 실행(alternative execution)}이다.
+대안 실행의 경우 두 가지 경우의 수가 존재하고, 조건이 어느 방향으로 실행할 것인지 결정한다. 
+구문(Syntax)은 아래와 같다.
 
 \beforeverb
 \begin{verbatim}
@@ -179,21 +221,27 @@ else :
 \end{verbatim}
 \afterverb
 %
-{\tt x}가 2로 나누었을 때, 0이되면, {\tt x}는 짝수이고, 프로그램은 짝수 결과 메시지를 출력한다. 만약 조건이 거짓이라면, 두 번째 명령문 블록이 실행된다.
+{\tt x}를 2로 나누었을 때, 0 이되면, {\tt x}는 짝수이고, 프로그램은 짝수('x is even')라는 결과 메시지를 출력한다. 
+만약 조건이 거짓이라면, 두 번째 몸통 부문 문장이 실행된다.
 
 \beforefig
 \centerline{\includegraphics[height=1.75in]{figs2/if-else.eps}}
 \afterfig
 
-조건은 참 혹은 거짓이서, 대안 중 하나만 정확하게 실행될 것이다. 대안을 {\bf 분기(Branch)}라고도 하는데 이유는 실행 흐름의 분기가 되기 때문이다.
+조건은 참 혹은 거짓이어서, 대안 중 하나만 정확하게 실행된다. 
+대안을 {\bf 분기(Branch)}라고도 하는데 이유는 실행 흐름이 분기되기 때문이다.
 
-\index{branch}
+\index{분기}
+%\index{branch}
 
 \section{연쇄 조건문}
-\index{chained conditional}
-\index{conditional!chained}
+\index{연쇄 조건문}
+\index{조건문!연쇄}
+%\index{chained conditional}
+%\index{conditional!chained}
+
 때때로, 두 가지 이상의 경우의 수가 있으며, 두 가지 이상의 분기가 필요하다.
-이 같은 연산을 표현하는 방법이 {\bf 연쇄 조건문(chained conditional)}이다.
+이와 같은 연산을 표현하는 방식이 {\bf 연쇄 조건문(chained conditional)}이다.
 
 \beforeverb
 \begin{verbatim}
@@ -212,11 +260,13 @@ else:
 \centerline{\includegraphics[height=3.00in]{figs2/elif.eps}}
 \afterfig
 
-{\tt elif}문의 갯수에 제한은 없다. {\tt else}문이 있다면, 거기서 끝마쳐야 하지만, 연쇄 조건문에 필히 있어야 하는 것은 아니다.
+{\tt elif} 문의 갯수에 제한은 없다. 
+{\tt else} 절이 있다면, 거기서 끝마쳐야 하지만, 연쇄 조건문에 필히 있어야 하는 것은 아니다.
 
-\index{elif keyword}
-\index{keyword!elif}
-
+\index{elif 예약어}
+\index{예약어!elif}
+%\index{elif keyword}
+%\index{keyword!elif}
 
 \beforeverb
 \begin{verbatim}
@@ -230,16 +280,17 @@ elif choice == 'c':
 \afterverb
 %
 각 조건은 순서대로 점검한다. 만약 첫 번째가 거짓이면, 다음을 점검하고 계속 점검해 나간다.
-순서대로 진행 주에 하나의 조건이 참이면, 해당 분기가 수행되고, {\tt if}문 전체는 종료된다. 
+순서대로 진행 중에 하나의 조건이 참이면, 해당 분기가 수행되고, {\tt if}문 전체는 종료된다. 
 설사 하나 이상의 조건이 참이라고 하더라도, 첫 번째 참 분기만 수행된다.
 
-
 \section{중첩 조건문}
-\index{nested conditional}
-\index{conditional!nested}
+\index{중첩 조건문}
+\index{조건문!중첩}
+%\index{nested conditional}
+%\index{conditional!nested}
 
-하나의 조건문이 조건문 내부에 중첨될 수도 있다. 
-다음처럼 삼분 예제를 작성할 수 있다.
+하나의 조건문이 조건문 내부에 중첩될 수 있다. 
+다음과 같이 삼분 예제를 작성할 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -254,16 +305,20 @@ else:
 \afterverb
 %
 
-바깥 조건문에 두 개의 분기가 있다. 첫 분기는 간단한 명령 실행문을 담고 있다. 두 번째 분기는 자체가 두 개의 분기를 가지고 있는 또 다른 {\tt if}문을 담고 있다.
-자체로 둘다 조건문이지만, 두 분기 모두 간단한 실행 명령문이다.
+바깥 조건문에는 두 개의 분기가 있다. 
+첫 분기는 간단한 문장을 담고 있다. 
+두 번째 분기는 자체가 두 개의 분기를 가지고 있는 또 다른 {\tt if}문을 담고 있다.
+자체로 둘다 조건문이지만, 두 분기 모두 간단한 문장이다.
 
 \beforefig
 \centerline{\includegraphics[height=2.50in]{figs2/nested.eps}}
 \afterfig
 
-명령문 블록을 들여쓰는 것이 구조를 명확히 하지만, 중첩 조건문의 경우 가독성이 급격히 저하된다. 일반적으로, 가능하면 중첩 조건문을 피하는 것을 권장한다.
+문장을 들여쓰는 것이 구조를 명확히 하지만, \bf{중첩 조건문}의 경우 가독성이 급격히 저하된다. 
+일반적으로, 가능하면 중첩 조건문을 피하는 것을 권장한다.
 
-논리 연산자를 사용하여 중첩 조건문을 간략히 할 수 있다. 예를 들어, 단일 조건문으로 가지고 앞의 코드를 다시 작성할 수 있다.
+논리 연산자를 사용하여 중첩 조건문을 간략히 할 수 있다. 
+예를 들어, 단일 조건문으로 가지고 앞의 코드를 다음과 같이 재작성할 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -274,7 +329,7 @@ if 0 < x:
 \afterverb
 %
 
-{\tt print}문은 두개의 조건문이 통과될 때만 실행돼서, {\tt and} 연산자와 동일한 효과를 거둘 수 있다.
+{\tt print}문은 두 개 조건문을 통과될 때만 실행돼서, {\tt and} 연산자와 동일한 효과를 거둘 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -287,8 +342,8 @@ if 0 < x and x < 10:
 \section{try와 catch를 활용한 예외 처리}
 %\label{catch1}
 
-앞에서 사용자가 타이핑한 것을 읽어 정수로 파싱하기 위해서 함수 \verb"raw_input"와 {\tt int}을 사용한 프로그램 코드를 살펴 보았다.
-또한 이렇게 하는 코딩하는 것이 얼마나 위험한 것인지도 살펴보았다.
+함수 \verb"raw_input"와 {\tt int}을 사용하여 앞에서 사용자가 타이핑한 숫자를 읽어 정수로 파싱하는 프로그램 코드를 살펴보았다.
+또한 이렇게 코딩하는 것이 얼마나 위험한 것인지도 살펴보았다.
 
 \beforeverb
 \begin{verbatim}
@@ -301,17 +356,23 @@ ValueError: invalid literal for int()
 \end{verbatim}
 \afterverb
 %
-파이썬 인터프리터에서 상기 명령문을 실행할 때, "이런" 잠시 있다가 다음 명령 실행문으로 넘어가는 새로운 명령 프롬프트를 보게 된다.
+파이썬 인터프리터에서 상기 문장을 실행하면, 
+인터프리터에서 새로운 프롬프트로 되고, "이런(oops)" 잠시 후에, 다음 문장 실행으로 넘어간다.
 
-하지만, 코드가 파이썬 스크립트로 실행이 되면 오류가 발생하고 즉시, 그 지점에서 멈추게 된다. 다음의 명령 실행문은 실행하지 않는다.
+하지만, 만약 코드가 파이썬 스크립트로 실행이 되어 오류가 발생하면,
+역추적해서 그 지점에서 즉시 멈추게 된다. 다음에 오는 문장은 실행하지 않는다.
 
-\index{traceback}
+\index{역추적(traceback)}
+%\index{traceback}
 
 화씨 온도를 섭씨 온도로 변환하는 간단한 프로그램이 있다.
 
-\index{fahrenheit}
-\index{celsius}
-\index{temperature conversion}
+\index{화씨}
+\index{섭씨}
+\index{온도 변환}
+%\index{fahrenheit}
+%\index{celsius}
+%\index{temperature conversion}
 
 \beforeverb
 \begin{verbatim}
@@ -323,7 +384,7 @@ print cel
 \afterverb
 %
 
-이 코드를 실행하고 적절하지 않은 입력값을 타이핑하게되면, 다소 불친절한 오류 메시지와 함께 작동을 멈춘다.
+이 코드를 실행해서 적절하지 않은 입력값을 넣게 되면, 다소 불친절한 오류 메시지와 함께 간단히 작동을 멈춘다.
 
 \beforeverb
 \begin{verbatim}
@@ -341,12 +402,14 @@ ValueError: invalid literal for float(): fred
 \afterverb
 %
 
-이런 종류의 예측되거나, 예측 못한 오류를 다루는 ``try / except''로 불리는 조건 실행 구조가 파이썬에 내장되어 있다.
-{\tt try}와 {\tt except}의 기본 사항은 일부 명령문이 문제를 가 있다는 것을 사전에 알고 있고, 만약 그 때문에 오류가 발생하게 된다면 대신 실행할 명령문을 프로그램에 추가하는 것이다. {\tt except} 블록의 명령문은 오류가 없다면 실행되지 않는다.
+이런 종류의 예측하거나, 예측하지 못한 오류를 다루기 위해서 파이썬에는 ``try / except''로 불리는 조건 실행 구조가 내장되어 있다.
+{\tt try}와 {\tt except}의 기본적인 생각은 일부 명령문에 문제가 있다는 것을 사전에 알고 있고, 
+만약 그 때문에 오류가 발생하게 된다면 대신 프로그램에 추가해서 명령문을 실행한다는 것이다. 
+{\tt except} 블록의 문장은 오류가 없다면 실행되지 않는다.
 
-파이썬의 {\tt try}, {\tt except} 기능을 프로그램 코드의 실행에 보험을 든다고 생각할 수 있다.
+문장 실행에 대해서 파이썬 {\tt try}, {\tt except} 기능을 보험으로 생각할 수도 있다.
 
-온도 변환기 프로그램을 다음과 같이 다시 작성할 수 있다.
+온도 변환기 프로그램을 다음과 같이 재작성한다.
 
 \beforeverb
 \begin{verbatim}
@@ -361,9 +424,10 @@ except:
 \afterverb
 %
 
-파이썬은 {\tt try} 블록의 명령문을 우선 실행합니다. 만약 모든 것이 순조롭다면, {\tt except} 블록을 건너뛰고, 다음 코드를 실행합니다.
-
-{\tt except}이 {\tt try} 블록에서 발생하면, 파이썬은 {\tt try}블록을 건너뛰고 {\tt except}블록의 명령문을 수행합니다. 
+파이썬은 {\tt try} 블록 문장을 우선 실행한다. 
+만약 모든 것이 순조롭다면, {\tt except} 블록을 건너뛰고, 다음 코드를 실행한다.
+만약 {\tt try} 블록에서 {\tt except}이 발생하면, 
+파이썬은 {\tt try} 블록에서 빠져 나와 {\tt except}블록 문장을 수행한다.
 
 \beforeverb
 \begin{verbatim}
@@ -378,21 +442,27 @@ Please enter a number
 \afterverb
 %
 
-{\tt try}문으로 예외사항을 다루는 것을 예외 처리한다{\bf catching an exception}고 부릅니다.
-예제에서는 {\tt except} 절에서는 단순히 오류 메시지를 출력만 합니다. 대체로, 예외 처리는 오류를 고치거나, 다시 시작하거나, 최소한 프로그램이 정상적으로 종료될 수 있게 합니다.
+{\tt try}문으로 예외사항을 다루는 것을 {\bf 예외 처리한다(catching an exception)}고 부른다.
+예제에서 {\tt except} 절에서는 단순히 오류 메시지를 출력만 한다. 
+대체로, 예외 처리를 통해서 오류를 고치거나, 재시작하거나, 최소한 프로그램이 정상적으로 종료될 수 있게 한다.
 
 \section{논리 연산식의 단락(Short circuit) 평가}
 %\index{short circuit}
 
-파이썬이 {\tt x >= 2 and (x/y) > 2}와 같은 논리 연산식을 처리할 때, 왼쪽에서부터 오른쪽으로 연산식을 평가한다.
-{\tt and}의 정의 때문에 {\tt x}이 2보다 작다면, {\tt x >= 2}은 {\tt 거짓(False)}이 되서, 전체는 {\tt (x/y) > 2}이 {\tt 참(True)} 혹은 {\tt 거짓(False)}에 관계없이 {\tt 거짓(False)}이 된다. 
-파이썬이 논리 연산식의 나머지 부분을 평가해도 나아지는 것이 없다고 탐지할 때, 평가를 멈추고 나머지 논리 연산식에 대한 연산도 중지한다. 최종 논리 연산식의 값이 이미 알려졌기 때문에
-더 이상의 연산을 멈출 때, 이를 단락(Short-circuiting) 평가라고 한다.
+{\tt x >= 2 and (x/y) > 2}와 같은 논리 표현식을 파이썬에서 처리할 때, 왼쪽에서부터 오른쪽으로 표현식을 평가한다.
+{\tt and} 정의 때문에 {\tt x} 가 2보다 작다면, {\tt x >= 2}은 {\tt 거짓(False)}으로, 
+전체적으로 {\tt (x/y) > 2} 이 {\tt 참(True)} 혹은 {\tt 거짓(False)} 이냐에 관계없이 {\tt 거짓(False)}이 된다. 
 
-\index{guardian pattern}
-\index{pattern!guardian}
+나머지 논리 표현식을 평가해도 나아지는 것이 없다고 파이썬이 자동으로 탐지할 때,
+평가를 멈추고 나머지 논리 표현식에 대한 연산도 중지한다. 
+최종값이 이미 결정되었기 때문에 더 이상의 논리 표현식의 평가가 멈출 때, 이를 단락(Short-circuiting) 평가라고 한다.
 
-이것이 세심해 보일 수 있지만, 단락 행동이 가디언 {\bf 패넌(guardian pattern)}으로 불리는 좀 더 똑똑한 기술로 연결된다.
+\index{가디언 패턴}
+\index{패턴!가디언}
+%\index{guardian pattern}
+%\index{pattern!guardian}
+
+좋은 점처럼 보일 수 있지만, 단락 행동은 {\bf 가디언 패턴(guardian pattern)}으로 불리는 좀 더 똑똑한 기술로 연계된다.
 파이썬 인터프리터의 다음 코드를 살펴보자.
 
 \beforeverb
@@ -415,11 +485,12 @@ ZeroDivisionError: integer division or modulo by zero
 \end{verbatim}
 \afterverb
 %
-파이썬이 {\tt (x/y)}연산을 평가할 때 {\tt y}이 0 이어서 실행오류 발생시켜서, 세번째 연산은 수행되지 않습니다.
-하지만, 두 번째 예제의 경우 {\tt x >= 2} 이 {\tt 거짓(False)}이어서 전체가 {\tt 거짓(False)}이 되어 {\tt (x/y)} 평가가 실행되지 않고,
-단락(Short-circuiting) 평가 규칙에 의해서 오류도 발생하지 않습니다.
 
-오류가 발생할 것 같은 평가식 앞에 {\bf 가디언(gardian)} 평가식을 전략적으로 배치해서 논리 평가식을 아래와 같이 구성합니다. 
+세번째 연산은 실패하는데 이유는 {\tt (x/y)} 연산을 평가할 때 {\tt y} 가 0 이어서 실행오류 발생한다.
+하지만, 두 번째 예제의 경우 실패하지 않는데 이유는 {\tt x >= 2} 이 {\tt 거짓(False)} 으로, 
+전체가 {\tt 거짓(False)}이 되어 단락(Short-circuiting) 평가 규칙에 의해 {\tt (x/y)} 평가는 실행되지 않아 오류도 발생하지 않는다.
+
+평가 오류를 발생하기 전에 {\bf 가디언(gardian)} 평가식을 전략적으로 배치해서 논리 표현식을 다음과 같이 구성한다. 
 
 \beforeverb
 \begin{verbatim}
@@ -439,19 +510,22 @@ ZeroDivisionError: integer division or modulo by zero
 \end{verbatim}
 \afterverb
 %
-첫 번째 논리 표현식은 {\tt x >= 2}이 {\tt 거짓(False)}이라 {\tt and}에서 멈춥니다.
-두 번째 논리 표현식은 {\tt x >= 2}이 {\tt 참(True)}, {\tt y != 0}은 {\tt 거짓(False)}이어서 {\tt (x/y)}까지 갈 필요는 없습니다.
-세 번째 논리 표현식은 {\tt (x/y)} 연산이 끝난 후에 {\tt y != 0}이 수행되어서 오류가 발생합니다.
+첫 번째 논리 표현식은 {\tt x >= 2} 이 {\tt 거짓(False)} 이라 {\tt and}에서 멈춘다.
+두 번째 논리 표현식은 {\tt x >= 2} 이 {\tt 참(True)}, {\tt y != 0}은 {\tt 거짓(False)} 이라 {\tt (x/y)}까지 갈 필요가 없다.
+세 번째 논리 표현식은 {\tt (x/y)} 연산이 끝난 후에 {\tt y != 0} 이 수행되어서 오류가 발생한다.
 
-두 번째 논리 표현식에서 {\tt y != 0}이 '0'이 아니어만 {\tt (x/y)}이 실행될 수 있도록 {\bf 가디언(gardian)} 역할을 수행한다고 할 수 있다.
+두 번째 표현식에서 {\tt y} 가 0 이 아닐 때만, {\tt (x/y)}을 실행하도록 {\tt y != 0} 이 {\bf 가디언(gardian)} 역할을 수행한다고 말할 수 있다.
 
 \section{디버깅(Debugging)}
 %\label{whitespace}
-\index{debugging}
-\index{traceback}
+\index{디버깅}
+\index{역추적}
+%\index{debugging}
+%\index{traceback}
 
-오류가 발생했을 때, 파이썬이 화면에 출력하는 트레이스백(traceback)은 상당한 정보를 담고 있지만, 특히 스택에 많은 프레임이 있는 경우 엄청나게 보일 수도 있다.
-대체로 유용한 정보는 다음과 같다.
+오류가 발생했을 때, 파이썬 화면에 출력되는 역추적(traceback)에는 상당한 정보가 담겨있다. 
+하지만,특히 스택에 많은 프레임이 있는 경우 엄청나게 보여 엄두가 나지 않을 수도 있다.
+대체로 가장 유용한 정보는 다음과 같은 것이 있다.
 
 \begin{itemize}
 
@@ -461,8 +535,8 @@ ZeroDivisionError: integer division or modulo by zero
 
 \end{itemize}
 
-구문 오류는 대체로 발견하기 쉽지만, 몇 가지는 애매합니다. 공백 오류가 대표적인데, 공백(space)과 탭(tab)은 구별이 되지 않고,
-통상 무시하고 넘어가기 쉽기 때문입니다.
+구문 오류는 대체로 발견하기 쉽지만, 몇 가지는 애매하다. 공백(space)과 탭(tab)의 차이가 눈에 보이지 않아 
+통상 무시하고 넘어가기 쉽기 때문에 공백 오류를 잡아내기가 까다롭다.
 
 \index{whitespace}
 
@@ -477,12 +551,19 @@ SyntaxError: invalid syntax
 \end{verbatim}
 \afterverb
 %
-이 예제의 문제는 두 번째 줄이 한 칸 공백으로 들여써서 발생하는 것입니다. 하지만, {\tt y}에 오류 메시지가 있는데 프로그래머를 잘못된 곳으로 인도합니다. 대체로 오류 메시지는 문제가 어디에서 발견되었는지를 지칭하지만, 실제 오류는 코드 앞에서 종종 선행하는 줄에 있을 수 있습니다.
+상기 예제 문제는 두 번째 줄에 한 칸 공백이 들여써서 발생하는 것이다. 
+하지만, {\tt y}에 오류 메시지가 있는데 프로그래머를 잘못된 곳으로 인도한다. 
+대체로 오류 메시지는 문제가 어디에서 발견되었는지를 지칭하지만, 실제 오류는 코드 앞에 종종 선행하는 줄에 있을 수 있다.
 
-\index{error!runtime}
-\index{runtime error}
+\index{오류!실행}
+\index{실행 오류}
+%\index{error!runtime}
+%\index{runtime error}
 
-동일한 문제가 실행 오류에도 있습니다. 데시벨(decibels)로 신호 대비 잡음비를 계산한다고 가정합시다. 공식은 $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$입니다. 파이썬에서 아래와 같이 작성할 수 있습니다.
+동일한 문제가 실행 오류에도 있다. 
+데시벨(decibels)로 신호 대비 잡음비를 계산한다고 가정하자. 
+공식은 $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$ 이다. 
+파이썬에서 아래와 같이 작성할 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -496,11 +577,13 @@ print decibels
 \afterverb
 %
 
-하지만, 실행하게 되면, 다음과 같은 오류 메시지\footnote{파이썬 3.0에서는 오류 메시지가 발생하지 않습니다.
- 정수 피연산자인 경우에도 나눗셈 연산자가 부동 소수점 나눗셈을 수행합니다.}가 발생합니다. 
+하지만, 실행하게 되면, 다음과 같은 오류 메시지\footnote{파이썬 3.0에서는 오류 메시지가 발생하지 않는다.
+ 정수 피연산자인 경우에도 나눗셈 연산자가 부동 소수점 나눗셈을 수행한다.}가 발생한다. 
 
-\index{exception!OverflowError}
-\index{OverflowError}
+\index{예외!오버플로 오류}
+\index{오버플로 오류}
+%\index{exception!OverflowError}
+%\index{OverflowError}
 
 \beforeverb
 \begin{verbatim}
@@ -512,68 +595,83 @@ OverflowError: math range error
 \afterverb
 %
 
-오류 메지지가 5번째 줄에 있지만, 잘못된 것은 없습니다. 실제 오류를 발견하기 위해서, 
-출력값은 0인 {\tt ratio}의 값을 {\tt print}문을 사용해서 출력해 보는 것이 도움이 됩니다.
-문제는 4번째 줄에 있는데, 두 정수를 나누기를 소수점 연산을 했기 때문입니다. 
-\verb"signal_power" 와 \verb"noise_power" 를 부동 소수점값으로  표현하는게 해결책입니다.
+오류 메지지가 5번째 줄에 있다고 지칭하지만, 잘못된 것은 없다. 
+실제 오류를 발견하기 위해서, 
+출력값이 0 인 {\tt ratio} 값을 {\tt print}문을 사용해서 출력하는 것이 도움이 된다.
+문제는 4번째 줄에 있는데, 왜냐하면 두 정수를 나눌 때 내림 나눗셈을 했기 때문입니다. 
+\verb"signal_power" 와 \verb"noise_power" 를 부동 소수점값으로 표현하는게 해결책이다.
 
-\index{floor division}
-\index{division!floor}
+\index{내림 나눗셈}
+\index{나눗셈!내림}
+%\index{floor division}
+%\index{division!floor}
 
-대체로, 오류 메시지는 어디에 문제가 발견되었는지를 말해주지만, 종종 어디서 원인이 발생했는지는 말해주지 않습니다.
+대체로, 오류 메시지는 문제가 어디에서 발견되었는지를 알려주지만, 
+종종 문제의 원인이 어디에서 발생했는지는 알려주지 않는다.
 
 \section{용어 정의}
 
 \begin{description}
 
-\item[몸통부문(body):] 복합문 내부에 열련의 명령문 실행을 기술한 부문
-\index{body}
+\item[몸통 부문(body):] 복합 문장 내부에 일련의 문장문
+\index{몸통 부문}
+%\index{body}
 
 \item[불 표현식(boolean expression):] {\tt 참(True)} 혹은 {\tt 거짓(False)}의 값을 가지는 표현식
-\index{boolean expression}
-\index{expression!boolean}
+\index{불 표현식}
+\index{표현식!불}
+%\index{boolean expression}
+%\index{expression!boolean}
 
-\item[분기(branch):] 조건문에서 대안 실행 명령문의 한 흐름
-\index{branch}
+\item[분기(branch):] 조건문에서 대안 문장의 한 흐름
+\index{분기}
+%\index{branch}
 
 \item[연쇄 조건문(chained conditional):] 일련의 대안 분기가 있는 조건문
-\index{chained conditional}
-\index{conditional!chained}
+\index{연쇄 조건문}
+\index{조건문!연쇄}
+%\index{chained conditional}
+%\index{conditional!chained}
 
 \item[비교 연산자(comparison operator):] 피연산자를 {\tt ==}, {\tt !=}, {\tt >}, {\tt <}, {\tt >=}, {\tt <=}로 비교하는 연산자
 
-\item[조건문(conditional statement):] 조건에 따라 명령의 흐름을 조절하는 명령문
-
-\index{conditional statement}
-\index{statement!conditional}
+\item[조건문(conditional statement):] 조건에 따라 명령의 흐름을 제어하는 명령문
+\index{조건문}
+\index{문장!조건문}
+%\index{conditional statement}
+%\index{statement!conditional}
 
 \item[조건(condition):] 조건문에서 어느 분기를 실행할지 결정하는 불 표현식
-\index{condition}
+\index{조건}
+%\index{condition}
 
-\item[복합문(compound statement):] 머리부문(head)와 몸통부문(body)으로 구성된 스테이트먼트.
+\item[복합문(compound statement):] 머리부문(head)과 몸통부문(body)으로 구성된 문장.
 머리부문은 콜론(:)으로 끝나며, 몸통부문은 머리부문을 기준으로 들여쓰기로 구별된다.
-\index{compound statement}
+\index{복합문}
+%\index{compound statement}
 
-\item[가디언 패턴(guardian pattern):] 
-단락(short circuit) 행동을 잘 이용하도록 논리 표현식을 구성하는 것
-\index{guardian pattern}
-\index{pattern!guardian}
+\item[가디언 패턴(guardian pattern):] 단락(short circuit) 행동을 잘 이용하도록 논리 표현식을 구성하는 것
+\index{가디언 패턴}
+\index{패턴!가디언}
+%\index{guardian pattern}
+%\index{pattern!guardian}
 
 \item[논리 연산자(logical operator):] 불 표현식을 결합하는 연산자 중의 하나 ({\tt and}, {\tt or}, {\tt not})
 
-\item[중첩 조건문(nested conditional):] 
-하나의 조건문이 다른 조건문 분기에 나타나는 조건문.
-\index{nested conditional}
-\index{conditional!nested}
+\item[중첩 조건문(nested conditional):] 하나의 조건문이 다른 조건문 분기에 나타나는 조건문.
+\index{중첩 조건문}
+\index{조건문!중첩}
+%\index{nested conditional}
+%\index{conditional!nested}
 
-\item[트레이스백(traceback):] 예외 사항이 발생했을 때 실행되고, 출력되는 함수 리스트
-\index{traceback}
+\item[역추적(traceback):] 예외 사항이 발생했을 때 실행되고, 출력되는 함수 리스트
+\index{역추적}
+%\index{traceback}
 
-\item[단락(short circuit):]
-왜냐하면 파이썬이 나머지 조건 표현식 평가를 할 필요없이 최종 결과를 알기 때문에,
-파이썬이 논리 표현식 평가를 일부 진행하고, 더 이상의 평가를 멈출 때.
-
-\index{short circuit}
+\item[단락(short circuit):] 나머지 표현식 평가를 할 필요없이 최종 결과를 알기 때문에,
+파이썬이 논리 표현식 평가를 진행하는 중간에 평가를 멈출 때.
+\index{단락}
+%\index{short circuit}
 
 \end{description}
 
@@ -591,8 +689,8 @@ Pay: 475.0
 
 \begin{ex}
 {\tt try}, {\tt except}를 사용하여 봉급계산 프로그램을 다시 작성하세요.
-숫자가 아닌 입력값을 잘 처리해서 메시지를 출력하고 프로그램을 종료하게 됩니다.
-다음은 프로그램의 출력 결과를 보여줍니다.
+숫자가 아닌 입력값을 잘 처리해서 숫자 아닌 입력값이 들어왔을 때 메시지를 출력하고 정상적으로 프로그램을 종료하도록 합니다.
+다음이 프로그램 출력 결과를 보여줍니다.
 
 \begin{verbatim}
 Enter Hours: 20
@@ -606,7 +704,8 @@ Error, please enter numeric input
 
 \begin{ex}
 0.0과 1.0 사이의 점수를 출력하는 프로그램을 작성하세요.
-만약 점수가 범위 밖이면 오류를 출력합니다. 만약 점수가 0.0과 1.0 사이라면, 다음의 테이블에 따라 등급을 출력합니다.
+만약 점수가 범위 밖이면 오류를 출력합니다. 
+만약 점수가 0.0과 1.0 사이라면, 다음의 테이블에 따라 등급을 출력합니다.
 
 \begin{verbatim}
 Score   Grade
@@ -631,6 +730,6 @@ C
 Enter score: 0.5
 F
 \end{verbatim}
-입력값으로 다양한 다른 값을 출력하도록 반복적으로 보이는 것처럼 프로그램을 실행하세요.
+상기 보이는 것처럼 반복적으로 프로그램을 실행해서 다양한 다른 입력값을 테스트해 보세요.
 \end{ex}
 
