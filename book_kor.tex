@@ -17,8 +17,11 @@
 \usepackage{hevea}
 \usepackage{alltt}
 \usepackage{upquote}
-\usepackage{kotex}
+%\usepackage{kotex}
+\usepackage[hangul]{kotex}
+\kscntformat{chapter}{}{~장}
 
+ 
 \newcommand{\thetitle}{Python for Informatics: Exploring Information}
 \newcommand{\theversion}{0.0.9-d2}
 
@@ -34,10 +37,10 @@
 % START THE BOOK
 \mainmatter
 
-\input{01-intro}
+%\input{01-intro}
 %\input{02-variables.tex}
 %\input{03-conditional.tex}
-%\input{04-functions.tex}
+\input{04-functions.tex}
 %\input{05-iterations.tex}
 %\input{06-strings.tex}
 %\input{07-files.tex}
