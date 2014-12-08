@@ -1,25 +1,30 @@
 % LaTeX source for ``Python for Informatics: Exploring Information''
 % Copyright (c)  2010-  Charles R. Severance, All Rights Reserved
+% 한국어 번역 : 이광춘, 한정수
 
 \chapter{딕셔너리(Dictionaries)}
-\index{dictionary}
 
-\index{dictionary}
-\index{type!dict}
-\index{key}
-\index{key-value pair}
-\index{index}
-{\bf 딕셔너리(dictionary)}는 리스트 같지만 좀더 일반적이다. 리스트에서 위치(인텍스)는 정수이지만, 딕셔너리에서는 인덱스가 임의의 형(type)이 될 수 있다.
+\index{딕셔너리 (dictionary)}
+\index{자료형 (type)!dict}
+\index{키 (key)}
+\index{키-값 페어 (key-value pair)}
+\index{인덱스 (index)}
 
-딕셔너리를 {\bf 키(keys)}라고 불리는 인덱스 집합에서 값(value) 집합으로 사상하는 것으로 생각할 수 있다. 각 키는 값에 대응한다. 키와 값의 연관은 
-{\bf 키-밸류 페어(key-value pair)}라고 부르고, 종종 항목(item)으로도 부른다.
+{\bf 딕셔너리(dictionary)}는 리스트 같지만 좀더 일반적이다. 
+리스트에서 위치(인텍스)는 정수이지만, 딕셔너리에서는 인덱스는 임의 자료형(type)이 될 수 있다.
 
-한 예로서, 영어에서 스페인 단어에 대응하는 사전을 만들 것이다. 키와 값은 모두 문자열이다.
+딕셔너리를 인덱스 집합({\bf 키(keys)}라고 부름)에서 값(value) 집합으로 사상(mapping)하는 것으로 생각할 수 있다. 
+각각의 키는 값에 대응한다. 
+키와 값을 연관시키는 것을 {\bf 키-값 페어(key-value pair)}라고 부르고, 종종 항목(item)으로도 부른다.
 
-{\tt dict} 함수는 항목이 전혀 없는 사전을 새로이 생성한다. {\tt dict}는 내장함수명이어서, 변수명으로 사용하는 것을 피해야 한다.
+한 예제로, 영어 단어에서 스페인 단어에 매핑되는 사전을 만들 것이다. 
+키와 값은 모두 문자열이다.
 
-\index{dict function}
-\index{function!dict}
+{\tt dict} 함수는 항목이 전혀 없는 사전을 신규로 생성한다. 
+{\tt dict}는 내장함수명이어서, 변수명으로 사용하는 것을 피해야 한다.
+
+\index{dict 함수 (dict function)}
+\index{함수 (function)!dict}
 
 \beforeverb
 \begin{verbatim}
@@ -29,10 +34,11 @@
 \end{verbatim}
 \afterverb
 
-구불구불한 괄호 \verb"{}"는 빈 딕셔너리를 나타낸다. 딕셔너리에 항목을 추가하기 위해서 꺾쇠 괄호를 사용한다.
+구불구불한 괄호 \verb"{}"는 빈 딕셔너리를 나타낸다. 
+딕셔너리에 항목을 추가하기 위해서 꺾쇠 괄호를 사용한다.
 
-\index{squiggly bracket}
-\index{bracket!squiggly}
+\index{구불구불한 괄호 (squiggly bracket)}
+\index{꺾쇠 괄호 (bracket)!구불구불 (squiggly)}
 
 \beforeverb
 \begin{verbatim}
@@ -41,8 +47,8 @@
 \afterverb
 %
 
-상기 라인은 키 {\tt 'one'}에서 값 \verb"'uno'"로 대응하는 항목을 생성한다. 딕셔너리를 다시 출력하면, 
-키와 값 사이에 콜론(:)을 가진 키-밸류 페어(key-value pair)를 볼 수 있다.
+상기 라인은 키 {\tt 'one'}에서 값 \verb"'uno'"를 매핑하는 항목을 생성한다. 
+딕셔너리를 다시 출력하면, 키와 값 사이에 콜론(:)을 가진 키-값 페어(key-value pair)를 볼 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -52,7 +58,8 @@
 \afterverb
 %
 
-출력 형식이 또한 입력 형식이다. 예를 들어, 세개 항목을 가진 신규 딕셔너리를 생성할 수 있다.
+출력 형식이 또한 입력 형식이다. 
+예를 들어, 세개 항목을 가진 신규 딕셔너리를 생성할 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -71,10 +78,11 @@
 \afterverb
 %
 
-키-밸류 페어(key-value pair)의 순서가 같지 않다. 사실 동일한 사례를 여러분의 컴퓨터에 입력하면, 다른 결과를 얻게 된다.
-일반적으로, 딕셔너리의 항목의 순서는 예측 가능하지 않다.
+키-값 페어(key-value pair) 순서가 같지 않다. 
+사실 동일한 사례를 여러분의 컴퓨터에서 입력하면, 다른 결과를 얻게 된다.
+일반적으로, 딕셔너리 항목 순서는 예측 가능하지 않다.
 
-딕셔너리의 요소가 결코 정수 인덱스로 색인되지 않아서 문제는 아니다.
+딕셔너리 요소가 정수 인덱스로 색인되지 않아서 문제되지는 않는다.
 대신에, 키를 사용해서 상응하는 값을 찾을 수 있다.
 
 \beforeverb
@@ -85,12 +93,12 @@
 \afterverb
 %
 
-{\tt 'two'} 키는 항상 값 \verb"'dos'"에 상응되어서 항목의 순서는 문제가 되지 않는다.
+{\tt 'two'} 키는 항상 값 \verb"'dos'"에 상응되어서 딕셔너리 항목 순서는 문제가 되지 않는다.
 
 만약 키가 딕셔너리에 존재하지 않으면, 예외 오류가 발생한다.
 
-\index{exception!KeyError}
-\index{KeyError}
+\index{예외 (exception)!키 오류 (KeyError)}
+\index{키 오류 (KeyError)}
 
 \beforeverb
 \begin{verbatim}
@@ -100,10 +108,10 @@ KeyError: 'four'
 \afterverb
 %
 
-{\tt len}함수를 딕셔너리에 사용해서, 키-밸류 페어(key-value pair)의 개수를 반환한다.
+{\tt len} 함수를 딕셔너리에 사용해서, 키-값 페어(key-value pair) 항목 개수를 반환한다.
 
-\index{len function}
-\index{function!len}
+\index{len 함수 (len function)}
+\index{함수 (function)!len}
 
 \beforeverb
 \begin{verbatim}
@@ -113,11 +121,11 @@ KeyError: 'four'
 \afterverb
 %
 
-{\tt in} 연산자가 딕셔너리에 작동되는데, 딕셔너리에 \emph{키(key)}로 무언가 있는지 알려준다. (값으로 나타나는 것은 충분히 좋지는 않다.)
+{\tt in} 연산자도 딕셔너리에 작동되는데, 어떤 것이 딕셔너리 \emph{키(key)}에 있는지 알려준다. (값(value)으로 나타내는 것은 충분히 좋지는 않다.)
 
-\index{membership!dictionary}
-\index{in operator}
-\index{operator!in}
+\index{소속 (membership)!딕셔너리 (dictionary)}
+\index{in 연산자 (in operator)}
+\index{연산자 (operator)!in}
 
 \beforeverb
 \begin{verbatim}
@@ -129,10 +137,10 @@ False
 \afterverb
 %
 
-딕셔너리에 값으로 무언가 있는지 알기 위해서, 리스트로 값을 반환하고 나서 {\tt in} 연산자를 사용하는 {\tt values} 메쏘드를 사용한다. 
+딕셔너리에 무엇이 값으로 있는지 확인하기 위해서, {\tt values} 메쏘드를 해서 리스트로 값을 반환받고 나서 {\tt in} 연산자를 사용하여 확인한다.  
 
-\index{values method}
-\index{method!values}
+\index{values 메쏘드 (values method)}
+\index{메쏘드 (method)!값 (values)}
 
 \beforeverb
 \begin{verbatim}
@@ -143,30 +151,32 @@ True
 \afterverb
 %
 
-{\tt in} 연산자는 리스트와 딕셔너리에 대해 다른 알고리즘을 사용한다. 리스트는 선형 검색 알고리즘을 사용한다.
-리스트가 길어짐에 따라 검색 시간은 리스트이 길이에 비례하여 길어지게 된다. 딕셔너리에 대해서 파이썬은 {\bf 해쉬 테이블(hash table)}로 불리는 
-놀라운 특성을 가진 알고리즘을 사용한다. {\tt in} 연산자는 얼마나 많은 항목이 딕셔너리에 있는지에 관계없이 대략 동일한 시간이 소요된다.
-왜 해쉬 함수가 마술 같은지에 대해서는 설명하지 않지만, \url{wikipedia.org/wiki/Hash_table} 에 좀더 많은 것을 읽을 수 있다.
+{\tt in} 연산자는 리스트와 딕셔너리에 각기 다른 알고리즘을 사용한다. 
+리스트에 대해서 선형 검색 알고리즘을 사용한다.
+리스트가 길어짐에 따라 검색 시간은 리스트 길이에 비례하여 길어진다. 
+딕셔너리에 대해서 파이썬은 {\bf 해쉬 테이블(hash table)}로 불리는 놀라운 특성을 가진 알고리즘을 사용한다. 
+얼마나 많은 항목이 딕셔너리에 있는지에 관계없이 {\tt in} 연산자는 대략 동일한 시간이 소요된다.
+왜 해쉬 함수가 마술 같은지에 대해서는 설명하지 않지만, \url{wikipedia.org/wiki/Hash_table} 에서 좀더 많은 정보를 얻을 수 있다. 
 
-
-\index{hash table}
+\index{해쉬 테이블 (hash table)}
 
 \begin{ex}
 \label{wordlist2}
 
-\index{set membership}
-\index{membership!set}
+\index{집합 소속 (set membership)}
+\index{소속 (membership)!집합 (set)}
 
-{\tt words.txt}의 단어를 읽어서 딕셔너리에 키로 저장하는 프로그램을 작성하세요.
-값이 무엇이든지 상관없습니다. 딕셔너리에 문자열을 확인하는 가장 빠른 방법으로 {\tt in} 연산자를 사용할 수 있습니다.
+{\tt words.txt} 단어를 읽어서 딕셔너리에 키로 저장하는 프로그램을 작성하세요.
+값이 무엇이든지 상관없습니다. 
+딕셔너리에 문자열을 확인하는 가장 빠른 방법으로 {\tt in} 연산자를 사용할 수 있습니다.
 
 \end{ex}
 
 
-\section{카운터 집합으로의 딕셔너리}
+\section{계수기(counter) 집합으로서딕셔너리}
 \label{histogram}
 
-\index{counter}
+\index{계수기 (counter)}
 
 문자열이 주어진 상태에서, 각 문자가 얼마나 나타나는지를 센다고 가정합시다.
 몇 가지 방법이 아래에 있습니다.
