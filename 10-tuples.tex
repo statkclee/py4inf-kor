@@ -4,21 +4,23 @@
 \chapter{튜플(Tuples)}
 \label{tuplechap}
 
-\section{튜플은 불변하다.}
+\section{튜플은 불변이다.}
 
-\index{tuple}
-\index{type!tuple}
-\index{sequence}
+\index{튜플 (tuple)}
+\index{자료형 (type)!튜플 (tuple)}
+\index{순서 (sequence)}
 
-튜플(tuple)\footnote{재미난 사실: 단어 ''튜플(tuple)''은 다양한 길이 (한배, 두배, 세배, 네배, 다섯배, 여섯배, 일곱배 등) 숫자열에 
-주어진 이름에서 유래한다.}은 리스타와 마찬가지로 일련의 값이다. 튜플에 저장된 값은 임의의 형이 될 수 있고, 정수로 색인이 되어 있다.
+튜플(tuple)\footnote{재미난 사실: 단어 ''튜플(tuple)''은 가변 길이 (한배, 두배, 세배, 네배, 다섯배, 여섯배, 일곱배 등) 숫자열에 
+붙여진 이름에서 유래한다.}은 리스트와 마찬가지로 순서(sequence) 값이다. 
+튜플에 저장된 값은 임의 자료형(type)이 될 수 있고, 정수로 색인 된다.
 중요한 차이점은 튜플은 {\bf 불변(immutable)}하다는 것이다.
-튜플은 또한 {\bf 비교 가능(comparable)}하고 {\bf 해쉬 가능(hashable)}해서, 리스트의 값을 정렬할 수 있고, 파이썬 딕셔너리의 키 값으로 튜플을 사용할 수 있다.
+튜플은 또한 {\bf 비교 가능(comparable)}하고 {\bf 해쉬 가능(hashable)}하다.
+따라서, 리스트 값을 정렬할 수 있고, 파이썬 딕셔너리 키 값으로 튜플을 사용할 수 있다.
 
-\index{mutability}
-\index{hashable}
-\index{comparable}
-\index{immutability}
+\index{가변성 (mutability)}
+\index{해쉬 가능 (hashable)}
+\index{비교 가능 (comparable)}
+\index{불변성 (immutability)}
 
 구문론적으로, 튜플은 콤마로 구분되는 리스트 값이다.
 
@@ -29,9 +31,9 @@
 \afterverb
 %
 
-꼭 필요하지는 않지만, 파이썬 코드를 봤을 때, 튜플을 빠를게 알아볼 수 있도록 괄호로 튜플을 감싸는 것이 일반적이다.
+꼭 필요하지는 않지만, 파이썬 코드를 봤을 때, 가독성을 높여 튜플을 빠르게 알아볼 수 있도록 괄호로 튜플을 감싸는 것이 일반적이다.
 
-\index{parentheses!tuples in}
+\index{괄호 (parentheses)!튜플 (tuples in)}
 
 \beforeverb
 \begin{verbatim}
@@ -40,10 +42,10 @@
 \afterverb
 %
 
-단일 요소를 가진 튜플을 생성하기 위해서 파지막 콤마를 포함해야 한다.
+단일 요소를 가진 튜플을 생성하기 위해서 마지막 콤마를 포함해야 한다.
 
-\index{singleton}
-\index{tuple!singleton}
+\index{싱글톤 (singleton)}
+\index{튜플 (tuple)!싱글톤 (singleton)}
 
 \beforeverb
 \begin{verbatim}
@@ -54,7 +56,7 @@
 \afterverb
 %
 
-콤마가 없는 경우 파이썬은 \verb"('a')"을 문자열로 평가된느 괄호를 가진 문자열 표현으로 간주한다.
+콤마가 없는 경우 파이썬에서는 \verb"('a')"을 괄호를 가진 문자열 표현으로 간주하여 문자열로 평가한다.
 
 \beforeverb
 \begin{verbatim}
@@ -65,10 +67,11 @@
 \afterverb
 %
 
-튜플을 생성하는 다른 방법은 내장함수 {\tt tuple}을 사용하는 것이다. 인수가 없는 경우, 빈 튜플을 생성한다.
+튜플을 구축하는 다른 방법은 내장함수 {\tt tuple}을 사용하는 것이다. 
+인자가 없는 경우, 빈 튜플을 생성한다.
 
-\index{tuple function}
-\index{function!tuple}
+\index{튜플 함수 (tuple function)}
+\index{함수 (function)!튜플 (tuple)}
 
 \beforeverb
 \begin{verbatim}
@@ -79,7 +82,8 @@
 \afterverb
 %
 
-만약 인수가 문자열, 리스트 혹은 튜플 같은 열인 경우, {\tt tuple}에 호출한 결과는 요소열을 가진 투플이 된다.
+만약 인자가 문자열, 리스트 혹은 튜플 같은 순서(sequence)인 경우, 
+{\tt tuple}에 호출한 결과는 요소 순서(sequence)를 가진 튜플이 된다.
 
 \beforeverb
 \begin{verbatim}
@@ -90,11 +94,13 @@
 \afterverb
 %
 
-{\tt 튜플(tuple)}이 생성자 이름이 ㄱ때문에 변수명으로 튜플을 사용을 피해야 한다.
-대부분의 리스트 연산자는 튜플에서도 사용가능하다. 꺾쇠 연산자는 요소를 색인한다.
+{\tt 튜플(tuple)}이 생성자 이름이기 때문에 변수명으로 튜플 사용을 피해야 한다.
 
-\index{bracket operator}
-\index{operator!bracket}
+대부분의 리스트 연산자는 튜플에서도 사용 가능하다. 
+꺾쇠 연산자가 요소를 색인한다.
+
+\index{꺾쇠 연산자 (bracket operator)}
+\index{연산자 (operator)!꺾쇠 (bracket)}
 
 \beforeverb
 \begin{verbatim}
@@ -105,12 +111,12 @@
 \afterverb
 %
 
-그리고, 슬라이스 연산자(slice operator)는 범위의 요소를 선택한다.
+그리고, 슬라이스 연산자(slice operator)는 요소 범위를 선택한다.
 
-\index{slice operator}
-\index{operator!slice}
-\index{tuple!slice}
-\index{slice!tuple}
+\index{슬라이스 연산자 (slice operator)}
+\index{연산자 (operator)!슬라이스 (slice)}
+\index{튜플 (tuple)!슬라이스 (slice)}
+\index{슬라이스 (slice)!튜플 (tuple)}
 
 \beforeverb
 \begin{verbatim}
@@ -120,12 +126,12 @@
 \afterverb
 %
 
-하지만, 튜플 요소중의 한나를 변경하고 하면, 오류가 발생한다.
+하지만, 튜플 요소 중 하나를 변경하고 하면, 오류가 발생한다.
 
-\index{exception!TypeError}
-\index{TypeError}
-\index{item assignment}
-\index{assignment!item}
+\index{예외 (exception)!자료형 오류 (TypeError)}
+\index{자료형 오류 (TypeError)}
+\index{항목 대입 (item assignment)}
+\index{대입 (assignment)!항목 (item)}
 
 \beforeverb
 \begin{verbatim}
@@ -135,7 +141,7 @@ TypeError: object doesn't support item assignment
 \afterverb
 %
 
-튜플의 요소를 변경할 수는 없지만, 튜플을 다른 튜플로 교체는 할 수 있다.
+튜플 요소를 변경할 수는 없지만, 튜플을 다른 튜플로 교체는 할 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -148,13 +154,15 @@ TypeError: object doesn't support item assignment
 
 \section{튜플 비교하기}
 
-\index{comparison!tuple}
-\index{tuple!comparison}
-\index{sort method}
-\index{method!sort}
+\index{비교 (comparison)!튜플 (tuple)}
+\index{튜플 (tuple)!비교 (comparison)}
+\index{정렬 메쏘드 (sort method)}
+\index{메쏘드 (method)!정렬 (sort)}
 
-비교연산자는 튜플과 다른 열(sequence)에도 동작한다. 파이썬은 각 열로부터 첫 요소를 비교하는 것에서부터 비교를 시작한다.
-만약 두 요소가 같다면, 다음 요소로 비교를 진행하여 다른 요소를 찾을 때까지 계속한다. 후속 요소는 얼마나 큰 값인지에 관계없이 비교 고려대상은 아니다.
+비교 연산자는 튜플과 다른 순서(sequence)와 함께 쓸 수 있다. 
+파이썬은 각 순서(sequence)에서 비교를 첫 요소부터 시작한다.
+만약 두 요소가 같다면, 다음 요소 비교를 진행하며 서로 다른 요소를 찾을 때까지 계속한다. 
+후속 요소가 아무리 큰 값이라고 하더라도 비교 고려대상에서 제외된다.
 
 \beforeverb
 \begin{verbatim}
@@ -166,26 +174,28 @@ True
 \afterverb
 %
 
-{\tt sort} 함수도 동일한 방식으로 작동한다.
+{\tt 정렬 (sort)} 함수도 동일한 방식으로 동작한다.
 첫 요소를 먼저 정렬하지만, 동일한 경우 두 번째 요소를 정렬하고, 그 후속 요소를 동일한 방식으로 정렬한다.
-이 기능은 다음 {\bf DSU}라고 불리는 패턴에 적용된다.
+
+이 기능이 다음 {\bf DSU}라고 불리는 패턴이 된다.
 
 \begin{description}
 
-\item[데코레이트(Decorate)] 열로부터 요소를 선행하는 하나 혹은 그 이상의 키를 가진 튜플 리스트를 구축하는 열
+\item[데코레이트 (Decorate)] : 순서(sequence)에서 요소 앞에 하나 혹은 그 이상의 키를 가진 튜플 리스트를 구축해서 순서(sequence)를 장식한다.
 
-\item[정렬(Sort)] 파이썬 내장 함수 {\tt sort}를 사용한 튜플 리스트
+\item[정렬 (Sort)] : 파이썬 내장 함수 {\tt sort}를 사용한 튜플 리스트를 정렬한다.
 
-\item[언데코레이트(Undecorate)]  열의 정렬된 요소를 추출.
+\item[언데코레이트 (Undecorate)] : 순서(sequence)의 정렬된 요소만 추출하여 장식을 지웁니다.
 
 \end{description}
 
 \label{DSU}
-\index{DSU pattern}
-\index{pattern!DSU}
+\index{DSU 패턴 (DSU pattern)}
+\index{패턴 (pattern)!DSU}
 \index{decorate-sort-undecorate pattern}
-\index{pattern!decorate-sort-undecorate}
-\index{Romeo and Juliet}
+\index{패턴 (pattern)!decorate-sort-undecorate}
+\index{로미오와 쥴리엣 (Romeo and Juliet)}
+
 예를 들어, 단어 리스트가 있고 가장 긴 단어부터 가장 짧은 단어 순으로 정렬한다고 가정하자.
 
 \beforeverb
@@ -207,18 +217,18 @@ print res
 \afterverb
 %
 
-첫 루프는 튜플 리스트를 생성하고, 각 튜플은 선행하여 길이를 가진 단어다.
+첫번째 루프는 튜플 리스트를 생성하고, 각 튜플은 단어 앞에 길이 정보를 가진다.
 
-{\tt sort}가 첫 요소, 길이를 우선 비교하고, 동률일 경우 두 번째 요소를 고려한다.
-{\tt sort} 함수의 인수 {\tt reverse=True}는 내림차순으로 정렬한다.
+{\tt 정렬(sort)}함수는 첫번째 요소, 길이를 우선 비교하고, 동률일 경우에만 두 번째 요소를 고려한다.
+{\tt 정렬(sort)} 함수의 인자 {\tt reverse=True}는 내림차순으로 정렬한다는 의미다.
 
-\index{keyword argument}
-\index{argument!keyword}
-\index{traversal}
+\index{예약어 인자 (keyword argument)}
+\index{인자 (argument)!예약어 (keyword)}
+\index{운행법 (traversal)}
 
-두 번째 루프는 튜플 리스트를 훑고, 내림차순 길이 순으로 리스트를 생성한다.
-그래서, 5 문자 단어는 역 알파벳 순으로 정렬되어 있다. 다음 리스트에서 ``what''이 
-``soft'' 보다 앞에 나타난다.
+두 번째 루프는 튜플 리스트를 운행하여 훑고, 길이에 따라 내림차순으로 단어 리스트를 생성한다.
+그래서, 5 문자 단어는 역 알파벳 순으로 정렬되어 있다. 
+다음 리스트에서 ``what''이 ``soft'' 보다 앞에 나타난다.
 
 프로그램의 출력은 다음과 같다.
 
@@ -231,20 +241,21 @@ print res
 \afterverb
 %
 
-물론, 파이썬 리스트로 변환하여 내림차순 길이 순으로 정렬된 문장은 시적인 의미를 많이 잃어버렸다.
+물론, 파이썬 리스트로 변환하여 내림차순으로 정렬된 문장은 시적인 의미를 많이 잃어버렸다.
 
-\section{ 튜플 할당}
+\section{ 튜플 대입(Tuple Assignment)}
 \label{tuple assignment}
 
-\index{tuple!assignment}
-\index{assignment!tuple}
-\index{swap pattern}
-\index{pattern!swap}
+\index{튜플 (tuple)!대입 (assignment)}
+\index{대입 (assignment)!튜플 (tuple)}
+\index{교환 패턴 (swap pattern)}
+\index{패턴 (pattern)!교환 (swap)}
 
-파이썬 언어의 독특한 구문론적인 기능중의 하나는 할당문의 왼편에 튜플을 놓을 수 있는 것이다. 
-왼쪽 편이 열인 경우 한번에 하나 이상의 변수를 할당할 수 있게 해준다.
+파이썬 언어의 독특한 구문론적인 기능중의 하나는 대입문의 왼편에 튜플을 놓을 수 있다는 것이다. 
+왼편이 순서(sequence)인 경우 한번에 하나 이상의 변수에 대입할 수 있다.
 
-다음 예제에서, 열인 두개 요소 리스트가 있고 하나의 명령문으로 변수 {\tt x}와 {\tt y}에 열의 첫번째와 두번째 요소를 할당한다. 
+다음 예제에서, 순서(sequence)인 두개 요소를 갖는 리스트가 있다. 
+하나의 문장으로 순서(sequence)의 첫번째와 두번째 요소를 변수 {\tt x}와 {\tt y}에 대입한다. 
 
 \beforeverb
 \begin{verbatim}
@@ -259,8 +270,8 @@ print res
 \afterverb
 %
 
-마술이 아니다. 파이썬은 \emph{대략} 튜플 할당 구문을 다음과 같이 해석한다.\footnote{파이썬은 구문을 문자그대로 해석하지는 않는다.
-예를 들어, 동일한 것을 딕셔너리로 작성한다면, 예상한 것처럼 작동하지는 않는다.}
+마술이 아니다. 파이썬은 \emph{대략} 튜플 대입 구문을 다음과 같이 해석한다.\footnote{파이썬은 구문을 문자 그대로 해석하지는 않는다.
+예를 들어, 동일한 것을 딕셔너리로 작성한다면, 기대한 것처럼 동작하지는 않는다.}
 
 \beforeverb
 \begin{verbatim}
@@ -275,7 +286,8 @@ print res
 \end{verbatim}
 \afterverb
 
-문체적 할당문의 왼편에 튜플을 사용할 때, 괄호를 생략한다. 하지만 다음은 동일하게 적합한 구문이다.
+스타일적으로 대입문 왼편에 튜플을 사용할 때, 괄호를 생략한다. 
+하지만 다음은 동일하게 적합한 구문이다.
 
 \beforeverb
 \begin{verbatim}
@@ -289,7 +301,8 @@ print res
 \end{verbatim}
 \afterverb
 %
-튜플 할당문을 사용하는 특히 똑똑한 응용사례는 하나의 명령문으로 두 변수의 값을 {\bf 교체(swap)}하는 것이다.
+
+튜플 대입문을 사용하는 특히 똑똑한 응용사례는 단일 문장으로 두 변수 값을 {\bf 교환(swap)}하는 것이다.
 
 \beforeverb
 \begin{verbatim}
@@ -298,12 +311,14 @@ print res
 \afterverb
 %
 
-양쪽 모두 튜플이지만, 왼편은 튜플의 변수이고 오른편은 튜플의 표현식이다.
-오른편의 값이 왼편의 해당하는 변수에 할당된다. 오른편의 모든 표현식은 할당이 이루어지기 이전에 평가된다.
-왼편의 변수의 숫자와 오른편의 값의 숫자는 동일해야 한다.
+양쪽 문장이 모두 튜플이지만, 왼편은 튜플 변수이고 오른편은 튜플 표현식이다.
+오른편 각각의 값이 왼편 해당 변수에 대입된다. 
+대입이 이루어지기 전에 오른편의 모든 표현식이 평가된다.
 
-\index{exception!ValueError}
-\index{ValueError}
+왼편의 변수 갯수와 오른편의 값의 갯수는 동일해야 한다.
+
+\index{예외 (exception)!값 오류 (ValueError)}
+\index{값 오류 (ValueError)}
 
 \beforeverb
 \begin{verbatim}
@@ -313,12 +328,12 @@ ValueError: too many values to unpack
 \afterverb
 %
 
-좀더 일반적으로 오른 편은 임의의 열(문자열, 리스트 혹은 튜플)이 될 수 있다.
-예를 들어, 전자우편 주소를 사용자 이름과 도메인으로 쪼개기 위해서 다음과 같이 프로그램을 작성할 수 있다.
+좀더 일반적으로, 오른편은 임의 순서(문자열, 리스트 혹은 튜플)가 될 수 있다.
+예를 들어, 전자우편 주소를 사용자 이름과 도메인으로 분할하기 위해서 다음과 같이 프로그램을 작성할 수 있다.
 
-\index{split method}
-\index{method!split}
-\index{email address}
+\index{분할 메쏘드 (split method)}
+\index{메쏘드 (method)!분할 (split)}
+\index{전자우편 주소 (email address)}
 
 \beforeverb
 \begin{verbatim}
@@ -328,8 +343,8 @@ ValueError: too many values to unpack
 \afterverb
 %
 
-{\tt split} 함수로부터 반환값은 두개의 요소를 가진 리스트다. 
-첫번째 요소는 {\tt uname}에 두번째 요소는 {\tt domain}에 할당된다.
+{\tt 분할 (split)} 함수로부터 반환되는 값은 두개 요소를 가진 리스트다. 
+첫번째 요소는 {\tt uname}에 두번째 요소는 {\tt domain}에 대입된다.
 
 \beforeverb
 \begin{verbatim}
@@ -343,12 +358,13 @@ python.org
 
 \section{딕셔너리와 튜플}
 
-\index{dictionary}
-\index{items method}
-\index{method!items}
-\index{key-value pair}
+\index{딕셔너리 (dictionary)}
+\index{항목 메쏘드 (items method)}
+\index{메쏘드 (method)!항목 (items)}
+\index{키-값 페어 (key-value pair)}
 
-딕셔너리는 튜플의 리스트를 반환하는 {\tt items} 메쏘드가 있다. 각 튜플은 키-밸류 페어다.\footnote{파이썬 3.0으로 가면서 살짝 달라졌다.}
+딕셔너리에는 튜플 리스트를 반환하는 {\tt items} 메쏘드가 있다. 
+각 튜플은 키-값 페어(key-value pair)다.\footnote{파이썬 3.0으로 가면서 살짝 달라졌다.}
 
 \beforeverb
 \begin{verbatim}
@@ -363,7 +379,7 @@ python.org
 딕셔너리로부터 기대했듯이, 항목은 특별한 순서가 없다.
 
 하지만 튜플 리스트는 리스트여서 비교가 가능하기 때문에, 튜플 리스트를 정렬할 수 있다.
-딕셔너리를 튜플 리스트로 변환하는 방법은 키로 정렬된 딕셔너리 내용을 출력하는 것이다.
+딕셔너리를 튜플 리스트로 변환하는 것이 키로 정렬된 딕셔너리 내용을 출력할 수 있게 한다.
 
 \beforeverb
 \begin{verbatim}
@@ -380,12 +396,13 @@ python.org
 
 새로운 리스트는 키 값으로 오름차순 알파벳 순으로 정렬된다.
 
-\section{딕셔너리로 다중 할당}
+\section{딕셔너리로 다중 대입}
 
-\index{traverse!dictionary}
-\index{dictionary!traversal}
+\index{운행 (traverse)!사전 (dictionary)}
+\index{사전 (dictionary)!운행 (traversal)}
 
-{\tt items} 함수, 튜플 할당문, {\tt for}문을 조합해서, 하나의 루프로 딕셔너리의 키와 값을 훑는 멋진 코드 패턴을 만들 수 있다.
+{\tt items} 함수, 튜플 대입, {\tt for}문을 조합해서, 
+단일 루프로 딕셔너리의 키와 값을 운행하여 훑는 멋진 코드 패턴을 만들 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -395,13 +412,12 @@ for key, val in d.items():
 \afterverb
 %
 
-이 루프는 두개의 {\bf 반복 변수(iteration variables)}를 가진다.
-{\tt items} 함수는 튜플 리스트를 반환하고, {\tt key, val}는 딕셔너리의 키-밸류 페어 각각을 성공적으로 반복하는 
-튜플 할당을 수행한다.
+상기 루프에는 두개의 {\bf 반복 변수(iteration variables)}가 있다.
+{\tt items} 함수가 튜플 리스트를 반환하고, {\tt key, val}는 튜플 대입하여 딕셔너리에 있는 각각의 키-값 페어(key-value pair)를 성공적으로 반복한다.
 
-매번 루프를 반복할 때마다, {\tt key}와 {\tt value}는 여전히 해쉬 순으로 되어 있는 딕셔너러의 다음 키-밸류 페어로 진행한다.
+매번 루프를 반복할 때마다, {\tt key}와 {\tt value}는 딕셔너리(여전히 해쉬 순으로 되어 있음)의 다음 키-값 페어(key-value pair)로 진행한다.
 
-루프의 출력은 다음과 같다.
+루프의 출력결과는 다음과 같다.
 
 \beforeverb
 \begin{verbatim}
@@ -411,13 +427,15 @@ for key, val in d.items():
 \end{verbatim}
 \afterverb
 %
-다시한번 해쉬 키 순서다. 즉, 특별한 순서가 없다.
 
-두 기술을 조합하면, 딕셔너리 내용을 키-밸류 페어에 저장된 값의 순서로 정렬하여 출력할 수 있다.
+다시 한번 해쉬 키 순서다. (즉, 특별한 순서가 없다.)
 
-이것을 수행하기 위해서, 각 튜플이 {\tt (value, key)}인 튜플 리스트를 작성한다. 
-{\tt items} 메쏘드를 사용하여 리스트 {\tt (key, value)} 튜플을 만든다. 하지만 이번에는 키가 아닌 값으로 정렬한다.
-키-밸류 튜플 리스트를 생성하면, 역순으로 리스트를 정렬하고 새로운 정렬 리스트를 출력하는 것은 쉽다.
+두 기술을 조합하면, 딕셔너리 내용을 키-값 페어(key-value pair)에 저장된 \emph{값}의 순서로 정렬하여 출력할 수 있다.
+
+이것을 수행하기 위해서, 각 튜플이 {\tt (value, key)} 형태인 튜플 리스트를 작성한다. 
+{\tt items} 메쏘드를 사용하여 리스트 {\tt (key, value)} 튜플을 만든다. 
+하지만 이번에는 키가 아닌 값으로 정렬한다.
+키-값(key-value) 튜플 리스트를 생성하면, 역순으로 리스트를 정렬하고 새로운 정렬 리스트를 출력하는 것은 쉽다.
 
 \beforeverb
 \begin{verbatim}
@@ -436,14 +454,15 @@ for key, val in d.items():
 \afterverb
 %
 
-조심스럽게 각 튜플의 첫 요소로 값을 가지는 튜플 리스트를 생성함으로서 튜플 리스트를 정렬하여 값으로 정렬된 딕셔너리를 얻었다.
+조심스럽게 각 튜플 첫번째 요소로 값(value)을 갖는 튜플 리스트를 생성했다. 
+튜플 리스트를 정렬하여 값으로 정렬된 딕셔너리가 생성되었다.
 
 \section{가장 빈도수가 높은 단어}
 
-\index{Romeo and Juliet}
+\index{로미오와 쥴리엣 (Romeo and Juliet)}
 
-\emph{로미오와 쥴리엣 2장 2막} 텍스트 파일로 다시 돌아와서, 텍스트에 가장 빈도수가 높은 단어를 10개를 출력하기 위해서
-이 기법을 사용하여 프로그램을 보강해보자.
+\emph{로미오와 쥴리엣 2장 2막} 텍스트 파일로 다시 돌아와서, 텍스트에서 가장 빈도수가 높은 단어를 10개를 출력하기 위해서
+상기 학습한 기법을 사용하여 프로그램을 보강해보자.
 
 \beforeverb
 \begin{verbatim}
@@ -473,15 +492,17 @@ for key, val in lst[:10] :
 \afterverb
 %
 
-파일을 일고 각 단어를 문서의 단어 빈도수에 매핑(사상)하는 딕셔너리를 계산하는 프로그램 첫 부분은 바뀌지 않는다.
+파일을 읽고 각 단어를 문서의 단어 빈도수에 매핑(사상)하여 딕셔너리를 계산하는 프로그램 첫 부분은 바뀌지 않는다.
 하지만, {\tt counts} 를 단순히 출력하는 대신에 {\tt (val, key)} 튜플 리스트를 생성하고 역순으로 리스트를 정렬한다.
 
-값이 처음이기 때문에, 비교를 위해서 값이 사용되고, 만약 동일한 값을 가진 튜플이 하나이상 존재한다면, 두번째 요소 (키)를 살펴보게 되어서
-값이 동일한 경우 키의 알파벳 순으로 추가적으로 정렬이 된다.
+값이 첫 위치에 있기 때문에, 비교 목적으로 값을 사용한다. 
+만약 동일한 값을 가진 튜플이 하나이상 존재한다면, 두번째 요소(키, key)를 살펴본다.
+그래서 값이 동일한 경우 키의 알파벳 순으로 추가 정렬된다.
 
-마지막에 다중 할당 반복을 수행하는 멋진 {\tt for} 루프를 작성하고 리스트 쪼개기({\tt lst[:10]})를 통해 가장 빈도수가 높은 상위 10개 단어를 출력한다.
+마지막에 다중 대입 반복을 수행하는 멋진 {\tt for} 루프를 작성한다. 
+그리고, 리스트 슬라이스({\tt lst[:10]})를 통해 가장 빈도수가 높은 상위 10개 단어를 출력한다.
 
-이제 마지막 출력문은 단어 빈도 분석에서 원하는 것을 완수한 것처럼 보인다.
+이제 단어 빈도 분석을 위해서 작성한 프로그램의 마지막 출력결과는 원하는 바를 완수한 것처럼 보인다.
 
 \beforeverb
 \begin{verbatim}
@@ -499,19 +520,18 @@ for key, val in lst[:10] :
 \afterverb
 %
 
-복잡한 데이터 파싱과 분석 작업이 이해하기 쉬운 19줄의 파이썬 프로그램으로 수행된 사실이 왜 파이썬이 정보 탐색의 언어로서 
-좋은 선택인지 보여준다.
+복잡한 데이터 파싱과 분석 작업이 이해하기 쉬운 19줄 파이썬 프로그램으로 수행된 사실이 왜 파이썬이 정보 탐색 언어로서 좋은 선택인지 보여준다.
 
 \section{ 딕셔너리 키로 튜플 사용하기}
 
-\index{tuple!as key in dictionary}
-\index{hashable}
+\index{튜플 (tuple)!딕셔너리 키 (as key in dictionary)}
+\index{해쉬 가능한 (hashable)}
 
-튜플은 {\bf 해쉬가능(hashable)}하고, 리스트는 그렇지 못하기 때문에, 딕셔너리에 사용할 {\bf 복합(composite)}키를 생성하려면, 
+튜플은 {\bf 해쉬가능(hashable)}하고, 리스트는 그렇지 못하기 때문에, 만약 딕셔너리에 사용할 {\bf 복합(composite)}키를 생성하려면, 
 키로 튜플을 사용해야 한다.
 
-만약 성(last-name)과 이름(first-name) 짝을 가지고 전화번호에 매핑(사상)하는 전화번호부를 생성하려고 하면, 복합키를 마주친다.
-변수 {\tt last}, {\tt first}, {\tt number}을 정의했다고 가정하면, 다음과 같이 딕셔너리 할당문을 작성할 수 있다.
+만약 성(last-name)과 이름(first-name)을 가지고 전화번호에 사상(매핑, mapping)하는 전화번호부를 생성하려고 하면, 복합키와 마주친다.
+변수 {\tt last}, {\tt first}, {\tt number}을 정의했다고 가정하면, 다음과 같이 딕셔너리 대입문을 작성할 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -520,9 +540,10 @@ directory[last,first] = number
 \afterverb
 %
 
-꺾쇠 괄호의 표현은 튜플이다. 딕셔너리를 훑기 위해서 {\tt for} 루프에 튜플 할당을 사용한다.
+꺾쇠 괄호 표현은 튜플이다. 
+딕셔너리를 훑기 위해서 {\tt for} 루프에 튜플 대입을 사용한다.
 
-\index{tuple!in brackets}
+\index{튜플 (tuple)!꺾쇠 (in brackets)}
 
 \beforeverb
 \begin{verbatim}
@@ -532,10 +553,11 @@ for last, first in directory:
 \afterverb
 %
 
-튜플인 {\tt directory}에 키를 루프가 훑는다. 각 튜플 요소를 {\tt last}, {\tt first}에 할당하고, 이름과 해당 전화번호를 출력한다.
+상기 루프가 튜플인 {\tt directory}에 키를 훑는다. 
+각 튜플 요소를 {\tt last}, {\tt first}에 대입하고 나서, 이름과 해당 전화번호를 출력한다.
 
-\section{열 : 문자열, 리스트, 튜플}
-\index{sequence}
+\section{순서(sequence) : 문자열, 리스트, 튜플}
+\index{순서 (sequence)}
 
 여기서 튜플 리스트에 초점을 맞추었지만, 거의 모든 예제가 또한 리스트의 리스트, 튜플의 튜플, 튜플의 리스트에도 동작한다.
 가능한 조합을 열거하는 것을 피하기 위해서 시퀀스의 시퀀스 (sequences of sequences)에 대해서 논의하는 것이 때로는 편리하다.
