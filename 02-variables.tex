@@ -1,17 +1,17 @@
 % LaTeX source for ``Python for Informatics: Exploring Information''
 % Copyright (c)  2010-  Charles R. Severance, All Rights Reserved
+% 한국어 번역 : 이광춘, 한정수
+\chapter{변수, 표현식, 문장(Statement)}
 
-\chapter{변수, 표현식, 스테이트먼트(Statement)}
-
-\section{값(Value)과 형(Type)}
+\section{값(Value)과 자료형(Type)}
 \index{값(value)}
-\index{형(type)}
+\index{자료형(type)}
 \index{문자열(string)}
 
 {\bf 값(Value)}은 문자와 숫자처럼 프로그램이 다루는 가장 기본이 되는 단위이다. 
 지금까지 살펴본 값은 {\tt 1}, {\tt 2} 그리고 \verb"'Hello,World!'" 이다.
 
-상기 값은 다른 {\bf 형(Type)}에 속하는데, {\tt 2}는 정수, \verb" 'Hello,World!'" 는 
+상기 값은 다른 {\bf 자료형(Type)}에 속하는데, {\tt 2}는 정수, \verb" 'Hello,World!'" 는 
 {\bf 문자열(String)}에 속하는데, 문자(Letter)를 일련의 열(sequence)의 형태로 되어 있어서 문자열이라고 부른다. 
 인용부호에 감싸여 있어서, 여러분과 인터프리터는 문자열을 식별할 수 있다. 
 
@@ -42,13 +42,13 @@ python
 놀랍지도 않게, strings은 {\tt str} 형식이고, 정수는 {\tt int} 형식이다. 
 다소 명백하지는 않지만, 소숫점을 가진 숫자는 {\tt float} 형식이다. 왜냐하면 이들 숫자가 {\bf 부동소수점} 형식으로 표현되기 때문이다.
 
-\index{형(type)}
-\index{문자열형}
-\index{형(type)!문자열형}
-\index{정수형}
-\index{형(type)!정수형}
-\index{부동소수점형}
-\index{형(type)!부동소수점형}
+\index{자료형 (type)}
+\index{문자열 자료형 (string type)}
+\index{자료형(type)!문자열 자료형 (str)}
+\index{정수형 (int type)}
+\index{자료형(type)!int (정수형)}
+\index{부동소수점형 (float type)}
+\index{자료형(type)!float (부동소수점형)}
 
 \beforeverb
 \begin{verbatim}
@@ -60,7 +60,7 @@ python
 
 \verb"'17'", \verb"'3.2'" 같은 값은 어떨가? 숫자처럼 보이지만 문자열처럼 인용부호에 감싸여 있다.
 
-\index{quotation mark}
+\index{인용 부호 (quotation mark)}
 
 \beforeverb
 \begin{verbatim}
@@ -86,21 +86,21 @@ python
 
 하지만, 파이썬 실행 결과는 우리가 기대했던 것이 아니다. 파이썬에서는 {\tt 1,000,000} 을 콤마(',')로 구분된 정수로 인식한다. 따라서 사이 사이 공백을 넣어 출력했다.
 
-\index{의미론적 오류} % \index{semantic error}
-\index{오류!의미론} % \index{error!semantic}
-\index{오류 메시지}
+\index{의미론적 오류 (semantic error)} % \index{semantic error}
+\index{error (오류)!semantic (의미론)} % \index{error!semantic}
+\index{error message (오류 메시지)}
 
 이 사례가 여러분이 처음 경험하게 되는 의미론적 오류(semantic error)다. 
 코드가 에러 메세지 없이 실행이되지만, ''올바른(right)'' 작동을 하는 것은 아니다.
 
 \section{변수(Variable)}
-\index{변수} % \index{variable}
-\index{할당문} %\index{assignment statement}
-\index{문장!할당문} % \index{statement!assignment}
+\index{변수 (variable)} % \index{variable}
+\index{대입문 (assignment statement)} %\index{assignment statement}
+\index{statement (문장)!assignment (대입)} % \index{statement!assignment}
 
 프로그래밍 언어의 가장 강력한 기능 중의 하나는 변수를 다룰 수 있는 능력이다. {\bf 변수(Variable)}는 값을 참조하는 이름이다.
 
-{\bf 할당문(Assignment statement)}는 새로운 변수를 생성하고 값을 변수에 할당한다.
+{\bf 대입문(Assignment statement)}는 새로운 변수를 생성하고 값을 변수에 대입한다.
 
 \beforeverb
 \begin{verbatim}
@@ -111,7 +111,7 @@ python
 \afterverb
 %
 
-상기 예제는 세가지 할당사례를 보여준다. 첫 번째 할당 예제는 {\tt message} 변수에 문자열을 할당한다. 두 번째 예제는 변수 {\tt n}에 정수 {\tt 17}을 할당한다. 세 번째 예제는 {\tt pi}변수에 $\pi$ 근사값을 할당한다.
+상기 예제는 세가지 대입 사례를 보여준다. 첫 번째 대입 예제는 {\tt message} 변수에 문자열을 대입한다. 두 번째 예제는 변수 {\tt n}에 정수 {\tt 17}을 대입한다. 세 번째 예제는 {\tt pi}변수에 $\pi$ 근사값을 대입한다.
 
 변수 값을 출력하기 위해서 {\tt print}문을 사용한다.
 
@@ -125,7 +125,7 @@ python
 \afterverb
 %
 
-변수의 형(type)은 변수가 참조하는 값의 형이다.
+변수 자료형(type)은 변수가 참조하는 값의 자료형이다.
 
 \beforeverb
 \begin{verbatim}
@@ -140,7 +140,7 @@ python
 %
 
 \section{변수명(Variable name)과 예약어(keywords)}
-\index{예약어} % \index{keyword}
+\index{keyword (예약어)} % \index{keyword}
 
 대체로 프로그래머는 의미있는 변수명을 고른다. 프로그래머는 변수가 사용되는 것에 대해 문서화도 한다.
 
@@ -149,7 +149,7 @@ python
 변수명에 밑줄(underscore character, \verb"_")이 들어갈 수 있다. 종종 \verb"my_name" 혹은 \verb"airspeed_of_unladen_swallow" 처럼 밑줄은 여러 단어와 함께 사용된다.
 변수명을 밑줄로 시작해서 작성할 수 있지만, 다른 사용자가 사용할 라이브러리를 작성하는 경우가 아니라면, 일반적으로 밑줄로 시작하는 변수명은 피한다.
 
-\index{밑줄} % \index{underscore character}
+\index{밑줄 (underscore character)} % \index{underscore character}
 
 변수명을 적합하게 작성하지 못하다면, 구문 오류가 발생한다.
 
@@ -172,7 +172,7 @@ SyntaxError: invalid syntax
 구문 오류 이유는 {\tt class}가 파이썬의 예약어 중의 하나라고 밝혀졌다. 
 인터프리터가 예약어를 사용하여 프로그램 구조를 파악하기 위해서 사용하지만, 변수명으로는 사용할 수 없다.
 
-\index{예약어}
+\index{예약어 (keyword)}
 %\index{keyword}
 
 파이썬에는 31개 키워드\footnote{Python 3.0 에서 {\tt exec} 은 더 이상 예약어가 아니지만, {\tt nonlocal} 은 여전히 예약어다.}가 예약어로 이미 사용중에 있다.
@@ -197,9 +197,9 @@ def       for       lambda    try
 
 {\bf 문장(statement)}은 파이썬 인터프리터가 실행하는 코드 단위다. 지금까지 print, assignment 두 종류의 문장을 살펴봤습니다.
 
-\index{문장}
-\index{인터랙티브 모드}
-\index{스크립트 모드}
+\index{문장 (statement)}
+\index{인터랙티브 모드 (interactive mode)}
+\index{스크립트 모드 (script mode)}
 %\index{statement}
 %\index{interactive mode}
 %\index{script mode}
@@ -229,13 +229,13 @@ print x
 \afterverb
 %
 
-할당 문장{\tt (x=2)}은 결과를 출력하지 않습니다.
+대입 문장{\tt (x=2)}은 결과를 출력하지 않습니다.
 
 \section{연산자(Operator)와 피연산자(Operands)}
-\index{연산자, 산술}
-\index{산술 연산자}
-\index{피연산자}
-\index{표현식}
+\index{연산자 (operator), 산술(arithmetic)}
+\index{산술 연산자 (arithmetic operator)}
+\index{피연산자 (operand)}
+\index{표현식 (expression)}
 
 %\index{operator, arithmetic}
 %\index{arithmetic operator}
@@ -265,11 +265,11 @@ print x
 
 {\tt minute} 값은 59, 보통 59를 60으로 나누면 0 대신에 0.98333 입니다. 이런 차이가 발생하는 이유는 파이썬이 {\bf 소수점 이하 버림 나눗셈}\footnote{파이썬 3.0 에서 이 나눗셈 값은 {\tt 소수점}입니다. 파이썬 3.0 에 도입된 새로운 연산자{\tt //}는 정수형 나눗셈을 수행합니다.}을 하기 때문입니다.
 
-\index{파이썬 3.0}
-\index{버림 나눗셈}
-\index{부동 소수점 나눗셈}
-\index{나눗셈!절사}
-\index{나눗셈!부동 소수점}
+\index{파이썬 3.0 (Python 3.0)}
+\index{버림 나눗셈 (floor division)}
+\index{부동 소수점 나눗셈 (floating-point division)}
+\index{나눗셈 (division)!절사 (floor)}
+\index{나눗셈 (division)!부동 소수점 (floating-point)}
 %\index{Python 3.0}
 %\index{floor division}
 %\index{floating-point division}
@@ -291,12 +291,12 @@ print x
 \section{표현식(Expression)}
 
 {\bf 표현식 (expression)}은 값, 변수, 연산자 조합니다. 값은 자체로 표현식이고, 변수도 동일하다. 따라서 다음 표현식은 모두 적합하다. 
-(변수 {\tt x}는 사전에 어떤 값이 할당되었다고 가정한다.)
+(변수 {\tt x}는 사전에 어떤 값이 대입되었다고 가정한다.)
 
 %\index{expression}
 %\index{evaluate}
-\index{표현식}
-\index{평가}
+\index{표현식 (expression)}
+\index{평가 (evaluate)}
 
 \beforeverb
 \begin{verbatim}
@@ -335,8 +335,8 @@ x + 1
 
 
 \section{연산자 적용 우선순위 (Order of Operations)}
-\index{연산자 적용 우선순위}
-\index{우선순위 규칙}
+\index{연산자 적용 우선순위 (order of operations)}
+\index{우선순위 규칙 (rules of precedence)}
 \index{PEMDAS}
 %\index{order of operations}
 %\index{rules of precedence}
@@ -346,7 +346,7 @@ x + 1
 연산자 평가 순서는 {\bf  우선순위 규칙(rules of precedence)}에 따른다. 
 수학 연산자에 대해서 파이썬은 수학적 관례를 동일하게 따른다. 영어 두문어 {\bf PEMDAS}는 기억하기 좋은 방식이다.
 
-\index{괄호!최우선 우선순위}
+\index{괄호 (parentheses)!최우선 우선순위 (overriding precedence)}
 %\index{parentheses!overriding precedence}
 
 \begin{itemize}
@@ -372,8 +372,8 @@ x + 1
 
 %\index{modulus operator}
 %\index{operator!modulus}
-\index{modulus operator}
-\index{operator!modulus}
+\index{나머지 연산자 (modulus operator)}
+\index{연산자 (operator)!나머지 (modulus)}
 
 {\bf 나머지 연산자(modulus operator)}는 정수에 사용하며, 첫번째 피연산자를 두번째 피연산자가 나눌 때 나머지 값이 생성된다. 
 파이썬에서 나머지 연산자는 퍼센트 기호(\verb"%")다. 구문은 다른 연산자와 동일하다.
@@ -396,21 +396,21 @@ x + 1
 {\tt x \% y} 값이 0 이라면, {\tt x}를 {\tt y}로 나눌 수 있다.
 
 %\index{divisibility}
-\index{가분성}
+\index{가분성 (divisibility)}
 
 또한, 숫자에서 가장 오른쪽 숫자를 분리하는데도 사용된다. 
 예를 들어 {\tt x \% 10} 은 {\tt x}가 10진수인 경우 가장 오른쪽 숫자를 뽑아낼 수 있고, 동일한 방식으로 {\tt x \% 100}은 가장 오른쪽 2개 숫자를 뽑아낼 수도 있다.
 
 \section{문자열 연산자 (String Operator)}
-\index{문자열!연산}
-\index{연산자!문자열}
+\index{string (문자열)!operation (연산)}
+\index{operator (연산자)!string (문자열)}
 %\index{string!operation}
 %\index{operator!string}
 
 {\tt +} 연산자는 문자열에도 동작하지만, 수학에서 말하는 덧셈은 아니다. 
 대신에 문자열 끝과 끝을 붙이는 {\bf 연결(concatenation)} 작업을 수행한다. 예를 들어,
 
-\index{연결}
+\index{연결 (concatenation)}
 %\index{concatenation}
 
 \beforeverb
@@ -431,16 +431,16 @@ x + 1
 
 \section{사용자에게서 입력값 받기}
 
-\index{키보드 입력}
+\index{키보드 입력 (keyboard input)}
 %\index{keyboard input}
 
 때때로 키보드를 통해서 사용자로부터 변수에 대한 값을 입력받고 싶을 때가 있다. 
 키보드\footnote{파이썬 3.0에서 입력 함수는 {\tt input}으로 명명되었다.}로부터 입력값을 받는 \verb"raw_input" 이라는 내장(built-in) 함수를 파이썬에서 제공한다. 입력 함수가 호출되면, 파이썬은 실행을 멈추고 사용자가 무언가 입력하기를 기다린다. 
 사용자가 {\sf Return (리턴)} 혹은 {\sf Enter (엔터)} 키를 누르게 되면 프로그램이 다시 실행되고, \verb"raw_input"은 사용자가 입력한 것을 문자열로 반환한다.
 
-\index{파이썬 3.0}
-\index{raw\_input 함수}
-\index{함수!raw\_input}
+\index{파이썬 3.0 (Python 3.0)}
+\index{raw\_input 함수 (raw\_input function)}
+\index{함수 (function)!raw\_input}
 %\index{Python 3.0}
 %\index{raw\_input function}
 %\index{function!raw\_input}
@@ -458,7 +458,7 @@ Some silly stuff
 사용자로부터 입력 받기 전에 프롬프트에서 사용자가 어떤 값을 입력해야 하는지 정보를 제공하는 것도 좋은 생각이다. 
 입력을 받기 위해 잠시 멈춰있을 때, 사용자에게 표시되도록 \verb"raw_input" 함수에 문자열을 전달할 수 있다.
 
-\index{프롬프트}
+\index{프롬프트 (prompt)}
 %\index{prompt}
 
 \beforeverb
@@ -475,10 +475,10 @@ Chuck
 프롬프트의 끝에 \verb"\n" 은 {\bf 개행(newline)}을 의미한다. 개행은 줄을 바꾸게 하는 특수 문자다. 
 이런 이유 때문에 사용자 입력이 프롬프트 밑에 출력된다.
 
-\index{newline}
+\index{개행 (newline)}
 
 만약 사용자가 정수를 입력하기를 바란다면, 
-{\tt int()}함수를 사용하여 반환되는 값을 {\tt 정수(int)}로 형변환한다.
+{\tt int()}함수를 사용하여 반환되는 값을 {\tt 정수(int)}로 자료형을 변환한다.
 
 \beforeverb
 \begin{verbatim}
@@ -509,14 +509,14 @@ ValueError: invalid literal for int()
 
 나중에  이런 종류의 오류룰 어떻게 다루는지 배울 것이다.
 
-\index{값오류}
-\index{예외!값오류}
+\index{값오류 (ValueError)}
+\index{예외 (exception)!값오류 (ValueError)}
 %\index{ValueError}
 %\index{exception!ValueError}
 
 
 \section{주석}
-\index{주석}
+\index{주석 (comment)}
 %\index{comment}
 
 프로그램이 커지고 복잡해짐에 따라 가독성은 떨어진다. 형식 언어(formal language)는 촘촘하고 코드 일부분도 읽기 어렵고 무슨 역할을 왜 수행하는지 이해하기 어렵다.
@@ -567,7 +567,7 @@ v = 5     # velocity in meters/second.
 
 \section{연상되는 변수명 만들기}
 
-\index{연상기호}
+\index{연상기호 (mnemonic)}
 %\index{mnemonic}
 
 변수를 이름 짓는데 단순한 규칙을 지키고 예약어를 피하기만 하다면, 변수이름을 작명할 수 있는 무척이나 많은 경우의 수가 존재한다. 
@@ -651,13 +651,13 @@ for slice in pizza:
 잠시 후에 여러분은 파이썬을 읽고 변수와 예약어를 빠르게 구분할 수 있을 것이다.
 
 \section{디버깅(Debugging)}
-\index{디버깅}
+\index{디버깅 (debugging)}
 %\index{debugging}
 
 이 지점에서 여러분이 저지르기 쉬운 구문 오류는 \verb"odd~job", \verb"US$" 같은 특수문자를 포함해서 잘못된 변수명을 생성하는 것과 {\tt class}, {\tt yield}같은 예약어를 변수명으로 사용하는 것이다. 
 
-\index{구문 오류}
-\index{오류!구문}
+\index{구문 오류 (syntax error)}
+\index{오류 (error)!구문 (syntax)}
 %\index{syntax error}
 %\index{error!syntax}
 
@@ -673,18 +673,18 @@ SyntaxError: invalid syntax
 구문 오류에 대해서, 오류 메세지는 그다지 도움이 되지 못한다. 
 가장 흔한 오류 메세지는 {\tt SyntaxError: invalid syntax}, {\tt SyntaxError: invalid token}인데 둘다 그다지 오류에 대한 많은 정보를 주지는 못한다.
 
-\index{오류 메시지}
-\index{정의 전 사용}
-\index{예외}
-\index{런타임 오류}
-\index{오류!런타임}
+\index{오류 메시지 (error message)}
+\index{정의 전 사용 (use before def)}
+\index{예외 (exception)}
+\index{런타임 오류 (runtime error)}
+\index{오류 (error)!런타임 (runtime)}
 %\index{error message}
 %\index{use before def}
 %\index{exception}
 %\index{runtime error}
 %\index{error!runtime}
 
-여러분이 많이 범하는 실행 오류는 정의 전에 사용(''use before def'')하는 것으로 변수에 값을 할당하기 전에 변수를 사용할 경우 발생한다. 여러분이 변수명을 잘못 쓸 때도 발생할 수 있다.
+여러분이 많이 범하는 실행 오류는 정의 전에 사용(''use before def'')하는 것으로 변수에 값을 대입하기 전에 변수를 사용할 경우 발생한다. 여러분이 변수명을 잘못 쓸 때도 발생할 수 있다.
 
 \beforeverb
 \begin{verbatim}
@@ -696,9 +696,9 @@ NameError: name 'principle' is not defined
 %
 변수명은 대소문자를 구분한다. 그래서, {\tt LaTeX}는 {\tt latex}와 같지 않다.
 
-\index{대소문자 구별, 변수명}
+\index{대소문자 구별 (case-sensitivity), 변수명 (variable names)}
 \index{의미론적 오류(semantic error)}
-\index{오류!의미론}
+\index{오류 (error)!의미론 (semantic)}
 %\index{case-sensitivity, variable names}
 %\index{semantic error}
 %\index{error!semantic}
@@ -717,7 +717,7 @@ NameError: name 'principle' is not defined
 파이썬으로 하여금 여러분이 작성한 의도를 알게할 수는 없다. 
 그래서 이런 경우 오류 메세지는 없지만, 여러분은 잘못된 답을 얻게 된다.
 
-\index{연산자 우선순위}
+\index{연산자 우선순위 (order of operations)}
 %\index{order of operations}
 
 
@@ -725,83 +725,83 @@ NameError: name 'principle' is not defined
 
 \begin{description}
 
-\item[할당(assignment):] 변수에 값을 할당하는 문장
-\index{할당}
+\item[대입(assignment):] 변수에 값을 대입하는 문장
+\index{대입 (assignment)}
 %\index{assignment}
 
 \item[연결(concatenate):] 두 개의 피연산자 끝과 끝을 합치는 것
-\index{연결}
+\index{연결 (concatenation)}
 %\index{concatenation}
 
 \item[주석(comment):] 다른 프로그래머나 소스코드를 읽는 다른 사람을 위한 프로그램 정보로 프로그램의 실행에는 아무런 영향이 없다.
-\index{주석}
+\index{주석 (comment)}
 %\index{comment}
 
 \item[평가(evaluate):] 하나의 값을 만들도록 연산을 실행함으로써 표현식을 간단히 하는 것
 
 \item[표현식(expression):] 하나의 결과값을 만드는 변수, 연산자, 값의 조합
-\index{표현식}
+\index{표현식 (expression)}
 %\index{expression}
 
-\item[부동 소수점(floating-point):] 소수점을 가진 숫자를 표현하는 형
-\index{부동소수점}
+\item[부동 소수점(floating-point):] 소수점을 가진 숫자를 표현하는 자료형
+\index{부동소수점 (floating-point)}
 %\index{floating-point}
 
 \item[버림 나눗셈(floor division)] 두 숫자를 나누어 소수점이하 부분을 절사하는 연산자
-\index{버림 나눗셈}
+\index{버림 나눗셈 (floor division)}
 %\index{floor division}
 
-\item[정수(integer):] 완전수를 나타내는 형
-\index{정수}
+\item[정수(integer):] 완전수를 나타내는 자료형
+\index{정수 (integer)}
 %\index{integer}
 
 \item[예약어(keyword):] 컴파일러가 프로그램을 파싱하는데 사용하기 위해서 이미 예약된 단어; if, def, while 같은 예약어를 변수명으로 사용할 수 없다.
-\index{예약어}
+\index{예약어 (keyword)}
 %\index{keyword}
 
 \item[연상기호(mnemonic):] 기억 보조. 변수에 저장된 것을 기억하기데 도움이 되도록 변수에 연상되는 이름을 부여한다.
-\index{연상기호}
+\index{연상기호 (mnemonic)}
 %\index{mnemonic}
 
 \item[나머지 연산자(modulus operator):] 
 퍼센트 기호 ({\tt \%})로 표시되고 정수를 가지고 한 숫자를 다른 숫자로 나누었을 때 나머지를 생성하는 연산자
-\index{나머지 연산자}
-\index{연산자!나머지}
+\index{나머지 연산자 (modulus operator)}
+\index{연산자 (operator)!나머지 (modulus)}
 %\index{modulus operator}
 %\index{operator!modulus}
 
 \item[피연산자(operand):] 연산자가 연산을 수행하는 값중의 하나
-\index{피연산자}
+\index{피연산자 (operand)}
 %\index{operand}
 
 \item[연산자(operator):] 덧셈, 곱셈, 문자열 결합 같은 간단한 연산을 표현하는 특별 기호
-\index{연산자}
+\index{연산자 (operator)}
 %\index{operator}
 
 \item[우선순위 규칙(rules of precedence):] 다수의 연산자와 피연산자를 포함한 표현식이 평가되는 실행 순서를 규정한 규칙 집합
-\index{우선순위 규칙}
-\index{우선순위}
+\index{우선순위 규칙 (rules of precedence)}
+\index{우선순위 (precedence)}
 %\index{rules of precedence}
 %\index{precedence}
 
 \item[문장(statement):] 명령이나 액션을 나타내는 코드 부문. 지금까지 assignment, print 문을 보았다.
-\index{문장}
+\index{문장 (statement)}
 %\index{statement}
 
 \item[문자열(string):] 일련의 문자를 나타내는 형식
-\index{문자열}
+\index{문자열 (string)}
 %\index{string}
 
-\item[형(type):] 값의 범주. 지금까지 여러분이 살펴본 형은 정수 (type {\tt int}), 부동 소수점수 (type {\tt float}), 문자열 (type {\tt str}) 이다.
-\index{형(type)}
+\item[자료형(type):] 값의 범주. 지금까지 여러분이 살펴본 자료형은 정수 ({\tt int}), 부동 소수점수 ({\tt float}), 문자열 ({\tt str}) 이다.
+\index{자료형 (type)}
 %\index{type}
 
 \item[값(value):] 숫자나 문자 같은 프로그램이 다루는 데이터의 기본 단위중 하나
-\index{값(value)}
+\index{값 (value)}
 %\index{value}
 
 \item[변수(variable):] 값을 참조하는 이름
-\index{변수}
+\index{변수 (variable)}
 %\index{variable}
 
 \end{description}
@@ -831,14 +831,14 @@ Pay: 96.25
 만약 원하다면, 파이썬 내장 {\tt round} 함수를 사용하여 소수점 아래 두자리까지 반올림하여 작성할 수 있다.
 
 \begin{ex}
-다음 할당 문장을 실행한다고 가정합시다.
+다음 대입 문장을 실행한다고 가정합시다.
 
 \begin{verbatim}
 width = 17
 height = 12.0
 \end{verbatim}
 
-다음 표현식 각각에 대해서, 표현식의 값(value)과 (표현식 값의) 형(type)을 작성하세요.
+다음 표현식 각각에 대해서, 표현식의 값(value)과 (표현식 값의) 자료형(type)을 작성하세요.
 
 \begin{enumerate}
 
