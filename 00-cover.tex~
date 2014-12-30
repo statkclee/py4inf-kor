@@ -1,0 +1,103 @@
+% The contents of this file is 
+% Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
+
+% LATEXONLY
+
+\input{latexonly}
+
+\newtheorem{ex}{Exercise}[chapter]
+
+\begin{latexonly}
+
+\renewcommand{\blankpage}{\thispagestyle{empty} \quad \newpage}
+
+\thispagestyle{empty}
+
+\begin{flushright}
+\vspace*{2.0in}
+
+\begin{spacing}{3}
+{\huge 정보교육을 위한 파이썬}\\
+{\Large 정보 탐색}
+\end{spacing}
+
+\vspace{0.25in}
+
+Version \theversion
+
+\vspace{0.5in}
+
+
+{\Large
+저자: Charles Severance\\
+번역: 이광춘, 한정수 \\
+(xwmooc)
+}
+
+\vfill
+
+\end{flushright}
+
+%--copyright--------------------------------------------------
+\pagebreak
+\thispagestyle{empty}
+
+{\small
+Copyright \copyright ~2009- Charles Severance.
+
+
+출판 이력:
+
+\begin{description}
+
+\item[2014년 9월:] xwmooc 프로젝트 일환으로 \emph{''정보과학을 위한 파이썬''} 으로 제목 정하고 한국어로 번역 공개
+
+\item[2013년 10월:] JSON로 전환, OAuth 사용. 13장, 14장에 주요 개정
+신규 시각화 장 추가.
+
+\item[2013년 9월:] Amazon CreateSpace 책 출판
+
+\item[2010년 1월 :] 미시건 대학 Espresso Book Machine 사용 책 출판
+
+\item[2009년 12월:] \emph{Think Python: How to Think Like a Computer Scientist}에서 2장 {\verb"~"} 10장까지 주요 개정 \\
+\emph{Python for Informatics: Exploring Information}을 위해 1장, 11장 {\verb"~"} 15장 저작
+
+\item[2008년 6월:] \emph{Think Python: How to Think Like a Computer Scientist} 제목 바꾸고, 주요 개정.
+
+\item[2007년 8월:] \emph{How to Think Like a (Python) Programmer} 제목 바꾸고, 주요 개정.
+
+\item[2002년 4월:] \emph{How to Think Like a Computer Scientist} 초판 공개
+
+\end{description}
+
+\vspace{0.2in}
+
+이 책은 크리에이티브 커먼즈 라이선스 3.0 (Creative Commons Attribution-NonCommercial-Share Alike 3.0)으로 인가되었다.
+라이선스의 자세한 사항은 \url{creativecommons.org/licenses/by-nc-sa/3.0/}에 기재되어 있다.
+저작권 상세 부록에서 저자가 생각하는 상업적, 비상업적 이용 그리고 라이센스 면제를 생각하는 바를 확인할 수 있다.
+이책의 \emph{Think Python: How to Think Like a Computer Scientist}의 \LaTeX\ 소스는 
+\url{http://www.thinkpython.com}에서 이용가능하다.
+
+\vspace{0.2in}
+
+} % end small
+
+\end{latexonly}
+
+
+% HTMLONLY
+
+\begin{htmlonly}
+
+% TITLE PAGE FOR HTML VERSION
+
+{\Large \thetitle}
+
+{\large 
+Charles Severance}
+
+Version \theversion
+
+\setcounter{chapter}{-1}
+
+\end{htmlonly}
