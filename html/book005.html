@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hevea 2.09" />
+<link rel="stylesheet" type="text/css" href="book.css" />
+<title>조건부 실행</title>
+</head>
+<body>
+<a href="book004.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book006.html"><img src="next_motif.gif" alt="Next" /></a>
+<hr />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="  xwMOOC와 함께 정보 불평등(digital divide)을 해소하는 것을 넘어 기회로 바꾸세요!" />
+<title> 불평등(Digital Divide)을 "기회"로. </title>
+<!-- stylesheets -->
+<link media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link media="all" rel="stylesheet" href="/assets/css/site.css" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59802572-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<h1 id="sec34" class="chapter"><span style="font-size:medium;color:black">Chapter 4  조건부 실행</span></h1>
+<span style="font-size:medium">
+</span><h2 id="sec35" class="section"><span style="font-size:medium;color:black">4.1  불 표현식(Boolean expressions)</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default119"></a><span style="font-size:medium">
+</span><a id="hevea_default120"></a><span style="font-size:medium">
+</span><a id="hevea_default121"></a><span style="font-size:medium">
+</span><a id="hevea_default122"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black"><span style="font-weight:bold">불 표현식(boolean expression)</span>은 참(True) 혹은 거짓(False)를 지닌 표현식이다. 
+다음 예제는 <span style="font-family:monospace">==</span> 연산자를 사용하여 두 개 피연산자를 비교하여 값이 동일하면 <span style="font-family:monospace">참(True)</span>, 그렇지 않으면 <span style="font-family:monospace">거짓(False)</span>을 산출한다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">&gt;&gt;&gt; 5 == 5
+True
+&gt;&gt;&gt; 5 == 6
+False
+</span></pre><p><span style="font-size:medium;color:black"><span style="font-family:monospace">참(True)</span>과 <span style="font-family:monospace">거짓(False)</span>은 <span style="font-family:monospace">불(bool)</span> 자료형(type)에 속하는 특별한 값이지만, 문자열은 아니다.</span></p><p><a id="hevea_default123"></a><span style="font-size:medium">
+</span><a id="hevea_default124"></a><span style="font-size:medium">
+</span><a id="hevea_default125"></a><span style="font-size:medium">
+</span><a id="hevea_default126"></a><span style="font-size:medium">
+</span><a id="hevea_default127"></a><span style="font-size:medium">
+</span><a id="hevea_default128"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-size:large;color:blue">&gt;&gt;&gt; type(True)
+&lt;type 'bool'&gt;
+&gt;&gt;&gt; type(False)
+&lt;type 'bool'&gt;
+</span></pre><p><span style="font-size:medium;color:black"><span style="font-family:monospace">==</span>연산자는 <span style="font-weight:bold">비교 연산자(comparison operators)</span> 중 하나이고, 다른 연산자는 다음과 같다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">      x != y               # x는 y와 값이 같지 않다.
+      x &gt; y                # x는 y보다 크다.
+      x &lt; y                # x는 y보다 작다.
+      x &gt;= y               # x는 y보다 크거나 같다.
+      x &lt;= y               # x는 y보다 작거나 같다.
+      x is y               # x는 y와 같다.
+      x is not y           # x는 y와 개체가 동일하지 않다.
+</span></pre><p><span style="font-size:medium;color:black">상기 연산자가 친숙할지 모르지만, 파이썬 기호는 수학 기호와 다르다. 
+일반적인 오류로 비교를 해서 동일하다는 의미로 <span style="font-family:monospace">==</span> 연산자 대신에 <span style="font-family:monospace">=</span>를 사용하는 것이다.
+<span style="font-family:monospace">=</span> 연산자는 대입 연산자이고, <span style="font-family:monospace">==</span>연산자는 비교 연산자다. 
+<span style="font-family:monospace">=&lt;</span>, <span style="font-family:monospace">=&gt;</span> 같은 비교 연산자는 파이썬에는 없다.</span></p><p><a id="hevea_default129"></a><span style="font-size:medium">
+</span><a id="hevea_default130"></a><span style="font-size:medium">
+</span></p><span style="font-size:medium">
+</span><h2 id="sec36" class="section"><span style="font-size:medium;color:black">4.2  논리 연산자</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default131"></a><span style="font-size:medium">
+</span><a id="hevea_default132"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black">세개 <span style="font-weight:bold">논리 연산자(logical operators)</span>: <span style="font-family:monospace">and</span>, <span style="font-family:monospace">or</span>, <span style="font-family:monospace">not</span> 가 있다. 
+논리 연산자 의미는 영어 의미와 유사하다. 예를 들어,</span></p><p><span style="font-size:medium;color:black"><span style="font-family:monospace">x &gt; 0 and x &lt; 10</span> </span></p><p><span style="font-size:medium;color:black"><span style="font-family:monospace">x</span> 가 0 보다 크다. <em>그리고(and)</em>, 10 보다 작으면 참이다.</span></p><p><a id="hevea_default133"></a><span style="font-size:medium">
+</span><a id="hevea_default134"></a><span style="font-size:medium">
+</span><a id="hevea_default135"></a><span style="font-size:medium">
+</span><a id="hevea_default136"></a><span style="font-size:medium">
+</span><a id="hevea_default137"></a><span style="font-size:medium">
+</span><a id="hevea_default138"></a></p><p><span style="font-size:medium;color:black"><span style="font-family:monospace">n%2 == 0 or n%3 == 0</span>은 두 조건문 중의 하나만 참이 되면, 즉, 숫자가 2 <em>혹은(or)</em> 3으로 나누어지면 참이다.</span></p><p><span style="font-size:medium;color:black">마지막으로 <span style="font-family:monospace">not</span> 연산자는 불 연산 표현식을 부정한다. 
+<span style="font-family:monospace">x &gt; y</span> 가 거짓이면, <span style="font-family:monospace">not (x &gt; y)</span>은 참이다. 즉, <span style="font-family:monospace">x</span>이 <span style="font-family:monospace">y</span> 보다 작거나 같으면 참이다.</span></p><p><span style="font-size:medium;color:black">엄밀히 말해서, 논리 연산자의 두 피연산자는 모두 불 표현식이지만, 파이썬에서 그다지 엄격하지는 않다. 
+0 이 아닌 임의의 숫자 모두 "참(true)"으로 해석된다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">&gt;&gt;&gt; 17 and True
+True
+</span></pre><p><span style="font-size:medium;color:black">이러한 유연함이 유용할 수 있으나, 혼란을 줄 수도 있으니 유의해서 사용해야 한다. 
+무슨 일을 하고 있는지 정확하게 알지 못한다면 피하는게 상책이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec37" class="section"><span style="font-size:medium;color:black">4.3  조건문 실행</span></h2>
+<p><a id="hevea_default139"></a><span style="font-size:medium">
+</span><a id="hevea_default140"></a><span style="font-size:medium">
+</span><a id="hevea_default141"></a><span style="font-size:medium">
+</span><a id="hevea_default142"></a><span style="font-size:medium">
+</span><a id="hevea_default143"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black">유용한 프로그램을 작성하기 위해서 거의 항상 조건을 확인하고 조건에 따라 프로그램 실행을 바꿀 수 있어야 한다.
+<span style="font-weight:bold">조건문(Conditional statements)</span>은 그러한 능력을 부여한다. 
+가장 간단한 형태는 <span style="font-family:monospace">if</span> 문이다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">if x &gt; 0 :
+    print 'x is positive'
+</span></pre><p><span style="font-size:medium;color:black"><span style="font-family:monospace">if</span>문 뒤에 불 표현식(boolean expression)을 <span style="font-weight:bold">조건(condition)</span>이라고 한다.</span></p><div class="center"><span style="font-size:medium;color:black"><img src="book005.png" /></span></div><p><span style="font-size:medium;color:black">만약 조건문이 참이면, 들여쓰기 된 문장이 실행된다. 
+만약 조건문이 거짓이면, 들여쓰기 된 문장의 실행을 건너뛴다.</span></p><p><a id="hevea_default144"></a><span style="font-size:medium">
+</span><a id="hevea_default145"></a><span style="font-size:medium">
+</span><a id="hevea_default146"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black"><span style="font-family:monospace">if</span>문은 함수 정의, <span style="font-family:monospace">for</span> 반복문과 동일한 구조를 가진다.
+<span style="font-family:monospace">if</span>문은 콜론(:)으로 끝나는 헤더 머리부문과 들여쓰기된 몸통 블록(block)으로 구성된다.
+<span style="font-family:monospace">if</span>문처럼 문장이 한 줄 이상에 걸쳐 작성되기 때문에 <span style="font-weight:bold">복합 문장(compound statements)</span>이라고 한다.</span></p><p><span style="font-size:medium;color:black"><span style="font-family:monospace">if</span>문 몸통 부문에 작성되는 실행 문장 숫자에 제한은 없으나 최소한 한 줄은 있어야 한다.
+때때로, 몸통 부문에 어떤 문장도 없는 경우가 있다. 
+아직 코드를 작성하지 않아서 자리만 잡아 놓는 경우로, 아무것도 수행하지 않는 <span style="font-family:monospace">pass</span>문을 사용할 수 있다.</span></p><p><a id="hevea_default147"></a><span style="font-size:medium">
+</span><a id="hevea_default148"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-size:large;color:blue">if x &lt; 0 :
+    pass          # 음수값을 처리 예정!
+</span></pre><p><span style="font-size:medium;color:black">if문을 파이썬 인터프리터에서 타이핑하고 엔터를 치게 되면, 
+명령 프롬프트가 갈매기 세마리에서 점 세개로 바뀐다. 
+따라서 다음과 같이 if문 몸통 부분을 작성중에 있다는 것을 나타낸다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">&gt;&gt;&gt; x = 3
+&gt;&gt;&gt; if x &lt; 10:
+...    print 'Small'
+... 
+Small
+&gt;&gt;&gt;
+</span></pre><span style="font-size:medium">
+</span><h2 id="sec38" class="section"><span style="font-size:medium;color:black">4.4  대안 실행</span></h2>
+<p><a id="hevea_default149"></a><span style="font-size:medium">
+</span><a id="hevea_default150"></a><span style="font-size:medium">
+</span><a id="hevea_default151"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black"><span style="font-family:monospace">if</span>문의 두 번째 형태는 <span style="font-weight:bold">대안 실행(alternative execution)</span>이다.
+대안 실행의 경우 두 가지 경우의 수가 존재하고, 조건이 어느 방향으로 실행할 것인지 결정한다. 
+구문(Syntax)은 아래와 같다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">if x%2 == 0 :
+    print 'x is even'
+else :
+    print 'x is odd'
+</span></pre><p><span style="font-size:medium;color:black"><span style="font-family:monospace">x</span>를 2로 나누었을 때, 0 이되면, <span style="font-family:monospace">x</span>는 짝수이고, 프로그램은 짝수(’x is even’)라는 결과 메시지를 출력한다. 
+만약 조건이 거짓이라면, 두 번째 몸통 부문 문장이 실행된다.</span></p><div class="center"><span style="font-size:medium;color:black"><img src="book006.png" /></span></div><p><span style="font-size:medium;color:black">조건은 참 혹은 거짓이어서, 대안 중 하나만 정확하게 실행된다. 
+대안을 <span style="font-weight:bold">분기(Branch)</span>라고도 하는데 이유는 실행 흐름이 분기되기 때문이다.</span></p><p><a id="hevea_default152"></a><span style="font-size:medium">
+</span></p><span style="font-size:medium">
+</span><h2 id="sec39" class="section"><span style="font-size:medium;color:black">4.5  연쇄 조건문</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default153"></a><span style="font-size:medium">
+</span><a id="hevea_default154"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black">때때로, 두 가지 이상의 경우의 수가 있으며, 두 가지 이상의 분기가 필요하다.
+이와 같은 연산을 표현하는 방식이 <span style="font-weight:bold">연쇄 조건문(chained conditional)</span>이다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">if x &lt; y:
+    print 'x is less than y'
+elif x &gt; y:
+    print 'x is greater than y'
+else:
+    print 'x and y are equal'
+</span></pre><p><span style="font-size:medium;color:black"><span style="font-family:monospace">elif</span>는 ”else if”의 축약어이다. 이번에도 단 한번의 분기만 실행된다.</span></p><div class="center"><span style="font-size:medium;color:black"><img src="book007.png" /></span></div><p><span style="font-size:medium;color:black"><span style="font-family:monospace">elif</span> 문의 갯수에 제한은 없다. 
+<span style="font-family:monospace">else</span> 절이 있다면, 거기서 끝마쳐야 하지만, 연쇄 조건문에 필히 있어야 하는 것은 아니다.</span></p><p><a id="hevea_default155"></a><span style="font-size:medium">
+</span><a id="hevea_default156"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-size:large;color:blue">if choice == 'a':
+    print 'Bad guess'
+elif choice == 'b':
+    print 'Good guess'
+elif choice == 'c':
+    print 'Close, but not correct'
+</span></pre><p><span style="font-size:medium;color:black">각 조건은 순서대로 점검한다. 만약 첫 번째가 거짓이면, 다음을 점검하고 계속 점검해 나간다.
+순서대로 진행 중에 하나의 조건이 참이면, 해당 분기가 수행되고, <span style="font-family:monospace">if</span>문 전체는 종료된다. 
+설사 하나 이상의 조건이 참이라고 하더라도, 첫 번째 참 분기만 수행된다.</span></p><span style="font-size:medium">
+</span><h2 id="sec40" class="section"><span style="font-size:medium;color:black">4.6  중첩 조건문</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default157"></a><span style="font-size:medium">
+</span><a id="hevea_default158"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black">하나의 조건문이 조건문 내부에 중첩될 수 있다. 
+다음과 같이 삼분 예제를 작성할 수 있다.</span></p><pre class="verbatim"><span style="font-size:large;color:blue">if x == y:
+    print 'x and y are equal'
+else:
+    if x &lt; y:
+        print 'x is less than y'
+    else:
+        print 'x is greater than y'
+</span></pre><p><span style="font-size:medium;color:black">바깥 조건문에는 두 개의 분기가 있다. 
+첫 분기는 간단한 문장을 담고 있다. 
+두 번째 분기는 자체가 두 개의 분기를 가지고 있는 또 다른 <span style="font-family:monospace">if</span>문을 담고 있다.
+자체로 둘다 조건문이지만, 두 분기 모두 간단한 문장이다.</span></p><div class="center"><span style="font-size:medium;color:black"><img src="book008.png" /></span></div><p><span style="font-size:medium;color:black">문장을 들여쓰는 것이 구조를 명확히 하지만, <span style="font-weight:bold">중첩 조건문의 경우 가독성이 급격히 저하된다. 
+일반적으로, 가능하면 중첩 조건문을 피하는 것을 권장한다.</span></span></p><p><span style="font-weight:bold;font-size:medium;color:black">논리 연산자를 사용하여 중첩 조건문을 간략히 할 수 있다. 
+예를 들어, 단일 조건문으로 가지고 앞의 코드를 다음과 같이 재작성할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">if 0 &lt; x:
+    if x &lt; 10:
+        print 'x is a positive single-digit number.'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">print</span>문은 두 개 조건문을 통과될 때만 실행돼서, <span style="font-family:monospace">and</span> 연산자와 동일한 효과를 거둘 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">if 0 &lt; x and x &lt; 10:
+    print 'x is a positive single-digit number.'
+</span></pre><span style="font-size:medium">
+</span><h2 id="sec41" class="section"><span style="font-weight:bold;font-size:medium;color:black">4.7  try와 catch를 활용한 예외 처리</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">함수 <code>raw_input</code>와 <span style="font-family:monospace">int</span>을 사용하여 앞에서 사용자가 타이핑한 숫자를 읽어 정수로 파싱하는 프로그램 코드를 살펴보았다.
+또한 이렇게 코딩하는 것이 얼마나 위험한 것인지도 살펴보았다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; speed = raw_input(prompt)
+What...is the airspeed velocity of an unladen swallow?
+What do you mean, an African or a European swallow?
+&gt;&gt;&gt; int(speed)
+ValueError: invalid literal for int()
+&gt;&gt;&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파이썬 인터프리터에서 상기 문장을 실행하면, 
+인터프리터에서 새로운 프롬프트로 되고, "이런(oops)" 잠시 후에, 다음 문장 실행으로 넘어간다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 만약 코드가 파이썬 스크립트로 실행이 되어 오류가 발생하면,
+역추적해서 그 지점에서 즉시 멈추게 된다. 다음에 오는 문장은 실행하지 않는다.</span></p><p><a id="hevea_default159"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">화씨 온도를 섭씨 온도로 변환하는 간단한 프로그램이 있다.</span></p><p><a id="hevea_default160"></a><span style="font-size:medium">
+</span><a id="hevea_default161"></a><span style="font-size:medium">
+</span><a id="hevea_default162"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">inp = raw_input('Enter Fahrenheit Temperature:')
+fahr = float(inp)
+cel = (fahr - 32.0) * 5.0 / 9.0
+print cel
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">이 코드를 실행해서 적절하지 않은 입력값을 넣게 되면, 다소 불친절한 오류 메시지와 함께 간단히 작동을 멈춘다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python fahren.py 
+Enter Fahrenheit Temperature:72
+22.2222222222
+
+python fahren.py 
+Enter Fahrenheit Temperature:fred
+Traceback (most recent call last):
+  File "fahren.py", line 2, in &lt;module&gt;
+    fahr = float(inp)
+ValueError: invalid literal for float(): fred
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">이런 종류의 예측하거나, 예측하지 못한 오류를 다루기 위해서 파이썬에는 “try / except”로 불리는 조건 실행 구조가 내장되어 있다.
+<span style="font-family:monospace">try</span>와 <span style="font-family:monospace">except</span>의 기본적인 생각은 일부 명령문에 문제가 있다는 것을 사전에 알고 있고, 
+만약 그 때문에 오류가 발생하게 된다면 대신 프로그램에 추가해서 명령문을 실행한다는 것이다. 
+<span style="font-family:monospace">except</span> 블록의 문장은 오류가 없다면 실행되지 않는다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">문장 실행에 대해서 파이썬 <span style="font-family:monospace">try</span>, <span style="font-family:monospace">except</span> 기능을 보험으로 생각할 수도 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">온도 변환기 프로그램을 다음과 같이 재작성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">inp = raw_input('Enter Fahrenheit Temperature:')
+try:
+    fahr = float(inp)
+    cel = (fahr - 32.0) * 5.0 / 9.0
+    print cel
+except:
+    print 'Please enter a number'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파이썬은 <span style="font-family:monospace">try</span> 블록 문장을 우선 실행한다. 
+만약 모든 것이 순조롭다면, <span style="font-family:monospace">except</span> 블록을 건너뛰고, 다음 코드를 실행한다.
+만약 <span style="font-family:monospace">try</span> 블록에서 <span style="font-family:monospace">except</span>이 발생하면, 
+파이썬은 <span style="font-family:monospace">try</span> 블록에서 빠져 나와 <span style="font-family:monospace">except</span>블록 문장을 수행한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python fahren2.py 
+Enter Fahrenheit Temperature:72
+22.2222222222
+
+python fahren2.py 
+Enter Fahrenheit Temperature:fred
+Please enter a number
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">try</span>문으로 예외사항을 다루는 것을 예외 처리한다(catching an exception)고 부른다.
+예제에서 <span style="font-family:monospace">except</span> 절에서는 단순히 오류 메시지를 출력만 한다. 
+대체로, 예외 처리를 통해서 오류를 고치거나, 재시작하거나, 최소한 프로그램이 정상적으로 종료될 수 있게 한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec42" class="section"><span style="font-weight:bold;font-size:medium;color:black">4.8  논리 연산식의 단락(Short circuit) 평가</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default163"></a></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">x &gt;= 2 and (x/y) &gt; 2</span>와 같은 논리 표현식을 파이썬에서 처리할 때, 왼쪽에서부터 오른쪽으로 표현식을 평가한다.
+<span style="font-family:monospace">and</span> 정의 때문에 <span style="font-family:monospace">x</span> 가 2보다 작다면, <span style="font-family:monospace">x &gt;= 2</span>은 <span style="font-family:monospace">거짓(False)</span>으로, 
+전체적으로 <span style="font-family:monospace">(x/y) &gt; 2</span> 이 <span style="font-family:monospace">참(True)</span> 혹은 <span style="font-family:monospace">거짓(False)</span> 이냐에 관계없이 <span style="font-family:monospace">거짓(False)</span>이 된다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">나머지 논리 표현식을 평가해도 나아지는 것이 없다고 파이썬이 자동으로 탐지할 때,
+평가를 멈추고 나머지 논리 표현식에 대한 연산도 중지한다. 
+최종값이 이미 결정되었기 때문에 더 이상의 논리 표현식의 평가가 멈출 때, 이를 단락(Short-circuiting) 평가라고 한다.</span></p><p><a id="hevea_default164"></a><span style="font-size:medium">
+</span><a id="hevea_default165"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">좋은 점처럼 보일 수 있지만, 단락 행동은 가디언 패턴(guardian pattern)으로 불리는 좀 더 똑똑한 기술로 연계된다.
+파이썬 인터프리터의 다음 코드를 살펴보자.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; x = 6 
+&gt;&gt;&gt; y = 2
+&gt;&gt;&gt; x &gt;= 2 and (x/y) &gt; 2
+True
+&gt;&gt;&gt; x = 1 
+&gt;&gt;&gt; y = 0
+&gt;&gt;&gt; x &gt;= 2 and (x/y) &gt; 2
+False
+&gt;&gt;&gt; x = 6
+&gt;&gt;&gt; y = 0
+&gt;&gt;&gt; x &gt;= 2 and (x/y) &gt; 2
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+ZeroDivisionError: integer division or modulo by zero
+&gt;&gt;&gt; 
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">세번째 연산은 실패하는데 이유는 <span style="font-family:monospace">(x/y)</span> 연산을 평가할 때 <span style="font-family:monospace">y</span> 가 0 이어서 실행오류 발생한다.
+하지만, 두 번째 예제의 경우 실패하지 않는데 이유는 <span style="font-family:monospace">x &gt;= 2</span> 이 <span style="font-family:monospace">거짓(False)</span> 으로, 
+전체가 <span style="font-family:monospace">거짓(False)</span>이 되어 단락(Short-circuiting) 평가 규칙에 의해 <span style="font-family:monospace">(x/y)</span> 평가는 실행되지 않아 오류도 발생하지 않는다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">평가 오류를 발생하기 전에 가디언(gardian) 평가식을 전략적으로 배치해서 논리 표현식을 다음과 같이 구성한다. </span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; x = 1
+&gt;&gt;&gt; y = 0
+&gt;&gt;&gt; x &gt;= 2 and y != 0 and (x/y) &gt; 2
+False
+&gt;&gt;&gt; x = 6 
+&gt;&gt;&gt; y = 0
+&gt;&gt;&gt; x &gt;= 2 and y != 0 and (x/y) &gt; 2
+False
+&gt;&gt;&gt; x &gt;= 2 and (x/y) &gt; 2 and y != 0
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+ZeroDivisionError: integer division or modulo by zero
+&gt;&gt;&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">첫 번째 논리 표현식은 <span style="font-family:monospace">x &gt;= 2</span> 이 <span style="font-family:monospace">거짓(False)</span> 이라 <span style="font-family:monospace">and</span>에서 멈춘다.
+두 번째 논리 표현식은 <span style="font-family:monospace">x &gt;= 2</span> 이 <span style="font-family:monospace">참(True)</span>, <span style="font-family:monospace">y != 0</span>은 <span style="font-family:monospace">거짓(False)</span> 이라 <span style="font-family:monospace">(x/y)</span>까지 갈 필요가 없다.
+세 번째 논리 표현식은 <span style="font-family:monospace">(x/y)</span> 연산이 끝난 후에 <span style="font-family:monospace">y != 0</span> 이 수행되어서 오류가 발생한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">두 번째 표현식에서 <span style="font-family:monospace">y</span> 가 0 이 아닐 때만, <span style="font-family:monospace">(x/y)</span>을 실행하도록 <span style="font-family:monospace">y != 0</span> 이 가디언(gardian) 역할을 수행한다고 말할 수 있다.</span></p><span style="font-size:medium">
+</span><h2 id="sec43" class="section"><span style="font-weight:bold;font-size:medium;color:black">4.9  디버깅(Debugging)</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default166"></a><span style="font-size:medium">
+</span><a id="hevea_default167"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">오류가 발생했을 때, 파이썬 화면에 출력되는 역추적(traceback)에는 상당한 정보가 담겨있다. 
+하지만,특히 스택에 많은 프레임이 있는 경우 엄청나게 보여 엄두가 나지 않을 수도 있다.
+대체로 가장 유용한 정보는 다음과 같은 것이 있다.</span></p><ul class="itemize"><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">어떤 종류의 오류인가.</span></li><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">어디서 발생했는가.</span></li></ul><p><span style="font-weight:bold;font-size:medium;color:black">구문 오류는 대체로 발견하기 쉽지만, 몇 가지는 애매하다. 공백(space)과 탭(tab)의 차이가 눈에 보이지 않아 
+통상 무시하고 넘어가기 쉽기 때문에 공백 오류를 잡아내기가 까다롭다.</span></p><p><a id="hevea_default168"></a></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; x = 5
+&gt;&gt;&gt;  y = 6
+  File "&lt;stdin&gt;", line 1
+    y = 6
+    ^
+SyntaxError: invalid syntax
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 예제 문제는 두 번째 줄에 한 칸 공백이 들여써서 발생하는 것이다. 
+하지만, <span style="font-family:monospace">y</span>에 오류 메시지가 있는데 프로그래머를 잘못된 곳으로 인도한다. 
+대체로 오류 메시지는 문제가 어디에서 발견되었는지를 지칭하지만, 실제 오류는 코드 앞에 종종 선행하는 줄에 있을 수 있다.</span></p><p><a id="hevea_default169"></a><span style="font-size:medium">
+</span><a id="hevea_default170"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black"><span style="font-weight:bold">동일한 문제가 실행 오류에도 있다. 
+데시벨(decibels)로 신호 대비 잡음비를 계산한다고 가정하자. 
+공식은 </span><span style="font-style:italic">SNR</span></span><sub><span style="font-style:italic;font-size:medium;color:black">db</span></sub><span style="font-size:medium;color:black"> = 10 log</span><sub><span style="font-size:medium;color:black">10</span></sub><span style="font-size:medium;color:black"> (<span style="font-style:italic">P</span></span><sub><span style="font-style:italic;font-size:medium;color:black">signal</span></sub><span style="font-size:medium;color:black"> / <span style="font-style:italic">P</span></span><sub><span style="font-style:italic;font-size:medium;color:black">noise</span></sub><span style="font-size:medium;color:black">)<span style="font-weight:bold"> 이다. 
+파이썬에서 아래와 같이 작성할 수 있다.</span></span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import math
+signal_power = 9
+noise_power = 10
+ratio = signal_power / noise_power
+decibels = 10 * math.log10(ratio)
+print decibels
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 실행하게 되면, 다음과 같은 오류 메시지</span><sup><a id="text7" href="#note7"><span style="font-weight:bold;font-size:medium;color:black">1</span></a></sup><span style="font-weight:bold;font-size:medium;color:black">가 발생한다. </span></p><p><a id="hevea_default171"></a><span style="font-size:medium">
+</span><a id="hevea_default172"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">Traceback (most recent call last):
+  File "snr.py", line 5, in ?
+    decibels = 10 * math.log10(ratio)
+OverflowError: math range error
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">오류 메지지가 5번째 줄에 있다고 지칭하지만, 잘못된 것은 없다. 
+실제 오류를 발견하기 위해서, 
+출력값이 0 인 <span style="font-family:monospace">ratio</span> 값을 <span style="font-family:monospace">print</span>문을 사용해서 출력하는 것이 도움이 된다.
+문제는 4번째 줄에 있는데, 왜냐하면 두 정수를 나눌 때 내림 나눗셈을 했기 때문입니다. 
+<code>signal_power</code> 와 <code>noise_power</code> 를 부동 소수점값으로 표현하는게 해결책이다.</span></p><p><a id="hevea_default173"></a><span style="font-size:medium">
+</span><a id="hevea_default174"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">대체로, 오류 메시지는 문제가 어디에서 발견되었는지를 알려주지만, 
+종종 문제의 원인이 어디에서 발생했는지는 알려주지 않는다.</span></p><span style="font-size:medium">
+</span><h2 id="sec44" class="section"><span style="font-weight:bold;font-size:medium;color:black">4.10  용어 정의</span></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">몸통 부문(body):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 복합 문장 내부에 일련의 문장문
+</span><a id="hevea_default175"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">불 표현식(boolean expression):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> <span style="font-family:monospace">참(True)</span> 혹은 <span style="font-family:monospace">거짓(False)</span>의 값을 가지는 표현식
+</span><a id="hevea_default176"></a><span style="font-size:medium">
+</span><a id="hevea_default177"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">분기(branch):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 조건문에서 대안 문장의 한 흐름
+</span><a id="hevea_default178"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">연쇄 조건문(chained conditional):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 일련의 대안 분기가 있는 조건문
+</span><a id="hevea_default179"></a><span style="font-size:medium">
+</span><a id="hevea_default180"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">비교 연산자(comparison operator):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 피연산자를 <span style="font-family:monospace">==</span>, <span style="font-family:monospace">!=</span>, <span style="font-family:monospace">&gt;</span>, <span style="font-family:monospace">&lt;</span>, <span style="font-family:monospace">&gt;=</span>, <span style="font-family:monospace">&lt;=</span>로 비교하는 연산자</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">조건문(conditional statement):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 조건에 따라 명령의 흐름을 제어하는 명령문
+</span><a id="hevea_default181"></a><span style="font-size:medium">
+</span><a id="hevea_default182"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">조건(condition):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 조건문에서 어느 분기를 실행할지 결정하는 불 표현식
+</span><a id="hevea_default183"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">복합문(compound statement):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 머리부문(head)과 몸통부문(body)으로 구성된 문장.
+머리부문은 콜론(:)으로 끝나며, 몸통부문은 머리부문을 기준으로 들여쓰기로 구별된다.
+</span><a id="hevea_default184"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">가디언 패턴(guardian pattern):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 단락(short circuit) 행동을 잘 이용하도록 논리 표현식을 구성하는 것
+</span><a id="hevea_default185"></a><span style="font-size:medium">
+</span><a id="hevea_default186"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">논리 연산자(logical operator):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 불 표현식을 결합하는 연산자 중의 하나 (<span style="font-family:monospace">and</span>, <span style="font-family:monospace">or</span>, <span style="font-family:monospace">not</span>)</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">중첩 조건문(nested conditional):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 하나의 조건문이 다른 조건문 분기에 나타나는 조건문.
+</span><a id="hevea_default187"></a><span style="font-size:medium">
+</span><a id="hevea_default188"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">역추적(traceback):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 예외 사항이 발생했을 때 실행되고, 출력되는 함수 리스트
+</span><a id="hevea_default189"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">단락(short circuit):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 나머지 표현식 평가를 할 필요없이 최종 결과를 알기 때문에,
+파이썬이 논리 표현식 평가를 진행하는 중간에 평가를 멈출 때.
+</span><a id="hevea_default190"></a><span style="font-size:medium">
+</span></dd></dl><span style="font-size:medium">
+</span><h2 id="sec45" class="section"><span style="font-weight:bold;font-size:medium;color:black">4.11  연습문제</span></h2>
+<div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 1  <em>
+40시간 이상 일할 경우 시급을 1.5배 더 종업원에게 지급하는 봉급계산 프로그램을 다시 작성하세요.</em></span><pre class="verbatim"><span style="font-weight:bold;font-size:medium;color:black"><em>Enter Hours: 45
+Enter Rate: 10
+Pay: 475.0
+</em></span></pre></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 2  
+<em><span style="font-family:monospace">try</span>, <span style="font-family:monospace">except</span>를 사용하여 봉급계산 프로그램을 다시 작성하세요.
+숫자가 아닌 입력값을 잘 처리해서 숫자 아닌 입력값이 들어왔을 때 메시지를 출력하고 정상적으로 프로그램을 종료하도록 합니다.
+다음이 프로그램 출력 결과를 보여줍니다.</em></span><pre class="verbatim"><span style="font-weight:bold;font-size:medium;color:black"><em>Enter Hours: 20
+Enter Rate: nine
+Error, please enter numeric input
+
+Enter Hours: forty
+Error, please enter numeric input
+</em></span></pre></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 3  <em>
+0.0과 1.0 사이의 점수를 출력하는 프로그램을 작성하세요.
+만약 점수가 범위 밖이면 오류를 출력합니다. 
+만약 점수가 0.0과 1.0 사이라면, 다음의 테이블에 따라 등급을 출력합니다.</em></span><pre class="verbatim"><span style="font-weight:bold;font-size:medium;color:black"><em>Score   Grade
+&gt;= 0.9     A
+&gt;= 0.8     B
+&gt;= 0.7     C
+&gt;= 0.6     D
+&lt; 0.6    F
+
+Enter score: 0.95
+A
+
+Enter score: perfect
+Bad score
+
+Enter score: 10.0
+Bad score
+
+Enter score: 0.75
+C
+
+Enter score: 0.5
+F
+</em></span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><em>상기 보이는 것처럼 반복적으로 프로그램을 실행해서 다양한 다른 입력값을 테스트해 보세요.
+</em></span></p></div><span style="font-size:medium">
+</span><hr class="footnoterule" /><dl class="thefootnotes"><dt class="dt-thefootnotes"><span style="font-size:medium">
+</span><a id="note7" href="#text7"><span style="font-weight:bold;font-size:medium;color:black">1</span></a></dt><dd class="dd-thefootnotes"><span style="font-weight:bold;font-size:medium;color:black"><div class="footnotetext">파이썬 3.0에서는 오류 메시지가 발생하지 않는다.
+정수 피연산자인 경우에도 나눗셈 연산자가 부동 소수점 나눗셈을 수행한다.</div>
+</span></dd></dl>
+<footer class="footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-offset-3 col-lg-6">
+<div class="row">
+<div class="col-xs-12 text-center">
+<small>&copy; rifyll theme, 2014, 
+                Powered by <a href="http://www.ibm.com/cloud-computing/kr/ko/softlayer/"><img src="/img/softlayer.png" width="47" height="23" alt="hosting services" /></a> </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<hr />
+<a href="book004.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book006.html"><img src="next_motif.gif" alt="Next" /></a>
+</body>
+</html>

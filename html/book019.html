@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hevea 2.09" />
+<link rel="stylesheet" type="text/css" href="book.css" />
+<title>윈도우 상에서 파이썬 프로그래밍</title>
+</head>
+<body>
+<a href="book018.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book020.html"><img src="next_motif.gif" alt="Next" /></a>
+<hr />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="  xwMOOC와 함께 정보 불평등(digital divide)을 해소하는 것을 넘어 기회로 바꾸세요!" />
+<title> 불평등(Digital Divide)을 "기회"로. </title>
+<!-- stylesheets -->
+<link media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link media="all" rel="stylesheet" href="/assets/css/site.css" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59802572-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<h1 id="sec198" class="chapter"><span style="font-weight:bold;font-size:medium;color:black">Appendix A  윈도우 상에서 파이썬 프로그래밍</span></h1>
+<p><span style="font-weight:bold;font-size:medium;color:black">이번 부록에서 일련의 단계를 거쳐서 윈도우상에서 파이썬을 실행한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬 프로그램을 편집하고 실행하는데취할 수 있는 서로 다른 많은 접근방법이 있다. 이것은 간단한 접근 방법중의 하나다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">먼저, 프로그래머 편집기를 설치할 필요가 있다.
+Notepad나 윈도우 워드를 가지고 파이썬 프로그램을 편집할 필요는 없다.
+프로그램은 ”일반 텍스트(flat-text)” 파일이여서 텍스트 파일을 편집하는데 좋은 에디터만 필요하다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">윈도우 시스템에 추천하고 싶은 편집기는 다음에서 다운받아 설치할 수 있는 Notepad++다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">http://sourceforge.net/projects/notepad-plus/files/</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">www.python.org</span> 웹사이트에서 파이썬 2를 다운로드한다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">http://www.python.org/download/releases/2.7.5/</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬을 설치하면, 컴퓨터에 <span style="font-family:monospace">C:\Python27</span> 같은 새로운 폴더가 생긴다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬 프로그램을 생성하기 위해서 시작 메뉴에서 NotePad++를 실행하고 확장자가 ”.py”인 파일로 저장한다.
+연습으로 <span style="font-family:monospace">py4inf</span> 이름의 폴더를 바탕화면에 생성한다.
+폴더명을 짧게 하고 폴더명과 파일명에 어떤 공백도 넣지 않는 것이 좋다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">첫 파이썬 프로그램을 다음과 같이 작성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">print 'Hello Chuck'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">여러분의 이름으로 바꾸는 것을 제외하고, 파일을 <span style="font-family:monospace">바탕화면\py4inf\prog1.py</span>에 저장한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">명령-줄(command line) 실행은 윈도우 버젼마다 다른다.</span></p><ul class="itemize"><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">
+윈도우 비스타, 윈도우 7: 시작(Start)을 누루고, 명령어 실행 윈도우에서 단어 <span style="font-family:monospace">command</span>를 입력하고 엔터를 친다.</span></li><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">윈도우-XP: 시작(Start)을 누루고,실행(Run)을 누루고, 대화창에서 단어 <span style="font-family:monospace">cmd</span>를 입력하고 확인(OK)을 누른다.
+</span></li></ul><p><span style="font-weight:bold;font-size:medium;color:black">지금 어느 폴더에 있는지를 말해주는 프롬프트 텍스트 윈도우에서 현재 위치를 확인할 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">Windows Vista and Windows-7: <span style="font-family:monospace">C:\Users\csev</span><br />
+Windows XP: <span style="font-family:monospace">C:\Documents and Settings\csev</span></span></p><p><span style="font-weight:bold;font-size:medium;color:black">이것이 ”홈 디렉토리”다. 이제 다음 명령어를 사용해서 작성한 파이썬 프로그램을 저장한 폴더로 이동한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">C:\Users\csev\&gt; cd Desktop
+C:\Users\csev\Desktop&gt; cd py4inf
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">그리고 다음을 타이핑한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">C:\Users\csev\Desktop\py4inf&gt; dir 
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">작성한 파일 목록을 보기 위해서 <span style="font-family:monospace">dir</span> 명령어를 타이핑 할때, <span style="font-family:monospace">prog1.py</span>이 보여야 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하기 위해서, 단순히 명령 프롬프트에서 파일 이름을 타이핑하고 엔터를 친다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">C:\Users\csev\Desktop\py4inf&gt; prog1.py
+Hello Chuck
+C:\Users\csev\Desktop\py4inf&gt; 
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">NotePad++에서 파일을 편집하고, 저장하고, 명령줄로 돌아온다.
+다시 명령줄 프롬프트에서 파일명을 타이핑해서 프로그램을 실행한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">만약 명령줄 윈도우에서 혼동이 생기면, 단순하게 닫고 새로 시작한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">힌트: 스크롤 백해서 이전에 입력한 명령을 다시 실행하기 위해서 ”위쪽 화살표”를 명령줄에서 누른다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">NotePad++에서 환경설정 선호(preference)를 살펴보고 탭 문자가 공백 4개로 되도록 설정한다.
+이 단순한 설정이 들여쓰기 오류를 찾는 수고를 많이 경감시켜 준다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">www.py4inf.com</span>에서 파이썬 프로그램을 편집하고 실행하는 좀더 많은 정보를 얻을 수 있다.</span></p><span style="font-size:medium">
+</span><footer class="footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-offset-3 col-lg-6">
+<div class="row">
+<div class="col-xs-12 text-center">
+<small>&copy; rifyll theme, 2014, 
+                Powered by <a href="http://www.ibm.com/cloud-computing/kr/ko/softlayer/"><img src="/img/softlayer.png" width="47" height="23" alt="hosting services" /></a> </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<hr />
+<a href="book018.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book020.html"><img src="next_motif.gif" alt="Next" /></a>
+</body>
+</html>

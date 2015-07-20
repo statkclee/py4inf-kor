@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hevea 2.09" />
+<link rel="stylesheet" type="text/css" href="book.css" />
+<title>네트워크 프로그램</title>
+</head>
+<body>
+<a href="book013.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book015.html"><img src="next_motif.gif" alt="Next" /></a>
+<hr />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="  xwMOOC와 함께 정보 불평등(digital divide)을 해소하는 것을 넘어 기회로 바꾸세요!" />
+<title> 불평등(Digital Divide)을 "기회"로. </title>
+<!-- stylesheets -->
+<link media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link media="all" rel="stylesheet" href="/assets/css/site.css" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59802572-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<h1 id="sec148" class="chapter"><span style="font-weight:bold;font-size:medium;color:black">Chapter 13  네트워크 프로그램</span></h1>
+<p><span style="font-weight:bold;font-size:medium;color:black">
+지금까지 책의 많은 예제는 파일을 읽고 파일의 정보를 찾는데 집중했지만, 
+다양한 많은 정보의 원천이 인터넷에 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이번 장에서는 웹브라우져로 가장하고 HTTP 프로토콜(HyperText Transport Protocol,HTTP)을 사용하여 웹페이지를 검색할 것이다. 
+웹페이지 데이터를 읽고 파싱할 것이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec149" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.1  하이퍼 텍스트 전송 프로토콜(HyperText Transport Protocol - HTTP)</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">
+웹에 동력을 공급하는 네트워크 프로토콜은 실제로 매우 단순하다.
+파이썬에는 <span style="font-family:monospace">소켓 (sockets)</span>이라고 불리는 내장 지원 모듈이 있다. 
+파이썬 프로그램에서 소켓 모듈을 통해서 네트워크 연결을 하고, 데이터 검색을 매우 용이하게 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">소켓(socket)은 단일 소켓으로 두 프로그램 사이에 양방향 연결을 제공한다는 점을 제외하고 파일과 매우 유사하다.
+동일한 소켓에 읽거나 쓸 수 있다. 
+소켓에 무언가를 쓰게 되면, 소켓의 다른 끝에 있는 응용프로그램에 전송된다. 
+소켓으로부터 읽게 되면, 다른 응용 프로그램이 전송한 데이터를 받게 된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 소켓의 다른쪽 끝에 프로그램이 어떠한 데이터도 전송하지 않았는데 소켓을 읽으려고 하면, 단지 앉아서 기다리기만 한다.
+만약 어떠한 것도 보내지 않고 양쪽 소켓 끝의 프로그램 모두 기다리기만 한다면, 모두 매우 오랜 시간동안 기다리게 될 것이다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">인터넷으로 통신하는 프로그램의 중요한 부분은 특정 종류의 프로토콜을 공유하는 것이다.
+프로토콜(protocol)은 정교한 규칙의 집합으로 누가 메시지를 먼저 보내고, 메세지로 무엇을 하며, 메시지에 대한 응답은 무엇이고, 다음에 누가 메세지를 보내고 등등을 포함한다.
+이런 관점에서 소켓 끝의 두 응용프로그램이 함께 춤을 추고 있으니, 다른 사람 발을 밟지 않도록 확인해야 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">네트워크 프로토콜을 기술하는 문서가 많이 있다. 
+하이퍼텍스트 전송 프로토콜(HyperText Transport Protocol)은 다음 문서에 기술되어 있다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">http://www.w3.org/Protocols/rfc2616/rfc2616.txt</span></p><p><span style="font-weight:bold;font-size:medium;color:black">매우 상세한 176 페이지나 되는 장문의 복잡한 문서다. 
+흥미롭다면 시간을 가지고 읽어보기 바란다. 
+RFC2616에 36 페이지를 읽어보면, GET 요청(request)에 대한 구문을 발견하게 된다. 
+꼼꼼히 읽게 되면, 웹서버에 문서를 요청하기 하기 위해서, 80 포트로 <span style="font-family:monospace">www.py4inf.com</span> 서버에 
+연결을 하고 나서 다음 양식 한 라인을 전송한다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">GET http://www.py4inf.com/code/romeo.txt HTTP/1.0 </span></p><p><span style="font-weight:bold;font-size:medium;color:black">두번째 매개변수는 요청하는 웹페이지가 된다. 
+그리고 또한 빈 라인도 전송한다. 
+웹서버는 문서에 대한 헤더 정보와 빈 라인 그리고 문서 본문으로 응답한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec150" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.2  세상에서 가장 간단한 웹 브라우져(Web Browser)</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">
+아마도 HTTP 프로토콜이 어떻게 작동하는지 알아보는 가장 간단한 방법은 매우 간단한 파이썬 프로그램을 작성하는 것이다.
+웹서버에 접속하고 HTTP 프로토콜 규칙에 따라 문서를 요청하고 서버가 다시 보내주는 결과를 보여주는 것이다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import socket
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('www.py4inf.com', 80))
+mysock.send('GET http://www.py4inf.com/code/romeo.txt HTTP/1.0\n\n')
+
+while True:
+    data = mysock.recv(512)
+    if ( len(data) &lt; 1 ) :
+        break
+    print data
+
+mysock.close()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">처음에 프로그램은 <span style="font-family:monospace">www.py4inf.com</span> 서버에 80 포트로 연결한다.
+”웹 브라우져” 역할로 작성된 프로그램이 하기 때문에 HTTP 프로토콜은 GET 명령어를 공백 라인과 함께 보낸다.</span></p><div class="center"><span style="font-weight:bold;font-size:medium;color:black"><img src="book013.png" /></span></div><p><span style="font-weight:bold;font-size:medium;color:black">공백 라인을 보내자 마자, 512 문자 덩어리의 데이터를 소켓에서 받아 더 이상 읽을 데이터가 없을 때까지(즉, recv()이 빈 문자열을 반환한다.) 데이터를 출력하는 루프를 작성한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램 실행결과 다음을 얻을 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">HTTP/1.1 200 OK
+Date: Sun, 14 Mar 2010 23:52:41 GMT
+Server: Apache
+Last-Modified: Tue, 29 Dec 2009 01:31:22 GMT
+ETag: "143c1b33-a7-4b395bea"
+Accept-Ranges: bytes
+Content-Length: 167
+Connection: close
+Content-Type: text/plain
+
+But soft what light through yonder window breaks
+It is the east and Juliet is the sun
+Arise fair sun and kill the envious moon
+Who is already sick and pale with grief
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">출력결과는 웹서버가 문서를 기술하기 위해서 보내는 헤더(header)로 시작한다.
+예를 들어, <span style="font-family:monospace">Content-Type </span> 헤더는 문서가 일반 텍스트 문서(<span style="font-family:monospace">text/plain</span>)임을 표기한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">서버가 헤더를 보낸 후에, 빈 라인을 추가해서 헤더 끝임을 표기하고 나서 실제 파일<span style="font-family:monospace">romeo.txt</span>을 보낸다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이 예제를 통해서 소켓을 통해서 저수준(low-level) 네트워크 연결을 어떻게 하는지 확인할 수 있다.
+소켓을 사용해서 웹서버, 메일 서버 혹은 다른 종류의 서버와 통신할 수 있다.
+필요한 것은 프로토콜을 기술하는 문서를 찾고 프로토콜에 따라 데이터를 주고 받는 코드를 작성하는 것이다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 가장 흔히 사용하는 프로토콜은 HTTP (즉, 웹) 프로토콜이기 때문에, 
+파이썬에는 HTTP 프로토컬을 지원하기 위해 특별히 설계된 라이브러리가 있다.
+이것을 통해서 웹상에서 데이터나 문서를 검색을 쉽게 할 수 있다.</span></p><span style="font-size:medium">
+</span><h2 id="sec151" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.3  HTTP를 통해서 이미지 가져오기</span></h2>
+<p><a id="hevea_default740"></a><span style="font-size:medium">
+</span><a id="hevea_default741"></a><span style="font-size:medium">
+</span><a id="hevea_default742"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">상기 예제에서는 파일에 새줄(newline)이 있는 일반 텍스트 파일을 가져왔다. 
+그리고 나서, 프로그램을 실행해서 데이터를 단순히 화면에 복사했다.
+HTTP를 사용하여 이미지를 가져오도록 비슷하게 프로그램을 작성할 수 있다. 
+프로그램 실행 시에 화면에 데이터를 복사하는 대신에,
+데이터를 문자열로 누적하고, 다음과 같이 헤더를 잘라내고 나서 파일에 이미지 데이터를 저장한다. </span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import socket
+import time
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('www.py4inf.com', 80))
+mysock.send('GET http://www.py4inf.com/cover.jpg HTTP/1.0\n\n')
+
+
+count = 0
+picture = "";
+while True:
+    data = mysock.recv(5120)
+    if ( len(data) &lt; 1 ) : break
+    # time.sleep(0.25)
+    count = count + len(data)
+    print len(data),count
+    picture = picture + data
+
+mysock.close()
+
+# Look for the end of the header (2 CRLF)
+pos = picture.find("\r\n\r\n");
+print 'Header length',pos
+print picture[:pos]
+
+# Skip past the header and save the picture data
+picture = picture[pos+4:]
+fhand = open("stuff.jpg","wb")
+fhand.write(picture);
+fhand.close()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면, 다음과 같은 출력을 생성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">$ python urljpeg.py 
+2920 2920
+1460 4380
+1460 5840
+1460 7300
+...
+1460 62780
+1460 64240
+2920 67160
+1460 68620
+1681 70301
+Header length 240
+HTTP/1.1 200 OK
+Date: Sat, 02 Nov 2013 02:15:07 GMT
+Server: Apache
+Last-Modified: Sat, 02 Nov 2013 02:01:26 GMT
+ETag: "19c141-111a9-4ea280f8354b8"
+Accept-Ranges: bytes
+Content-Length: 70057
+Connection: close
+Content-Type: image/jpeg
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 url에 대해서, <span style="font-family:monospace">Content-Type </span> 헤더가 문서 본문이 이미지(<span style="font-family:monospace">image/jpeg</span>)를 나타내는 것을 볼 수 있다.
+프로그램이 완료되면, 이미지 뷰어로 <span style="font-family:monospace">stuff.jpg</span> 파일을 열어서 이미지 데이터를 볼 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면, <span style="font-family:monospace">recv()</span> 메쏘드를 호출할 때 마다 5120 문자는 전달받지 못하는 것을 볼 수 있다.
+<span style="font-family:monospace">recv()</span> 호출하는 순간마다 웹서버에서 네트워크로 전송되는 가능한 많은 문자를 받을 뿐이다. 
+매번 5120 문자까지 요청하지만, 1460 혹은 2920 문자만 전송받는다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">결과값은 네트워크 속도에 따라 달라질 수 있다. 
+<span style="font-family:monospace">recv()</span> 메쏘드 마지막 호출에는 스트림 마지막인 1681 바이트만 받았고,
+<span style="font-family:monospace">recv()</span> 다음 호출에는 0 길이 문자열을 전송받아서, 서버가 소켓 마지막에 <span style="font-family:monospace">close()</span> 메쏘드를 호출하고 
+더이상의 데이터가 없다는 신호를 준다.</span></p><p><a id="hevea_default743"></a><span style="font-size:medium">
+</span><a id="hevea_default744"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">주석 처리한 <span style="font-family:monospace">time.sleep()</span>을 풀어줌으로써 <span style="font-family:monospace">recv()</span> 연속 호출을 늦출 수 있다.
+이런 방식으로 매번 호출 후에 0.25초 기다리게 한다.
+그래서, 사용자가 <span style="font-family:monospace">recv()</span> 메쏘드를 호출하기 전에 서버가 먼저 도착할 수 있어서 더 많은 데이터를 보낼 수가 있다.
+정지 시간을 넣어서 프로그램을 다시 실행하면 다음과 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">$ python urljpeg.py 
+1460 1460
+5120 6580
+5120 11700
+...
+5120 62900
+5120 68020
+2281 70301
+Header length 240
+HTTP/1.1 200 OK
+Date: Sat, 02 Nov 2013 02:22:04 GMT
+Server: Apache
+Last-Modified: Sat, 02 Nov 2013 02:01:26 GMT
+ETag: "19c141-111a9-4ea280f8354b8"
+Accept-Ranges: bytes
+Content-Length: 70057
+Connection: close
+Content-Type: image/jpeg
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">recv()</span> 메쏘드 호출의 처음과 마지막을 제외하고, 매번 새로운 데이터를 요청할 때마다 이제 5120 문자가 전송된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">서버 <span style="font-family:monospace">send()</span> 요청과 응용프로그램 <span style="font-family:monospace">recv()</span> 요청 사이에 버퍼가 있다.
+프로그램에 지연을 넣어 실행하게 될 때, 어느 지점엔가 서버가 소켓 버퍼를 채우고 응용프로그램이 버퍼를 비울 때까지 잠시 멈춰야 된다. 
+송신하는 응용프로그램 혹은 수신하는 응용프로그램을 멈추게 하는 행위를 ”흐름 제어(flow control)”이라고 한다.</span></p><p><a id="hevea_default745"></a></p><span style="font-size:medium">
+</span><h2 id="sec152" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.4  <span style="font-family:monospace">urllib</span> 사용하여 웹페이지 가져오기</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">수작업으로 소켓 라이브러리를 사용하여 HTTP로 데이터를 주고 받을 수 있지만,
+<span style="font-family:monospace">urllib</span> 라이브러리를 사용하여 파이썬에서 동일한 작업을 수행하는 좀더 간편한 방식이 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">urllib</span>을 사용하여 파일처럼 웹페이지를 다룰 수가 있다.
+단순하게 어느 웹페이지를 가져올 것인지만 지정하면 <span style="font-family:monospace">urllib</span> 라이브러리가 모든 HTTP 프로토콜과 헤더관련 사항을 처리해 준다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">웹에서 <span style="font-family:monospace">romeo.txt</span> 파일을 읽도록 <span style="font-family:monospace">urllib</span>를 사용하여 작성한 상응 코드는 다음과 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+
+fhand = urllib.urlopen('http://www.py4inf.com/code/romeo.txt')
+for line in fhand:
+   print line.strip()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">urllib.urlopen</span>을 사용하여 웹페이지를 열게 되면, 파일처럼 다룰 수 있고 <span style="font-family:monospace">for</span> 루프를 사용하여 데이터를 읽을 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면, 파일 내용 출력결과만을 볼 수 있다. 
+헤더정보는 여전히 전송되었지만, <span style="font-family:monospace">urllib</span> 코드가 헤더를 받아 내부적으로 처리하고, 사용자에게는 단지 데이터만 반환한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">But soft what light through yonder window breaks
+It is the east and Juliet is the sun
+Arise fair sun and kill the envious moon
+Who is already sick and pale with grief
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">예제로, <span style="font-family:monospace">romeo.txt</span> 데이터를 가져와서 파일의 각 단어 빈도를 계산하는 프로그램을 다음과 같이 작성할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+
+counts = dict()
+fhand = urllib.urlopen('http://www.py4inf.com/code/romeo.txt')
+for line in fhand:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word,0) + 1   
+print counts
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">다시 한번, 웹페이지를 열게 되면, 로컬 파일처럼 웹페이지를 읽을 수 있다.</span></p><span style="font-size:medium">
+</span><h2 id="sec153" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.5  HTML 파싱과 웹 스크래핑</span></h2>
+<p><a id="hevea_default746"></a><span style="font-size:medium">
+</span><a id="hevea_default747"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬 <span style="font-family:monospace">urllib</span> 활용하는 일반적인 사례는 웹 스크래핑(scraping)이다.
+웹 스크래핑은 웹브라우저를 가장한 프로그램을 작성하는 것이다.
+웹페이지를 가져와서, 패턴을 찾아 페이지 내부의 데이터를 꼼꼼히 조사한다.
+예로, 구글같은 검색엔진은 웹 페이지의 소스를 조사해서 다른 페이지로 가는 링크를 추출하고, 그 해당 페이지를 가져와서 링크 추출하는 작업을 반복한다.
+이러한 기법으로 구글은 웹상의 거의 모든 페이지를 거미(spiders)줄처럼 연결한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">구글은 또한 발견한 웹페이지에서 특정 페이지로 연결되는 링크 빈도를 사용하여 얼마나 중요한 페이지인지를 측정하고 
+검색결과에 페이지가 얼마나 높은 순위로 노출되어야 하는지 평가한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec154" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.6  정규 표현식 사용 HTML 파싱하기</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">HTML을 파싱하는 간단한 방식은 정규 표현식을 사용하여 특정한 패턴과 매칭되는 부속 문자열을 반복적으로 찾아 추출하는 것이다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">여기 간단한 웹페이지가 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&lt;h1&gt;The First Page&lt;/h1&gt;
+&lt;p&gt;
+If you like, you can switch to the
+&lt;a href="http://www.dr-chuck.com/page2.htm"&gt;
+Second Page&lt;/a&gt;.
+&lt;/p&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">모양 좋은 정규표현식을 구성해서 다음과 같이 상기 웹페이지에서 링크를 매칭하고 추출할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">href="http://.+?"
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">작성된 정규 표현식은 “href="http://”로 시작하고, 하나 이상의 문자를 “.+?” 가지고 큰 따옴표를 가진 문자열을 찾는다.
+“.+?”에 물음표가 갖는 의미는 매칭이 ”욕심쟁이(greedy)” 방식보다 ”비욕심쟁이(non-greedy)” 방식으로 수행됨을 나타낸다. 
+비욕심쟁이(non-greedy) 매칭방식은 가능한 <em>가장 적게</em> 매칭되는 문자열을 찾는 방식이고, 욕심 방식은 가능한 <em>가장 크게</em> 매칭되는 문자열을 찾는 방식이다.</span></p><p><a id="hevea_default748"></a><span style="font-size:medium">
+</span><a id="hevea_default749"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">추출하고자 하는 문자열이 매칭된 문자열의 어느 부분인지를 표기하기 위해서 정규 표현식에 괄호를 추가하여 다음과 같이 프로그램을 작성한다.</span></p><p><a id="hevea_default750"></a><span style="font-size:medium">
+</span><a id="hevea_default751"></a></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+import re
+
+url = raw_input('Enter - ')
+html = urllib.urlopen(url).read()
+links = re.findall('href="(http://.*?)"', html)
+for link in links:
+    print link
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">findall</span> 정규 표현식 메쏘드는 정규 표현식과 매칭되는 모든 문자열 리스트를 추출하여 큰 따옴표 사이에 링크 텍스트만을 반환한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면, 다음 출력을 얻게된다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python urlregex.py 
+Enter - http://www.dr-chuck.com/page1.htm
+http://www.dr-chuck.com/page2.htm
+
+python urlregex.py 
+Enter - http://www.py4inf.com/book.htm
+http://www.greenteapress.com/thinkpython/thinkpython.html
+http://allendowney.com/
+http://www.py4inf.com/code
+http://www.lib.umich.edu/espresso-book-machine
+http://www.py4inf.com/py4inf-slides.zip
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">정규 표현식은 HTML이 예측가능하고 잘 구성된 경우에 멋지게 작동한다.
+하지만, ”망가진” HTML 페이지가 많아서, 정규 표현식만을 사용하는 솔류션은 유효한 링크를 놓치거나 잘못된 데이터만 찾고 끝날 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이 문제는 강건한 HTML 파싱 라이브러리를 사용해서 해결될 수 있다.</span></p><span style="font-size:medium">
+</span><h2 id="sec155" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.7  BeautifulSoup 사용한 HTML 파싱</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default752"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">HTML을 파싱하여 페이지에서 데이터를 추출할 수 있는 파이썬 라이브러리는 많이 있다.
+라이브러리 각각은 강점과 약점이 있어서 사용자 필요에 따라 취사선택한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">예로, 간단하게 HTML 입력을 파싱하여 BeautifulSoup 라이브러리를 사용하여 링크를 추출할 것이다.
+다음 웹사이트에서 BeautifulSoup 코드를 다운로드 받아 설치할 수 있다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">www.crummy.com</span></p><p><span style="font-weight:bold;font-size:medium;color:black">BeautifulSoup 라이브러리를 다운로드 받아 ”설치”하거나 <span style="font-family:monospace">BeautifulSoup.py</span> 파일을 응용프로그램과 동일한 폴더에 저장한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">HTML이 XML 처럼 보이고 몇몇 페이지는 XML로 되도록 꼼꼼하게 구축되었지만, 
+일반적으로 대부분의 HTML이 깨져서 XML 파서가 HTML 전체 페이지를 잘못 구성된 것으로 간주하고 받아들이지 않는다.
+BeautifulSoup 라이브러리는 결점 많은 HTML 페이지에 내성이 있어서 사용자가 필요로하는 데이터를 쉽게 추출할 수 있게 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">urllib</span>를 사용하여 페이지를 읽어들이고, <span style="font-family:monospace">BeautifulSoup</span>를 사용해서 앵커 태그 (<span style="font-family:monospace">a</span>)로부터 <span style="font-family:monospace">href</span> 속성을 추출한다.</span></p><p><a id="hevea_default753"></a><span style="font-size:medium">
+</span><a id="hevea_default754"></a><span style="font-size:medium">
+</span><a id="hevea_default755"></a></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+from BeautifulSoup import *
+
+url = raw_input('Enter - ')
+html = urllib.urlopen(url).read()
+soup = BeautifulSoup(html)
+
+# Retrieve all of the anchor tags
+tags = soup('a')
+for tag in tags:
+   print tag.get('href', None)
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">프로그램이 웹 주소를 입력받고, 웹페이지를 열고, 데이터를 읽어서 BeautifulSoup 파서에 전달하고,
+그리고 나서 모든 앵커 태그를 불러와서 각 태그별로 <span style="font-family:monospace">href</span> 속성을 출력한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면, 아래와 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python urllinks.py 
+Enter - http://www.dr-chuck.com/page1.htm
+http://www.dr-chuck.com/page2.htm
+
+python urllinks.py 
+Enter - http://www.py4inf.com/book.htm
+http://www.greenteapress.com/thinkpython/thinkpython.html
+http://allendowney.com/
+http://www.si502.com/
+http://www.lib.umich.edu/espresso-book-machine
+http://www.py4inf.com/code
+http://www.pythonlearn.com/
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">BeautifulSoup을 사용하여 다음과 같이 각 태그별로 다양한 부분을 뽑아낼 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+from BeautifulSoup import *
+
+url = raw_input('Enter - ')
+html = urllib.urlopen(url).read()
+soup = BeautifulSoup(html)
+
+# Retrieve all of the anchor tags
+tags = soup('a')
+for tag in tags:
+   # Look at the parts of a tag
+   print 'TAG:',tag
+   print 'URL:',tag.get('href', None)
+   print 'Content:',tag.contents[0]
+   print 'Attrs:',tag.attrs
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 프로그램은 다음을 출력합니다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python urllink2.py 
+Enter - http://www.dr-chuck.com/page1.htm
+TAG: &lt;a href="http://www.dr-chuck.com/page2.htm"&gt;
+Second Page&lt;/a&gt;
+URL: http://www.dr-chuck.com/page2.htm
+Content: [u'\nSecond Page']
+Attrs: [(u'href', u'http://www.dr-chuck.com/page2.htm')]
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">HTML을 파싱하는데 BeautifulSoup이 가진 강력한 기능을 예제로 보여줬다.
+좀더 자세한 사항은 <span style="font-family:monospace">www.crummy.com</span> 에서 문서와 예제를 살펴보세요.</span></p><span style="font-size:medium">
+</span><h2 id="sec156" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.8  urllib을 사용하여 바이너리 파일 읽기</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">이미지나 비디오 같은 텍스트가 아닌 (혹은 바이너리) 파일을 가져올 때가 종종 있다.
+일반적으로 이런 파일 데이터를 출력하는 것은 유용하지 않다. 
+하지만, <span style="font-family:monospace">urllib</span>을 사용하여, 하드 디스크 로컬 파일에 URL 사본을 쉽게 만들 수 있다.</span></p><p><a id="hevea_default756"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">이 패턴은 URL을 열고, <span style="font-family:monospace">read</span>를 사용해서 문서 전체 내용을 다운로드하여 문자열 변수(<span style="font-family:monospace">img</span>)에 다운로드하고,
+그리고 나서 다음과 같이 정보를 로컬 파일에 쓴다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">img = urllib.urlopen('http://www.py4inf.com/cover.jpg').read()
+fhand = open('cover.jpg', 'w')
+fhand.write(img)
+fhand.close()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">작성된 프로그램은 네트워크로 모든 데이터를 한번에 읽어서 컴퓨터 주기억장치 <span style="font-family:monospace">img</span> 변수에 저장하고,
+<span style="font-family:monospace">cover.jpg</span> 파일을 열어 디스크에 데이터를 쓴다. 
+이 방식은 파일 크기가 사용자 컴퓨터의 메모리 크기보다 작다면 정상적으로 작동한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 오디오 혹은 비디오 파일 대용량이면, 상기 프로그램은 멈추거나 사용자 컴퓨터 메모리가 부족할 때 극단적으로 느려질 수 있다.
+메모리 부족을 회피하기 위해서, 데이터를 블럭 혹은 버퍼로 가져와서, 다음 블럭을 가져오기 전에 디스크에 각각의 블럭을 쓴다.
+이런 방식으로 사용자가 가진 모든 메모리를 사용하지 않고 어떠한 크기 파일도 읽어올 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+
+img = urllib.urlopen('http://www.py4inf.com/cover.jpg')
+fhand = open('cover.jpg', 'w')
+size = 0
+while True:
+    info = img.read(100000)
+    if len(info) &lt; 1 : break
+    size = size + len(info)
+    fhand.write(info)
+
+print size,'characters copied.'
+fhand.close()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 예제에서, 한번에 100,000 문자만 읽어 오고, 웹에서 다음 100,000 문자를 가져오기 전에 <span style="font-family:monospace">cover.jpg</span> 파일에 읽어온 문자를 쓴다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램 실행 결과는 다음과 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python curl2.py 
+568248 characters copied.
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">UNIX 혹은 매킨토시 컴퓨터를 가지고 있다면, 다음과 같이 상기 동작을 수행하는 명령어가 운영체제 자체에 내장되어 있다.</span></p><p><a id="hevea_default757"></a></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">curl -O http://www.py4inf.com/cover.jpg
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">curl</span>은 “copy URL”의 단축 명령어로 두 예제는 <span style="font-family:monospace">curl</span> 명령어와 비슷한 기능을 구현해서, 
+<span style="font-family:monospace">www.py4inf.com/code</span> 사이트에 <span style="font-family:monospace">curl1.py</span>, <span style="font-family:monospace">curl2.py</span> 이름으로 올라가 있다.
+동일한 작업을 좀더 효과적으로 수행하는 <span style="font-family:monospace">curl3.py</span> 샘플 프로그램도 있어서 실무적으로 작성하는 프로그램에 이런한 패턴을 이용하여 구현할 수 잇다.</span></p><span style="font-size:medium">
+</span><h2 id="sec157" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.9  용어정의</span></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">BeautifulSoup:</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 파이썬 라이브러리로 HTML 문서를 파싱하고 
+브라우저가 일반적으로 생략하는 HTML의 불완전한 부분을 보정하여 HTML 문서에서 데이터를 추출한다.
+<span style="font-family:monospace">www.crummy.com</span> 사이트에서 BeautifulSoup 코드를 다운로드 받을 수 있다.
+</span><a id="hevea_default758"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">포트(port):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 서버에 소켓 연결을 만들 때, 사용자가 무슨 응용프로그램을 연결하는지 나타내는 숫자.
+예로, 웹 트래픽은 통상 80 포트, 전자우편은 25 포트를 사용한다.
+</span><a id="hevea_default759"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">스크래핑(scraping):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 프로그램이 웹브라우저를 가장하여 웹페이지를 가져와서 웹 페이지의 내용을 검색한다.
+종종 프로그램이 한 페이지의 링크를 따라 다른 페이지를 찾게 된다. 그래서, 웹페이지 네트워크 혹은 소셜 네트워크 전체를 훑을 수 있다.
+</span><a id="hevea_default760"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">소켓(socket):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 두 응용프로그램 사이 네트워크 연결. 두 응용프로그램은 양 방향으로 데이터를 주고 받는다.
+</span><a id="hevea_default761"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">스파이더(spider):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 검색 색인을 구축하기 위해서 한 웹페이지를 검색하고, 그 웹페이지에 링크된 모든 페이지 검색을 반복하여
+인터넷에 있는 거의 모든 웹페이지를 가져오기 위해서 사용되는 검색엔진 행동.
+</span><a id="hevea_default762"></a></dd></dl><span style="font-size:medium">
+</span><h2 id="sec158" class="section"><span style="font-weight:bold;font-size:medium;color:black">13.10  연습문제</span></h2>
+<div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 1  <em>
+소켓 프로그램 <span style="font-family:monospace">socket1.py</span>을 변경하여 임의 웹페이지를 읽을 수 있도록 URL을 사용자가 입력하도록 바꾸세요.
+<span style="font-family:monospace">split(’/’)</span>을 사용하여 URL을 컴포턴트로 쪼개서 소켓 <span style="font-family:monospace">connect</span> 호출에 대해 호스트 명을 추출할 수 있다.
+사용자가 적절하지 못한 형식 혹은 존재하지 않는 URL을 입력하는 경우를 처리할 있도록 <span style="font-family:monospace">try</span>, <span style="font-family:monospace">except</span>를 사용하여 오류 검사기능을 추가하세요.
+</em></span></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 2  <em>
+소켓 프로그램을 변경하여 전송받은 문자를 계수(count)하고 3000 문자를 출력한 후에 그이상 텍스트 출력을 멈추게 하세요.
+프로그램은 전체 문서를 가져와야 하고, 전체 문자를 계수(count)하고, 문서 마지막에 문자 계수(count)결과를 출력해야 합니다.
+</em></span></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 3  
+<em><span style="font-family:monospace">urllib</span>을 사용하여 이전 예제를 반복하세요. (1) 사용자가 입력한 URL에서 문서 가져오기
+(2) 3000 문자까지 화면에 보여주기 (3) 문서의 전체 문자 계수(count)하기.
+이 연습문제에서 헤더에 대해서는 걱정하지 말고, 단지 문서 본문에서 첫 3000 문자만 화면에 출력하세요.
+</em></span></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 4   <em><span style="font-family:monospace">urllinks.py</span> 프로그램을 변경하여 가져온 HTML 문서에서 문단 (p) 태그를 추출하고
+프로그램의 출력물로 문단을 계수(count)하고 화면에 출력하세요. 
+문단 텍스트를 화면에 출력하지 말고 단지 숫자만 셉니다.
+작성한 프로그램을 작은 웹페이지 뿐만 아니라 조금 큰 웹 페이지에도 테스트해 보세요.
+</em></span></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 5  <em>
+(고급) 소켓 프로그램을 변경하여 헤더와 빈 라인 다음에 데이터만 보여지게 하세요.
+<span style="font-family:monospace">recv</span>는 라인이 아니라 문자(새줄(newline)과 모든 문자)를 전송받는다는 것을 기억하세요.
+</em></span></div><span style="font-size:medium">
+</span><footer class="footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-offset-3 col-lg-6">
+<div class="row">
+<div class="col-xs-12 text-center">
+<small>&copy; rifyll theme, 2014, 
+                Powered by <a href="http://www.ibm.com/cloud-computing/kr/ko/softlayer/"><img src="/img/softlayer.png" width="47" height="23" alt="hosting services" /></a> </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<hr />
+<a href="book013.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book015.html"><img src="next_motif.gif" alt="Next" /></a>
+</body>
+</html>

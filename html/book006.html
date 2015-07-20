@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hevea 2.09" />
+<link rel="stylesheet" type="text/css" href="book.css" />
+<title>함수</title>
+</head>
+<body>
+<a href="book005.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book007.html"><img src="next_motif.gif" alt="Next" /></a>
+<hr />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="  xwMOOC와 함께 정보 불평등(digital divide)을 해소하는 것을 넘어 기회로 바꾸세요!" />
+<title> 불평등(Digital Divide)을 "기회"로. </title>
+<!-- stylesheets -->
+<link media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link media="all" rel="stylesheet" href="/assets/css/site.css" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59802572-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<h1 id="sec46" class="chapter"><span style="font-weight:bold;font-size:medium;color:black">Chapter 5  함수</span></h1>
+<p><span style="font-size:medium">
+</span><a id="funcchap"></a></p><span style="font-size:medium">
+</span><h2 id="sec47" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.1  함수 호출</span></h2>
+<p><span style="font-size:medium">
+</span><a id="functionchap"></a><span style="font-size:medium">
+</span><a id="hevea_default191"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그래밍 문맥에서, 함수(function)는 연산을 수행하는 명명된 일련의 문장이다. 
+함수를 정의할 때, 이름과 일련의 문장을 명기한다. 
+나중에, 함수를 이름으로 ”호출(call)”한다.
+이미 함수 호출(function call)의 예제를 살펴봤다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; type(32)
+&lt;type 'int'&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">함수명은 <span style="font-family:monospace">type</span>이다. 
+괄호안의 표현식을 함수의 인자(argument)라고 한다. 
+인자는 함수 입력으로 함수 내부로 전달되는 값이나 변수이다. 
+앞선 <span style="font-family:monospace">type</span> 함수에 대한 결과는 인자의 자료형(type)이다.</span></p><p><a id="hevea_default192"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">통상 함수가 인자를 ”받아” 결과를 ”반환”한다. 결과를 결과값(return value)이라 부른다.</span></p><p><a id="hevea_default193"></a><span style="font-size:medium">
+</span><a id="hevea_default194"></a><span style="font-size:medium">
+</span></p><span style="font-size:medium">
+</span><h2 id="sec48" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.2  내장(Built-in) 함수</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">함수를 정의할 필요없이 사용할 수 있는 내장함수가 파이썬에는 많다.
+공통의 문제를 해결할 수 있는 함수를 파이썬을 창시자(Guido van Rossum)가 작성해서 누구나 사용할 수 있도록 파이썬에 포함했다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">max</span>와 <span style="font-family:monospace">min</span> 함수는 리스트 최소값과 최대값을 각각 계산해서 출력한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; max('Hello world')
+'w'
+&gt;&gt;&gt; min('Hello world')
+' '
+&gt;&gt;&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">max</span> 함수는 문자열의 "가장 큰 문자", 상기 예제에서 ”w”, 
+<span style="font-family:monospace">min</span> 함수는 최소 문자를, 상기 예제에서는 공백, 출력한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">매우 자주 사용되는 또 다른 내장 함수는 얼마나 많은 항목이 있는지 출력하는 <span style="font-family:monospace">len</span> 함수가 있다.
+만약 <span style="font-family:monospace">len</span> 함수의 인수가 문자열이면 문자열에 있는 문자 갯수를 반환한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; len('Hello world')
+11
+&gt;&gt;&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">이들 함수는 문자열에만 국한된 것이 아니라, 뒷장에서 보듯이 다양한 자료형에 사용된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">내장함수 이름은 사전에 점유된 예약어로 취급해야 한다. 예를 들어 ”max”를 변수명으로 사용하지 말아야 한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec49" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.3  자료형(type) 변환 함수</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default195"></a><span style="font-size:medium">
+</span><a id="hevea_default196"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이런 자료형(type)에서 저런 자료형(type)으로 값을 변환하는 내장 함수가 파이썬에는 있다.
+<span style="font-family:monospace">int</span>함수는 임의의 값을 입력받아 변환이 가능하면 정수형으로 변환하고, 그렇지 않으면 오류가 발생한다.</span></p><p><a id="hevea_default197"></a><span style="font-size:medium">
+</span><a id="hevea_default198"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; int('32')
+32
+&gt;&gt;&gt; int('Hello')
+ValueError: invalid literal for int(): Hello
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">int</span>는 부동 소수점 값을 정수로 변환할 수 있지만 소수점 이하를 절사한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; int(3.99999)
+3
+&gt;&gt;&gt; int(-2.3)
+-2
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">float</span>는 정수와 문자열을 부동 소수점으로 변환한다.</span></p><p><a id="hevea_default199"></a><span style="font-size:medium">
+</span><a id="hevea_default200"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; float(32)
+32.0
+&gt;&gt;&gt; float('3.14159')
+3.14159
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">마지막으로, <span style="font-family:monospace">str</span>은 인자를 문자열로 변환한다.</span></p><p><a id="hevea_default201"></a><span style="font-size:medium">
+</span><a id="hevea_default202"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; str(32)
+'32'
+&gt;&gt;&gt; str(3.14159)
+'3.14159'
+</span></pre><span style="font-size:medium">
+</span><h2 id="sec50" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.4  난수(Random numbers)</span></h2>
+<p><a id="hevea_default203"></a><span style="font-size:medium">
+</span><a id="hevea_default204"></a><span style="font-size:medium">
+</span><a id="hevea_default205"></a><span style="font-size:medium">
+</span><a id="hevea_default206"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">동일한 입력을 받을 때, 대부분의 컴퓨터는 매번 동일한 출력값을 생성하기 때문에 결정적(deterministic)이라고 한다.
+결정론이 대체로 좋은 것이다. 왜냐하면, 동일한 결과를 얻는데 동일한 계산을 기대하기 때문입니다. 
+하지만, 어떤 응용프로그램에 대해서 컴퓨터가 예측불가능하길 바란다. 
+게임이 좋은 예가 되고, 더 많은 예는 얼마든지 많다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">진실되게 프로그램을 비결정론적으로 만드는 것이 쉽지 않은 것으로 밝혀졌지만, 
+적어도 비결정론적인 것처럼 보이게 하는 방법은 있다. 
+의사 난수(pseudorandom numbers)를 생성하는 알고리즘을 사용하는 것이 방법 중의 하나다. 
+의사 난수는 이미 결정된 연산에 의해서 생성된다는 점에서 진정한 의미의 난수는 아니지만, 
+이렇게 생성된 숫자만 봐서는 진정한 난수와 구별하는 것은 불가능에 가깝다.</span></p><p><a id="hevea_default207"></a><span style="font-size:medium">
+</span><a id="hevea_default208"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">random</span> 모듈안에 의사 난수를 생성하는 함수가 있다. 
+(이하 의사 난수 대신 ”랜덤(random)”으로 간략히 부르기로 한다.)</span></p><p><a id="hevea_default209"></a><span style="font-size:medium">
+</span><a id="hevea_default210"></a></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">random</span> 함수는 0.0 과 1.0 사이 부동 소수점 난수를 반환한다. <span style="font-family:monospace">random</span> 함수는 0.0 은 포함하지만 1.0은 포함하지 않는다.
+매번 <span style="font-family:monospace">random</span> 함수를 호출할 때 마다, 이미 생성된 아주 긴 난수열에서 하나씩 하나씩 뽑아 쓰다. 
+사례로 다음 반복문을 실행하자.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import random
+
+for i in range(10):
+    x = random.random()
+    print x
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 프로그램은 0.0 에서 1.0 구간(단, 1.0은 포함하지 않음)에서 10개 난수 리스트를 생성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">0.301927091705
+0.513787075867
+0.319470430881
+0.285145917252
+0.839069045123
+0.322027080731
+0.550722110248
+0.366591677812
+0.396981483964
+0.838116437404
+</span></pre><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 1  <em>
+여러분의 컴퓨터에 프로그램을 실행해서, 어떤 난수가 생성되는지 살펴보세요.
+한번 이상 프로그램을 실행하여 보고, 어떤 난수가 생성되는지 다시 살펴보세요.
+</em></span></div><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">random</span> 함수는 난수를 다루는 많은 함수 중의 하나다.
+<span style="font-family:monospace">randint</span> 함수는 <span style="font-family:monospace">최저(low)</span>와 <span style="font-family:monospace">최고(high)</span> 매개 변수를 입력받아 
+<span style="font-family:monospace">최저값(low)</span>과 <span style="font-family:monospace">최고값(high)</span> 사이 (최저값과, 최저값 모두 포함) 정수를 반환한다.</span></p><p><a id="hevea_default211"></a><span style="font-size:medium">
+</span><a id="hevea_default212"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; random.randint(5, 10)
+5
+&gt;&gt;&gt; random.randint(5, 10)
+9
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">무작위로 특정 열에서 하나의 요소를 뽑아내기 위해, <span style="font-family:monospace">choice</span>를 사용한다.</span></p><p><a id="hevea_default213"></a><span style="font-size:medium">
+</span><a id="hevea_default214"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; t = [1, 2, 3]
+&gt;&gt;&gt; random.choice(t)
+2
+&gt;&gt;&gt; random.choice(t)
+3
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">또한 <span style="font-family:monospace">random</span> 모듈은 정규분포, 지수분포, 감마분포 및 기타 연속형 분포에서 난수를 생성하는 함수도 제공한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec51" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.5  수학 함수</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default215"></a><span style="font-size:medium">
+</span><a id="hevea_default216"></a><span style="font-size:medium">
+</span><a id="hevea_default217"></a><span style="font-size:medium">
+</span><a id="hevea_default218"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬은 가장 친숙한 수학 함수를 제공하는 수학 모듈이 있다.
+수학 모듈을 사용하기 전에, 수학 모듈 가져오기를 실행한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; import math
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 명령문은 math 라는 모듈 객체를 생성한다. 
+모듈 객체를 출력하면, 모듈 객체에 대한 정보를 얻을 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; print math
+&lt;module 'math' from '/usr/lib/python2.5/lib-dynload/math.so'&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">모듈 객체는 모듈에 정의된 함수와 변수를 담고 있다. 
+함수 중에서 한 함수에 접근하기 위해서는, 모듈 이름과 함수 이름을 명시해야 하는데, 둘은 점(구두점)으로 구분된다.
+이런 형식을 점 표기법(dot notation)이라고 부른다.</span></p><p><a id="hevea_default219"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; ratio = signal_power / noise_power
+&gt;&gt;&gt; decibels = 10 * math.log10(ratio)
+
+&gt;&gt;&gt; radians = 0.7
+&gt;&gt;&gt; height = math.sin(radians)
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">첫 예제는 신호-대-소음비의 로그 밑이 10 을 계산한다.
+수학 모듈이 자연 로그를 <span style="font-family:monospace">log</span> 함수를 호출해서 사용할 수 있도록 제공한다.</span></p><p><a id="hevea_default220"></a><span style="font-size:medium">
+</span><a id="hevea_default221"></a><span style="font-size:medium">
+</span><a id="hevea_default222"></a><span style="font-size:medium">
+</span><a id="hevea_default223"></a><span style="font-size:medium">
+</span><a id="hevea_default224"></a><span style="font-size:medium">
+</span><a id="hevea_default225"></a><span style="font-size:medium">
+</span></p><p><span style="font-size:medium;color:black"><span style="font-weight:bold">두 번째 예제는 라디안의 사인값을 찾는 것이다. 
+변수의 이름이 힌트를 주는데, <span style="font-family:monospace">sin</span>과 다른 삼각함수(<span style="font-family:monospace">cos</span>, <span style="font-family:monospace">tan</span> 등)는 라디안을 인자로 받는다.
+도(degree)에서 라디안(radian)으로 변환하기 위해서 360으로 나누고 </span>2π<span style="font-weight:bold">를 곱한다.</span></span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; degrees = 45
+&gt;&gt;&gt; radians = degrees / 360.0 * 2 * math.pi
+&gt;&gt;&gt; math.sin(radians)
+0.707106781187
+</span></pre><p><span style="font-size:medium;color:black"><span style="font-weight:bold"><span style="font-family:monospace">math.pi</span> 표현식은 수학 모듈에서 <span style="font-family:monospace">pi</span> 변수를 얻는데, </span>π<span style="font-weight:bold"> 값과 비교하여 15 자리수까지 정확하고 근사적으로 수렴한다.</span></span></p><p><a id="hevea_default226"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">삼각함수를 배웠다면, 앞선 연산 결과를 2에 루트를 씌우고 2로 나누어 비교 검증한다.</span></p><p><a id="hevea_default227"></a><span style="font-size:medium">
+</span><a id="hevea_default228"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; math.sqrt(2) / 2.0
+0.707106781187
+</span></pre><span style="font-size:medium">
+</span><h2 id="sec52" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.6  신규 함수 추가</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">지금까지 파이썬 설치 시 함께 있는 함수만 사용했지만 새로운 함수를 추가하는 것도 가능하다.
+함수 정의(function definition)는 신규 함수명과 함수가 호출될 때 실행될 일련의 문장을 명세한다.
+신규로 함수를 정의하면, 프로그램 실행 중에 반복해서 함수를 재사용할 수 있다. </span></p><p><a id="hevea_default229"></a><span style="font-size:medium">
+</span><a id="hevea_default230"></a><span style="font-size:medium">
+</span><a id="hevea_default231"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음에 예제가 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">def print_lyrics():
+    print "I'm a lumberjack, and I'm okay."
+    print 'I sleep all night and I work all day.'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">def</span>는 "이것이 함수 정의다"를 표시하는 예약어다. 
+함수 이름은 <code>print_lyrics</code>이다.
+함수 이름을 명명 규칙은 변수명과 동일하다. 
+문자, 숫자, 그리고 몇몇 문장 부호는 사용할 수 있지만, 첫 문자가 숫자는 될 수 없다. 
+함수 이름으로 예약어를 사용할 수 없고, 함수 이름과 동일한 변수명은 피해야 한다.</span></p><p><a id="hevea_default232"></a><span style="font-size:medium">
+</span><a id="hevea_default233"></a><span style="font-size:medium">
+</span><a id="hevea_default234"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">함수명 뒤 빈 괄호는 이 함수가 어떠한 인자도 갖지 않는다는 것을 나타낸다.
+나중에, 입력값으로 인자를 가지는 함수를 작성해 볼 것이다.</span></p><p><a id="hevea_default235"></a><span style="font-size:medium">
+</span><a id="hevea_default236"></a><span style="font-size:medium">
+</span><a id="hevea_default237"></a><span style="font-size:medium">
+</span><a id="hevea_default238"></a><span style="font-size:medium">
+</span><a id="hevea_default239"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">함수 정의 첫번째 줄을 머리 부문(헤더, header), 나머지 부문을 몸통 부문(바디, body)라고 부른다.
+머리 부문은 콜론(:)으로 끝나고, 몸통 부문은 들여쓰기해야 한다.
+파이썬 관례로 들여쓰기는 항상 4칸 공백이다. 
+몸통 부문에는 제약 없이 문장을 작성할 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">print문의 문자열은 이중 인용부호로 감싼다. 
+단일 인용부호나, 이중 인용부호나 차이는 없다.
+대부분의 경우 단일 인용부호를 사용하고, 단일 인용부호가 문자열에 나타나는 경우, 이중 인용부호를 사용하여 단일 인용부호가 출력되게 감싼다.</span></p><p><a id="hevea_default240"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">만약 함수 정의를 인터렉티브 모드에서 타이핑을 하면, 
+함수 정의가 끝나지 않았다는 것을 의미로 생략부호(...)가 출력된다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; def print_lyrics():
+...     print "I'm a lumberjack, and I'm okay."
+...     print 'I sleep all night and I work all day.'
+...
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">함수 정의를 끝내기 위해서 빈 줄을 입력한다. (스크립트에서는 반듯이 필요한 것은 아니다.) </span></p><p><span style="font-weight:bold;font-size:medium;color:black">함수를 정의하게 되면 동일한 이름의 변수도 생성된다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; print print_lyrics
+&lt;function print_lyrics at 0xb7e99e9c&gt;
+&gt;&gt;&gt; print type(print_lyrics)
+&lt;type 'function'&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><code>print_lyrics</code> 값은 <code>'function'</code> 형을 가지는 함수 객체(function object)다. </span></p><p><a id="hevea_default241"></a><span style="font-size:medium">
+</span><a id="hevea_default242"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">신규 함수를 호출하는 구문은 내장 함수의 경우와 동일하다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; print_lyrics()
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">함수를 정의하면, 또 다른 함수 내부에서 사용이 가능하다.
+예를 들어, 이전 후렴구를 반복하기 위해 <code>repeat_lyrics</code> 함수를 작성할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">def repeat_lyrics():
+    print_lyrics()
+    print_lyrics()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">그리고 나서, <code>repeat_lyrics</code> 함수를 호출한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; repeat_lyrics()
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 이것이 실제 노래가 불려지는 것은 아니다.</span></p><span style="font-size:medium">
+</span><h2 id="sec53" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.7  함수 정의와 사용법</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default243"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">앞 절의 코드 조각을 모아서 작성한 전체 프로그램은 다음과 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">def print_lyrics():
+    print "I'm a lumberjack, and I'm okay."
+    print 'I sleep all night and I work all day.'
+
+def repeat_lyrics():
+    print_lyrics()
+    print_lyrics()
+
+repeat_lyrics()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 프로그램에는 두개의 함수(<code>print_lyrics</code>, <code>repeat_lyrics</code>)가 있다.
+함수 정의는 다른 문장처럼 수행되지만, 함수 객체를 생성한다는 점에서 차이가 있다.
+함수 내부 문장은 함수가 호출되기 전까지 수행되지 않고, 함수 정의는 출력값도 생성하지 않는다.</span></p><p><a id="hevea_default244"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">예상하듯이, 함수를 실행하기 전에 함수를 생성해야 한다. 
+다시 말해서, 처음으로 호출되기 전에 함수 정의가 실행되어야 한다.</span></p><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 2  <em>
+상기 프로그램의 마지막 줄을 최상단으로 옮겨서 함수 정의 전에 호출되도록 프로그램을 고쳐보세요.
+프로그램을 실행서 오류 메시지를 확인하세요.
+</em></span></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 3  <em>
+함수 호출을 맨 마지막으로 옮기고, <code>repeat_lyrics</code> 함수 정의 뒤에 <code>print_lyrics</code> 함수를 옮기세요.
+프로그램을 실행하게 되면 무슨 일이 발생하나요?
+</em></span></div><span style="font-size:medium">
+</span><h2 id="sec54" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.8  실행 흐름</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default245"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">처음으로 함수가 사용되기 전에 정의되었는지를 확인하기 위해서, 
+명령문 실행 순서를 파악해야 하는데 이를 실행 흐름(flow of execution)이라고 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램 실행은 항상 프로그램 첫 문장부터 시작한다. 
+명령문은 한번에 하나씩 위에서 아래로 실행된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">함수 <em>정의(definitions)</em>가 프로그램 실행 순서를 바꾸지는 않는다. 
+하지만, 함수 내부의 문장은 함수가 호출될 때까지 실행이 되지 않는다는 것을 기억하자.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">함수 호출은 프로그램 실행 흐름을 우회하는 것과 같다. 
+다음 문장으로 가기 전에, 실행 흐름은 함수 몸통 부문을 실행하고는 건너 뛰기를 시작한 지점으로 다시 돌아온다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">함수가 또 다른 함수를 호출한다는 것을 기억할 때까지는 매우 간단하게 들린다.
+함수 중간에서 프로그램이 또 다른 함수의 문장을 수행할지도 모른다. 
+하지만, 새로운 함수를 실행하는 중간에 프로그램이 또 다른 함수를 실행할지도 모른다!</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다행스럽게도, 파이썬은 프로그램 실행 위치를 정확히 추적한다. 
+그래서, 함수가 실행을 완료할 때마다, 프로그램을 함수를 호출해서 떠난 지점으로 정확히 되돌려 놓는다. 
+프로그램이 마지막에 도달했을 때, 프로그램은 종료한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이렇게 복잡한 이야기의 교훈은 무엇일까요? 
+프로그램을 읽을 때, 위에서부터 아래로 읽을 필요는 없다. 
+때때로, 실행 흐름을 따르는 것이 좀더 이치에 맞는다.</span></p><span style="font-size:medium">
+</span><h2 id="sec55" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.9  매개 변수(parameter)와 인수(argument)</span></h2>
+<p><span style="font-size:medium">
+</span><a id="parameters"></a><span style="font-size:medium">
+</span><a id="hevea_default246"></a><span style="font-size:medium">
+</span><a id="hevea_default247"></a><span style="font-size:medium">
+</span><a id="hevea_default248"></a><span style="font-size:medium">
+</span><a id="hevea_default249"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">지금까지 살펴본 몇몇 내장 함수는 인자를 요구한다. 
+예를 들어, <span style="font-family:monospace">math.sin</span> 함수를 호출할 때, 숫자를 인자로 넘겨야 한다.
+어떤 함수는 2개 이상의 인수를 받는다. <span style="font-family:monospace">math.pow</span> 는 밑과 지수 2개의 인자가 필요하다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">인자는 함수 내부에서 매개 변수(parameters)로 불리는 변수로 대입된다.
+하나의 인자를 받는 사용자 정의 함수(user-defined function)가 예제로 있다.</span></p><p><a id="hevea_default250"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">def print_twice(bruce):
+    print bruce
+    print bruce
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">사용자 정의 함수는 인자를 받아 매개변수 <span style="font-family:monospace">bruce</span>에 대입한다. 
+함수가 호출될 때, 매개변수의 값(무엇이든 관계 없이)을 두번 출력합니다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">사용자 정의 함수는 출력 가능한 임의의 값에 작동한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; print_twice('Spam')
+Spam
+Spam
+&gt;&gt;&gt; print_twice(17)
+17
+17
+&gt;&gt;&gt; print_twice(math.pi)
+3.14159265359
+3.14159265359
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">내장함수에 적용되는 동일한 구성 규칙이 사용자 정의 함수에도 적용되어서, <code>print_twice</code> 함수 인자로 표현식 어떤 종류도 가능하다. </span></p><p><a id="hevea_default251"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; print_twice('Spam '*4)
+Spam Spam Spam Spam
+Spam Spam Spam Spam
+&gt;&gt;&gt; print_twice(math.cos(math.pi))
+-1.0
+-1.0
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">함수가 호출되기 전에 인자에 대한 평가는 완료되어, 
+예제에서 <code>'Spam '*4</code>과 <span style="font-family:monospace">math.cos(math.pi)</span>은 단지 1회만 평가된다.</span></p><p><a id="hevea_default252"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">변수도 인자로 사용이 가능하다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; michael = 'Eric, the half a bee.'
+&gt;&gt;&gt; print_twice(michael)
+Eric, the half a bee.
+Eric, the half a bee.
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">인수자 넘기는 변수명(<span style="font-family:monospace">michael</span>)은 매개 변수명(<span style="font-family:monospace">bruce</span>)과 아무런 연관이 없다.
+무슨 값이 호출된든지 호출하는 측과 상관이 없다. 
+여기 <code>print_twice</code> 함수에서는 누구나 <span style="font-family:monospace">bruce</span>라고 부르면 된다.</span></p><span style="font-size:medium">
+</span><h2 id="sec56" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.10  결과있는 함수(fruitful function)와 빈 함수(void function)</span></h2>
+<p><a id="hevea_default253"></a><span style="font-size:medium">
+</span><a id="hevea_default254"></a><span style="font-size:medium">
+</span><a id="hevea_default255"></a><span style="font-size:medium">
+</span><a id="hevea_default256"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">수학 함수와 같은 몇몇 함수는 결과를 만들어 낸다. 
+좀더 좋은 이름이 없어서, 결과를 만들어 내는 함수를 결과있는 함수(fruitful functions)라고 명명한다.
+<code>print_twice</code>와 같이 액션을 수행하지만, 결과를 만들어 내지 않는 함수를 빈 함수(void functions)라고 부른다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">결과있는 함수를 호출할 때는 결과값을 가지고 뭔가를 하려고 한다. 
+예를 들어, 결과값을 변수에 대입하거나, 표현식의 일부로 사용할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">x = math.cos(radians)
+golden = (math.sqrt(5) + 1) / 2
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">인터랙티브 모드에서 함수를 호출할 때, 파이썬은 결과를 화면에 출력한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; math.sqrt(5)
+2.2360679774997898
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 스크립트에서 결과있는 함수를 호출하고 변수에 결과값을 저장하지 않으면 반환되는 결과값은 안개속에 사라져간다!</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">math.sqrt(5)
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">이 스크립트는 5의 제곱근을 계산하지만, 변수에 결과값을 저장하거나, 화면에 출력하지 않아서 그다지 유용하지는 않다.</span></p><p><a id="hevea_default257"></a><span style="font-size:medium">
+</span><a id="hevea_default258"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">빈 함수(Void functions)는 화면에 출력하거나 무엇인가 다른 효과를 가지지만, 반환값이 없다.
+빈 함수를 사용하여 결과에 변수를 대입하면, <span style="font-family:monospace">None</span>으로 불리는 특별한 값을 얻게 된다.</span></p><p><a id="hevea_default259"></a><span style="font-size:medium">
+</span><a id="hevea_default260"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; result = print_twice('Bing')
+Bing
+Bing
+&gt;&gt;&gt; print result
+None
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">None</span> 값은 자신만의 특별한 값을 가지며, 문자열 <code>'None'</code> 과는 같지 않다. </span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; print type(None)
+&lt;type 'NoneType'&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">함수에서 결과를 반환하기 위해서, 함수 내부에 <span style="font-family:monospace">return</span>문을 사용한다.
+예를 들어, 두 숫자를 더해서 결과를 반환하는 <span style="font-family:monospace">addtwo</span>라는 간단한 함수를 작성할 수 있다. </span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">def addtwo(a, b):
+    added = a + b
+    return added
+
+x = addtwo(3, 5)
+print x
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 스크립트가 실행될 때 print 문은 “8”을 출력한다. 
+왜냐하면, 3과 5를 인수로 받는 <span style="font-family:monospace">addtwo</span> 함수가 호출되기 때문이다.
+함수 내부에 매개 변수 <span style="font-family:monospace">a</span>, <span style="font-family:monospace">b</span>는 각각 3, 5이다.
+<span style="font-family:monospace">addtwo</span> 함수는 두 숫자 덧셈을 수행하고 <span style="font-family:monospace">added</span>라는 로컬 변수에 저장하고, <span style="font-family:monospace">return</span>문을 사용해서 덧셈 결과를 반환하고,
+<span style="font-family:monospace">x</span> 라는 변수에 대입해서 출력한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec57" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.11  왜 함수를 사용하는가?</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default261"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 함수로 나누는 고생을 할 가치가 있는지 명확하지 않을 수 있다. 다음에 여기 몇 가지 이유가 있다.</span></p><ul class="itemize"><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">문장을 그룹으로 만들어 새로운 함수로 명명하는 것이 프로그램을 읽고, 이해하고, 디버그하기 좋게한다. </span></li><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">함수는 반복 코드를 제거해서 프로그램을 작고 콤팩트하게 만든다. 나중에 프로그램에 수정사항이 생기면, 단지 한 곳에서만 수정을 하면 된다.</span></li><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">긴 프로그램을 함수로 나누어 작성하는 것은 작은 부분에서 버그를 수정할 수 있게 하고, 이를 조합해서 전체적으로 동작하는 프로그램을 만들 수 있다.</span></li><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">잘 설계된 함수는 종종 많은 프로그램에서 유용하게 사용된다. 잘 설계된 프로그램을 작성하고 디버그를 해서 오류가 없이 만들게 되면, 나중에 재사용도 용이하다.</span></li></ul><p><span style="font-weight:bold;font-size:medium;color:black">책의 나머지 부분에서 이 개념을 설명하는 함수 정의를 종종 사용한다. 
+"리스트에서 가장 작은 값을 찾아내는 것"과 같이 아이디어를 적절하게 추상화하여 함수를 작성하는 것이 함수를 만들고 사용하는 기술의 일부가 된다. 
+나중에, 리스트에서 가장 작은 값을 찾아내는 코드를 보여 줄 것입니다. 리스트를 인수로 받아 가장 작은 값을 
+반환하는 <span style="font-family:monospace">min</span> 함수를 작성해서 여러분에게 보여드릴 것이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec58" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.12  디버깅</span></h2>
+<p><span style="font-size:medium">
+</span><a id="editor"></a><span style="font-size:medium">
+</span><a id="hevea_default262"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">텍스트 편집기로 스크립트를 작성한다면 공백과 탭으로 몇번씩 문제에 봉착했을 것입니다. 
+이런 문제를 피하는 가장 최선의 방식은 절대 탭을 사용하지 말고 공백(스페이스)를 사용하는 것이다. 
+파이썬을 인식하는 대부분의 텍스트 편집기는 디폴트로 이런 기능을 지원하지만, 몇몇 텍스트 편집기는 이런 기능을 지원하지 않아 탭과 공백 문제를 야기한다.</span></p><p><a id="hevea_default263"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">탭과 공백은 통상 눈에 보이지 않기 때문에 디버그를 어렵게 한다. 
+자동으로 들여쓰기를 해주는 편집기를 프로그램 작성 시 사용한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하기 전에 저장하는 것을 잊지 마세요. 
+몇몇 개발 환경은 자동저장 기능을 지원하지만 그렇지 않는 것도 있다.
+이런 이유 때문에 텍스트 편집기에서 작성한 개발 프로그램과 실행운영하고 있는 프로그램이 같지 않을 수도 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">동일하고 잘못된 프로그램을 반복적으로 실행한다면, 디버깅은 오래 걸릴 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">작성하고 있는 코드와 실행하는 코드가 일치하는지 필히 확인하자. 
+확신을 하지 못한다면, 프로그램의 첫줄에 <code>print 'hello'</code> 을 넣어서 실행해 보자.
+<code>hello</code>를 보지 못한다면, 작성하고 있는 프로그램과 실행하고 있는 프로그램은 다른 것이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec59" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.13  용어정의</span></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">알고리즘(algorithm):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 특정 범주의 문제를 해결하는 일반적인 프로세스
+</span><a id="hevea_default264"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">인자(argument):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 함수가 호출될 때 함수에 제공되는 값. 이 값은 함수 내부에 상응하는 매개 변수에 대입된다.
+</span><a id="hevea_default265"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">몸통 부문(body):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 함수 정의 내부에 일련의 문장
+</span><a id="hevea_default266"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">구성(composition):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 
+좀더 큰 표현식의 일부분으로 표현식을 사용하거나, 좀더 큰 문장의 일부로서의 문장
+</span><a id="hevea_default267"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">결정론적(deterministic):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 동일한 입력값이 주어지고 실행될 때마다 동일한 행동을 하는 프로그램에 관련된 것.
+</span><a id="hevea_default268"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">점 표기법(dot notation):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 점과 함수명으로 모듈명을 명세함으로써 다른 모듈의 함수를 호출하는 구문.
+</span><a id="hevea_default269"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">실행 흐름(flow of execution):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 프로그램 실행 동안 명령문이 실행되는 순서.
+</span><a id="hevea_default270"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">결과있는 함수(fruitful function):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 반환값을 가지는 함수.
+</span><a id="hevea_default271"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">함수(function):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 유용한 연산을 수행하는 이름을 가진 일련의 명령문.
+함수는 인수를 가질 수도 갖지 않을 수도 있고, 결과값을 생성할 수도 생성하지 않을 수도 있다.
+</span><a id="hevea_default272"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">함수 호출(function call):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 함수를 실행하는 명령문. 함수 이름과 인자 리스트로 구성된다.
+</span><a id="hevea_default273"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">함수 정의(function definition):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 신규 함수를 정의하는 명령문으로 이름, 매개변수, 실행 명령문을 명세한다.
+</span><a id="hevea_default274"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">함수 객체(function object):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 함수 정의로 생성되는 값. 함수명은 함수 객체를 참조하는 변수다.
+</span><a id="hevea_default275"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">머리 부문(header):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 함수 정의의 첫번째 줄
+</span><a id="hevea_default276"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">가져오기 문(import statement):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 모듈 파일을 읽어 모듈 개체를 생성하는 명령문
+</span><a id="hevea_default277"></a><span style="font-size:medium">
+</span><a id="hevea_default278"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">모듈 개체(module object):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> <span style="font-family:monospace">import</span>문에 의해서 생성된 모듈에 정의된 코드와 데이터에 접근할 수 있는 값
+</span><a id="hevea_default279"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">매개 변수(parameter):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 인자로 전달된 값을 참조하기 위해 함수 내부에 사용되는 이름
+</span><a id="hevea_default280"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">의사 난수(pseudorandom):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 난수처럼 보이는 일련의 숫자와 관련되어 있지만, 결정론적 프로그램에 의해 생성된다.
+</span><a id="hevea_default281"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">반환 값(return value):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 함수의 결과. 함수 호출이 표현식으로 사용된다면, 반환값은 표현식의 값이 된다. 
+</span><a id="hevea_default282"></a><span style="font-size:medium">
+</span></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">빈 함수(void function):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 반환값을 갖지 않는 함수
+</span><a id="hevea_default283"></a><span style="font-size:medium">
+</span></dd></dl><span style="font-size:medium">
+</span><h2 id="sec60" class="section"><span style="font-weight:bold;font-size:medium;color:black">5.14  연습문제</span></h2>
+<div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 4  <em>
+파이썬 "def" 키워드의 목적은 무엇입니까?</em></span><p><span style="font-weight:bold;font-size:medium;color:black"><em>a) "다음의 코드는 정말 좋다"라는 의미를 가진 속어<br />
+b) 함수의 시작을 표시한다.<br />
+c) 다음의 들여쓰기 코드 부문은 나중을 위해 저장되야 된다는 것을 표시한다.<br />
+d) b와 c 모두 사실<br />
+e) 위 모두 거짓
+</em></span></p></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 5  </span><p><span style="font-weight:bold;font-size:medium;color:black"><em>다음 파이썬 프로그램은 무엇을 출력할까요?</em></span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue"><em>def fred():
+   print "Zap"
+
+def jane():
+   print "ABC"
+
+jane()
+fred()
+jane()
+</em></span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><em>a) Zap ABC jane fred jane<br />
+b) Zap ABC Zap<br />
+c) ABC Zap jane<br />
+d) ABC Zap ABC<br />
+e) Zap Zap Zap
+</em></span></p></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 6  </span><p><span style="font-weight:bold;font-size:medium;color:black"><em>프로그램 작성 시 (<span style="font-family:monospace">hours</span>과 <span style="font-family:monospace">rate</span>)을 매개 변수로 갖는 함수 <span style="font-family:monospace">computepay</span>을 생성하여,
+초과근무에 대해서는 50％ 초과 근무수당을 지급하는 봉급 계산 프로그램을 다시 작성하세요.</em></span></p><pre class="verbatim"><span style="font-weight:bold;font-size:medium;color:black"><em>Enter Hours: 45
+Enter Rate: 10
+Pay: 475.0
+</em></span></pre></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 7  </span><p><span style="font-weight:bold;font-size:medium;color:black"><em>매개 변수로 점수를 받아 문자열로 등급을 반환하는 <span style="font-family:monospace">computegrade</span> 함수를 사용하여
+앞장의 등급 프로그램을 다시 작성하세요.</em></span></p><pre class="verbatim"><span style="font-weight:bold;font-size:medium;color:black"><em>Score   Grade
+&gt; 0.9     A
+&gt; 0.8     B
+&gt; 0.7     C
+&gt; 0.6     D
+&lt;= 0.6    F
+
+Program Execution:
+
+Enter score: 0.95
+A
+
+Enter score: perfect
+Bad score
+
+Enter score: 10.0
+Bad score
+
+Enter score: 0.75
+C
+
+Enter score: 0.5
+F
+</em></span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><em>반복적으로 프로그램을 실행해서 다양한 다른 입력값을 테스트해 보세요.</em></span></p></div><span style="font-size:medium">
+</span><footer class="footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-offset-3 col-lg-6">
+<div class="row">
+<div class="col-xs-12 text-center">
+<small>&copy; rifyll theme, 2014, 
+                Powered by <a href="http://www.ibm.com/cloud-computing/kr/ko/softlayer/"><img src="/img/softlayer.png" width="47" height="23" alt="hosting services" /></a> </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<hr />
+<a href="book005.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book007.html"><img src="next_motif.gif" alt="Next" /></a>
+</body>
+</html>

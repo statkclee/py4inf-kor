@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hevea 2.09" />
+<link rel="stylesheet" type="text/css" href="book.css" />
+<title>반복(Iteration)</title>
+</head>
+<body>
+<a href="book006.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book008.html"><img src="next_motif.gif" alt="Next" /></a>
+<hr />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="  xwMOOC와 함께 정보 불평등(digital divide)을 해소하는 것을 넘어 기회로 바꾸세요!" />
+<title> 불평등(Digital Divide)을 "기회"로. </title>
+<!-- stylesheets -->
+<link media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link media="all" rel="stylesheet" href="/assets/css/site.css" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59802572-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<h1 id="sec61" class="chapter"><span style="font-weight:bold;font-size:medium;color:black">Chapter 6  반복(Iteration)</span></h1>
+<p><span style="font-size:medium">
+</span><a id="hevea_default284"></a></p><span style="font-size:medium">
+</span><h2 id="sec62" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.1   변수 갱신</span></h2>
+<p><span style="font-size:medium">
+</span><a id="update"></a></p><p><a id="hevea_default285"></a><span style="font-size:medium">
+</span><a id="hevea_default286"></a><span style="font-size:medium">
+</span></p><p><span style="font-weight:bold;font-size:medium;color:black">대입문의 흔한 패턴은 변수를 갱신하는 대입문이다. 
+변수의 새로운 값은 이전 값에 의존한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">x = x+1
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 예제는 “현재 값 <span style="font-family:monospace">x</span>에 1을 더해서 <span style="font-family:monospace">x</span>를 새로운 값으로 갱신한다.”</span></p><p><span style="font-weight:bold;font-size:medium;color:black">만약 존재하지 않는 변수를 갱신하면, 오류가 발생한다. 
+왜냐하면 <span style="font-family:monospace">x</span>에 값을 대입하기 전에 파이썬이 오른쪽을 먼저 평가하기 때문이다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; x = x+1
+NameError: name 'x' is not defined
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">변수를 갱신하기 전에 간단한 변수 대입으로 통상 먼저 초기화(initialize)한다.</span></p><p><a id="hevea_default287"></a><span style="font-size:medium">
+</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; x = 0
+&gt;&gt;&gt; x = x+1
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">1을 더해서 변수를 갱신하는 것을 증가(increment)라고 하고, 
+1을 빼서 변수를 갱신하는 것을 감소(decrement)라고 한다.</span></p><p><a id="hevea_default288"></a><span style="font-size:medium">
+</span><a id="hevea_default289"></a></p><span style="font-size:medium">
+</span><h2 id="sec63" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.2   <span style="font-family:monospace">while</span>문</span></h2>
+<p><a id="hevea_default290"></a><span style="font-size:medium">
+</span><a id="hevea_default291"></a><span style="font-size:medium">
+</span><a id="hevea_default292"></a><span style="font-size:medium">
+</span><a id="hevea_default293"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">종종 반복적인 작업을 자동화하기 위해서 컴퓨터를 사용한다. 
+오류 없이 동일하거나 비슷한 작업을 반복하는 일은 컴퓨터가 사람보다 잘한다.
+반복이 매우 흔한 일이어서, 파이썬에서 반복 작업을 쉽게 하도록 몇가지 언어적 기능을 제공한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬에서 반복의 한 형태가 <span style="font-family:monospace">while</span>문이다.
+다음은 5 에서부터 거꾸로 세어서 마지막에 “Blastoff(발사)!”를 출력하는 간단한 프로그램이다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">n = 5
+while n &gt; 0:
+    print n
+    n = n-1
+print 'Blastoff(발사)!'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">마치 영어를 읽듯이 <span style="font-family:monospace">while</span>을 읽어 내려갈 수 있다. 
+<span style="font-family:monospace">n</span>이 0 보다 큰 동안에 <span style="font-family:monospace">n</span>의 값을 출력하고 <span style="font-family:monospace">n</span> 값에서 1만큼 뺀다. 
+0 에 도달했을 때, <span style="font-family:monospace">while</span>문을 빠져나가 <span style="font-family:monospace">Blastoff(발사)!</span>”를 화면에 출력한다.</span></p><p><a id="hevea_default294"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">좀더 형식을 갖춰 정리하면, 다음이 <span style="font-family:monospace">while</span>문에 대한 실행 흐름에 대한 정리다.</span></p><ol class="enumerate" type="1"><li class="li-enumerate"><span style="font-weight:bold;font-size:medium;color:black">조건을 평가해서 <span style="font-family:monospace">참(True)</span> 혹은 <span style="font-family:monospace">거짓(False)</span>를 산출한다.</span></li><li class="li-enumerate"><span style="font-weight:bold;font-size:medium;color:black">만약 조건이 거짓이면, <span style="font-family:monospace">while</span>문을 빠져나가 다음 문장을 계속 실행한다.</span></li><li class="li-enumerate"><span style="font-weight:bold;font-size:medium;color:black">만약 조건이 참이면, 몸통 부문의 문장을 실행하고 다시 처음 1번 단계로 돌아간다.</span></li></ol><p><span style="font-weight:bold;font-size:medium;color:black">3번째 단계에서 처음으로 다시 돌아가는 반복을 하기 때문에 이런 종류의 흐름을 루프(loop)이라고 부른다.
+매번 루프 몸통 부문을 실행할 때마다, 이것을 반복(iteration)이라고 한다. 
+상기 루프에 대해서 “5번 반복했다”고 말한다. 
+즉, 루프 몸통 부문이 5번 수행되었다는 의미가 된다.</span></p><p><a id="hevea_default295"></a><span style="font-size:medium">
+</span><a id="hevea_default296"></a><span style="font-size:medium">
+</span><a id="hevea_default297"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">루프 몸통 부문은 필히 하나 혹은 그 이상의 변수값을 바꾸어서 
+종국에는 조건식이 거짓(false)이 되어 루프가 종료되게 만들어야 한다.
+매번 루프가 실행될 때마다 상태를 변경하고 언제 루프가 끝날지 제어하는 변수를 반복 변수(iteration variable)라고 한다.
+만약 반복 변수가 없다면, 루프는 영원히 반복될 것이고, 결국 무한 루프(infinite loop)에 빠질 것이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec64" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.3   무한 루프</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">프로그래머에게 무한한 즐거움의 원천은 아마도 "거품내고, 헹구고, 반복" 이렇게 적혀있는 샴프 사용법 문구가 무한루프라는 것을 알아차릴 때일 것이다.
+왜냐하면, 얼마나 많이 루프를 실행해야 하는지 말해주는 반복 변수(iteration variable)가 없어서 무한 반복하기 때문입니다.</span></p><p><a id="hevea_default298"></a><span style="font-size:medium">
+</span><a id="hevea_default299"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">숫자를 꺼꾸로 세는 (<span style="font-family:monospace">countdown</span>) 예제는 루프가 끝나는 것을 증명할 수 있다.
+왜냐하면 <span style="font-family:monospace">n</span>값이 유한하고, <span style="font-family:monospace">n</span>이 매번 루프를 돌 때마다 작아져서 결국 0 에 도달할 것이기 때문이다. 
+다른 경우 반복 변수가 전혀 없어서 루프가 명백하게 무한 반복한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec65" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.4   무한 반복과 <span style="font-family:monospace">break</span></span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default300"></a><span style="font-size:medium">
+</span><a id="hevea_default301"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">가끔 몸통 부문을 절반 진행할 때까지 루프를 종료해야하는 시점인지 확신하지 못한다.
+이런 경우 의도적으로 무한 루프를 작성하고 <span style="font-family:monospace">break</span> 문을 사용하여 루프를 빠져 나온다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음 루프는 명백하게 무한 루프(infinite loop)가 되는데 이유는 <span style="font-family:monospace">while</span>문 논리 표현식이 단순히 논리 상수 <span style="font-family:monospace">참(True)</span>으로 되어 있기 때문이다. </span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">n = 10
+while True:
+    print n, 
+    n = n - 1
+print 'Done!'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">실수하여 상기 프로그램을 실행한다면, 폭주하는 파이썬 프로세스를 어떻게 멈추는지 빨리 배우거나, 컴퓨터의 전원 버튼이 어디에 있는지 찾아야 할 것이다.
+표현식 상수 값이 <span style="font-family:monospace">참(True)</span>이라는 사실로 루프 상단 논리 연산식이 항상 참 값이여서 프로그램이 영원히 혹은 배터리가 모두 소진될 때까지 실행된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이것이 역기능 무한 루프라는 것은 사실이지만, 유용한 루프를 작성하기 위해는 이 패턴을 여전히 이용할 것이다. 
+이를 위해서 루프 몸통 부문에 <span style="font-family:monospace">break</span>문을 사용하여 루프를 빠져나가는 조건에 도달했을 때, 
+루프를 명시적으로 빠져나갈 수 있도록 주의깊게 코드를 추가해야 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">예를 들어, 사용자가 <span style="font-family:monospace">done</span>을 입력하기 전까지 사용자로부터 입력값을 받는다고 가정해서 프로그램 코드를 다음과 같이 작성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">while True:
+    line = raw_input('&gt; ')
+    if line == 'done':
+        break
+    print line
+print 'Done!'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">루프 조건이 항상 <span style="font-family:monospace">참(True)</span>이여서 <span style="font-family:monospace">break</span>문이 호출될 때까지 루프는 반복적으로 실행된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">매번 프로그램이 꺾쇠 괄호로 사용자에게 명령문을 받을 준비를 한다.
+사용자가 <span style="font-family:monospace">done</span>을 타이핑하면, <span style="font-family:monospace">break</span>문이 실행되어 루프를 빠져나온다. 
+그렇지 않은 경우 프로그램은 사용자가 무엇을 입력하든 메아리처럼 입력한 것을 그대로 출력하고
+다시 루프 처음으로 되돌아 간다. 다음 예제로 실행한 결과가 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt; hello there
+hello there
+&gt; finished
+finished
+&gt; done
+Done!
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">while</span> 루프를 이와 같은 방식으로 작성하는 것이 흔한데 
+프로그램 상단에서 뿐만 아니라 루프 어디에서나 조건을 확인할 수 있고 피동적으로 ”이벤트가 발생할 때까지 계속 실행" 대신에, 
+적극적으로 ”이벤트가 생겼을 때 중지”로 멈춤 조건을 표현할 수 있다.</span></p><span style="font-size:medium">
+</span><h2 id="sec66" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.5   <span style="font-family:monospace">continue</span>로 반복 종료</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default302"></a><span style="font-size:medium">
+</span><a id="hevea_default303"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">때때로 루프를 반복하는 중간에서 현재 반복을 끝내고, 다음 반복으로 즉시 점프하여 이동하고 싶을 때가 있다.
+현재 반복 루프 몸통 부분 전체를 끝내지 않고 다음 반복으로 건너뛰기 위해서 <span style="font-family:monospace">continue</span>문을 사용한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">사용자가 ”done”을 입력할 때까지 입력값을 그대로 복사하여 출력하는 루프 예제가 있다. 
+하지만 파이썬 주석문처럼 해쉬(<code>#</code>)로 시작하는 줄은 출력하지 않느다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">while True:
+    line = raw_input('&gt; ')
+    if line[0] == '#' :
+        continue
+    if line == 'done':
+        break
+    print line
+print 'Done!'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">continue</span>문이 추가된 새로운 프로그램을 샘플로 실행했다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt; hello there
+hello there
+&gt; # don't print this
+&gt; print this!
+print this!
+&gt; done
+Done!
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">해쉬 기호(<code>#</code>)로 시작하는 줄을 제외하고 모든 줄을 출력한다. 
+왜냐하면, <span style="font-family:monospace">continue</span>문이 실행될 때,현재 반복을 종료하고 <span style="font-family:monospace">while</span>문 처음으로 돌아가서 다음 반복을 실행하게 되어서 <span style="font-family:monospace">print</span>문을 건너뛴다.</span></p><span style="font-size:medium">
+</span><h2 id="sec67" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.6   <span style="font-family:monospace">for</span>문을 사용한 명확한 루프 </span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default304"></a><span style="font-size:medium">
+</span><a id="hevea_default305"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">때때로, 단어 리스트나, 파일의 줄, 숫자 리스트 같은 사물의 집합에 대해 루프를 반복할 때가 있다.
+루프를 반복할 사물 리스트가 있을 때, <span style="font-family:monospace">for</span>문을 사용해서 <em>확정 루프(definite loop)</em>를 구성한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">while</span>문을 <em>불확정 루프(indefinite loop)</em>라고 하는데, 왜냐하면 어떤 조건이 <span style="font-family:monospace">거짓(False)</span>가 될 때까지 루프가 단순히 계혹해서 돌기 때문이다. 
+하지만, <span style="font-family:monospace">for</span>루프는 확정된 항목의 집합에 대해서 루프가 돌게 되어서 집합에 있는 항목만큼만 실행이 된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">for</span>문이 있고, 루프 몸통 부문으로 구성된다는 점에서 <span style="font-family:monospace">for</span>루프 구문은 <span style="font-family:monospace">while</span>루프 구문과 비슷하다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">friends = ['Joseph', 'Glenn', 'Sally']
+for friend in friends:
+    print 'Happy New Year:', friend
+print 'Done!'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파이썬 용어로, 변수 <span style="font-family:monospace">friends</span>는 3개의 문자열을 가지는 리스트고,
+<span style="font-family:monospace">for</span> 루프는 리스트를 하나씩 하나씩 찾아서 리스트에 있는 3개 문자열 각각에 대해 출력을 실행하여 다음 결과를 얻게 된다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">Happy New Year: Joseph
+Happy New Year: Glenn
+Happy New Year: Sally
+Done!
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">for</span> 루프를 영어로 번역하는 것이 <span style="font-family:monospace">while</span>문을 번역하는 것과 같이 직접적이지는 않다. 
+하지만, 만약 <span style="font-family:monospace">friends</span>를 집합(set)으로 생각한다면 다음과 같다.
+<span style="font-family:monospace">friends</span>라고 명명된 집합에서 <span style="font-family:monospace">friend</span> 각각에 대해서 한번씩 <span style="font-family:monospace">for</span> 루프 몸통 부문에 있는 문장을 실행하라.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">for</span> 루프를 살펴보면, for와 in은 파이썬 예약어이고 <span style="font-family:monospace">friend</span>와 <span style="font-family:monospace">friends</span>는 변수이다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">for friend in friends:<br />
+<code> </code>print ’Happy New Year’, friend </span></p><p><span style="font-weight:bold;font-size:medium;color:black">특히, <span style="font-family:monospace">friend</span>는 <span style="font-family:monospace">for</span> 루프의 반복 변수(iteration variable)다. 
+변수 <span style="font-family:monospace">friend</span>는 루프가 매번 반복할 때마다 변하고, 언제 <span style="font-family:monospace">for</span> 루프가 완료되는지 제어한다.
+반복 변수는 <span style="font-family:monospace">friend</span> 변수에 저장된 3개 문자열을 순차적으로 훑고 간다.</span></p><span style="font-size:medium">
+</span><h2 id="sec68" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.7   루프 패턴</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">종종 <span style="font-family:monospace">for</span>문과 <span style="font-family:monospace">while</span>문을 사용하여, 리스트 항목, 파일 콘텐츠를 훑어 자료에 있는 가장 큰 값이나 작은 값 같은 것을 찾는다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">for</span>나 <span style="font-family:monospace">while</span> 루프는 일반적으로 다음과 같이 구축된다.</span></p><ul class="itemize"><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">루프가 시작하기 전에 하나 혹은 그 이상의 변수를 초기화</span></li><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">루프 몸통부분에 각 항목에 대해 연산을 수행하고, 루프 몸통 부분의 변수 상태를 변경</span></li><li class="li-itemize"><span style="font-weight:bold;font-size:medium;color:black">루프가 완료되면 결과 변수의 상태 확인</span></li></ul><p><span style="font-weight:bold;font-size:medium;color:black">루프 패턴의 개념과 작성을 시연하기 위해서 숫자 리스트를 사용한다.</span></p><span style="font-size:medium">
+</span><h3 id="sec69" class="subsection"><span style="font-weight:bold;font-size:medium;color:black">6.7.1   계수(counting)와 합산 루프</span></h3>
+<p><span style="font-weight:bold;font-size:medium;color:black">예를 들어, 리스트의 항목을 세기 위해서 다음과 같이 <span style="font-family:monospace">for</span> 루프를 작성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">count = 0
+for itervar in [3, 41, 12, 9, 74, 15]:
+    count = count + 1
+print 'Count: ', count
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">루프가 시작하기 전에 변수 <span style="font-family:monospace">count</span>를 0 으로 설정하고, 숫자 목록을 훑어 갈 <span style="font-family:monospace">for</span> 루프를 작성한다.
+반복(iteration) 변수는 <span style="font-family:monospace">itervar</span>라고 하고, 
+루프에서 <span style="font-family:monospace">itervar</span>을 사용되지 않지만,
+<span style="font-family:monospace">itervar</span>는 루프를 제어하고 루프 몸통 부문 리스트의 각 값에 대해서 한번만 실행되게 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">루프 몸통 부문에 리스트의 각 값에 대해서 변수 <span style="font-family:monospace">count</span> 값에 1을 더한다.
+루프가 실행될 때, <span style="font-family:monospace">count</span> 값은 ”지금까지” 살펴본 값의 횟수가 된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">루프가 종료되면, <span style="font-family:monospace">count</span> 값은 총 항목 숫자가 된다. 
+총 숫자는 루프 맨마지막에 얻어진다.
+루프를 구성해서, 루프가 끝났을 때 기대했던 바를 얻었다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">숫자 집합의 갯수를 세는 또 다른 비슷한 루프는 다음과 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">total = 0
+for itervar in [3, 41, 12, 9, 74, 15]:
+    total = total + itervar
+print 'Total: ', total
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 루프에서, 반복 변수(iteration variable)가 사용되었다. 
+앞선 루프에서처럼 변수 <span style="font-family:monospace">count</span>에 1을 단순히 더하는 대신에,
+각 루프가 반복을 수행하는 동안 실제 숫자 (3, 41, 12, 등)를 작업중인 합계에 덧셈을 했다.
+변수 <span style="font-family:monospace">total</span>을 생각해보면, <span style="font-family:monospace">total</span>은 ”지금까지 값의 총계다.” 
+루프가 시작하기 전에 <span style="font-family:monospace">total</span>은 어떤 값도 살펴본 적이 없어서 0 이다. 
+루프가 도는 중에는 <span style="font-family:monospace">total</span>은 작업중인 총계가 된다. 
+루프의 마지막 단계에서 <span style="font-family:monospace">total</span>은 리스트에 있는 모든 값의 총계가 된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">루프가 실행됨에 따라, <span style="font-family:monospace">total</span>은 각 요소의 합계로 누적된다. 
+이 방식으로 사용되는 변수를 누산기(accumulator)라고 한다.</span></p><p><a id="hevea_default306"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">계수(counting) 루프나 합산 루프는 특히 실무에서 유용하지는 않다. 
+왜냐하면 리스트에서 항목의 개수와 총계를 계산하는 <span style="font-family:monospace">len()</span>과 <span style="font-family:monospace">sum()</span>가 각각 내장 함수로 있기 때문이다.</span></p><span style="font-size:medium">
+</span><h3 id="sec70" class="subsection"><span style="font-weight:bold;font-size:medium;color:black">6.7.2   최대값과 최소값 루프</span></h3>
+<p><span style="font-size:medium">
+</span><a id="maximumloop"></a></p><p><a id="hevea_default307"></a><span style="font-size:medium">
+</span><a id="hevea_default308"></a><span style="font-size:medium">
+</span><a id="hevea_default309"></a><span style="font-size:medium">
+</span><a id="hevea_default310"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">리스트나 열(sequence)에서 가장 큰 값을 찾기 위해서, 다음과 같이 루프를 작성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">largest = None
+print 'Before:', largest
+for itervar in [3, 41, 12, 9, 74, 15]:
+    if largest is None or itervar &gt; largest :
+        largest = itervar
+    print 'Loop:', itervar, largest
+print 'Largest:', largest
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면, 출력은 다음과 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">Before: None
+Loop: 3 3
+Loop: 41 41
+Loop: 12 41
+Loop: 9 41
+Loop: 74 74
+Loop: 15 74
+Largest: 74
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">변수 <span style="font-family:monospace">largest</span>는 ”지금까지 본 가장 큰 수"로 생각할 수 있다.
+루프 시작 전에 <span style="font-family:monospace">largest</span> 값은 상수 <span style="font-family:monospace">None</span>이다.
+<span style="font-family:monospace">None</span>은 ”빈(empty)” 변수를 표기하기 위해서 변수에 저장하는 특별한 상수 값이다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">루프 시작 전에 지금까지 본 가장 큰 수는 <span style="font-family:monospace">None</span>이다. 
+왜냐하면 아직 어떤 값도 보지 않았기 때문이다.
+루프가 실행되는 동안에, <span style="font-family:monospace">largest</span> 값이 <span style="font-family:monospace">None</span>이면, 첫 번째 본 값이 지금까지 본 가장 큰 값이 된다.
+첫번째 반복에서 <span style="font-family:monospace">itervar</span>는 3 이 되는데 <span style="font-family:monospace">largest</span> 값이 <span style="font-family:monospace">None</span>이여서 즉시, <span style="font-family:monospace">largest</span>값을 3 으로 갱신한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">첫번째 반복 후에 <span style="font-family:monospace">largest</span>는 더 이상 <span style="font-family:monospace">None</span>이 아니다. 
+<span style="font-family:monospace">itervar &gt; largest</span>인지를 확인하는 복합 논리 표현식의 두 번째 부분은 ”지금까지 본” 값 보다 더 큰 값을 찾게 될 때 자동으로 동작한다.
+”심지어 더 큰” 값을 찾게 되면 변수 <span style="font-family:monospace">largest</span>에 새로운 값으로 대체한다.
+<span style="font-family:monospace">largest</span>가 3에서 41, 41에서 74로 변경되어 출력되어 나가는 것을 확인할 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">루프의 끝에서 모든 값을 훑어서 변수 <span style="font-family:monospace">largest</span>는 리스트의 가장 큰 값을 담고 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">최소값을 계산하기 위해서는 코드가 매우 유사하지만 작은 변화가 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">smallest = None
+print 'Before:', smallest
+for itervar in [3, 41, 12, 9, 74, 15]:
+    if smallest is None or itervar &lt; smallest:
+        smallest = itervar
+    print 'Loop:', itervar, smallest
+print 'Smallest:', smallest
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">변수 <span style="font-family:monospace">smallest</span>는 루프 실행 전에, 중에, 완료 후에 ”지금까지 본 가장 작은" 값이 된다.
+루프 실행이 완료되면, <span style="font-family:monospace">smallest</span>는 리스트의 최소 값을 담게 된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">계수(counting)과 합산에서와 마찬가지로 파이썬 내장함수 <span style="font-family:monospace">max()</span>와 <span style="font-family:monospace">min()</span>은 이런 루프문 작성을 불필요하게 만든다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음은 파이썬 내장 <span style="font-family:monospace">min()</span> 함수의 간략 버전이다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">def min(values):
+    smallest = None
+    for value in values:
+        if smallest is None or value &lt; smallest:
+            smallest = value
+    return smallest
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">가장 적은 코드로 작성한 함수 버전은 파이썬에 이미 내장된 <span style="font-family:monospace">min</span> 함수와 동등하게 만들기 위해서 모든 <span style="font-family:monospace">print</span>문을 삭제했다.</span></p><span style="font-size:medium">
+</span><h2 id="sec71" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.8   디버깅</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">좀더 큰 프로그램을 작성할 때, 좀더 많은 시간을 디버깅에 보내는 자신을 발견할 것이다.
+좀더 많은 코드는 버그가 숨을 수 있는 좀더 많은 장소와 오류가 발생할 기회가 있다는 것을 의미한다.</span></p><p><a id="hevea_default311"></a><span style="font-size:medium">
+</span><a id="hevea_default312"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">디버깅 시간을 줄이는 한 방법은 ” 이분법에 따라 디버깅(debugging by bisection)” 하는 것이다.
+예를 들어, 프로그램에 100 줄이 있고 한번에 하나씩 확인한다면, 100 번 단계가 필요하다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">대신에 문제를 반으로 나눈다. 
+프로그램 정확히 중간이나, 중간부분에서 점검한다.
+<span style="font-family:monospace">print</span>문이나, 검증 효과를 갖는 상응하는 대용물을 넣고 프로그램을 실행한다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">중간지점 점검 결과 잘못 되었다면 문제는 양분한 프로그램 앞부분에 틀림없이 있다. 만약 정확하다면, 문제는 프로그램 뒷부분에 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이와 같은 방식으로 점검하게 되면, 검토 해야하는 코드의 줄수를 절반으로 계속 줄일 수 있다.
+단계가 100 번 걸리는 것에 비해 6번 단계 후에 이론적으로 1 혹은 2 줄로 문제 코드의 범위를 좁힐 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">실무에서, ”프로그램의 중간”이 무엇인지는 명확하지 않고, 확인하는 것도 가능하지 않다. 
+프로그램 코드 라인을 세서 정확히 가운데를 찾는 것은 의미가 없다.
+대신에 프로그램 오류가 생길 수 있는 곳과 오류를 확인하기 쉬운 장소를 생각하세요. 
+점검 지점 앞뒤로 버그가 있을 곳과 동일하게 생각하는 곳을 중간지점으로 고르세요.</span></p><span style="font-size:medium">
+</span><h2 id="sec72" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.9   용어정의</span></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">누산기(accumulator):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 더하거나 결과를 누적하기 위해 루프에서 사용되는 변수
+</span><a id="hevea_default313"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">계수(counter):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 루프에서 어떤 것이 일어나는 횟수를 기록하는데 사용되는 변수.
+카운터를 0 으로 초기화하고, 어떤 것의 ”횟수”를 셀 때 카운터를 증가시킨다.
+</span><a id="hevea_default314"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">감소(decrement):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 변수 값을 감소하여 갱신
+</span><a id="hevea_default315"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">초기화(initialize):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 갱신될 변수의 값을 초기 값으로 대입
+</span><a id="hevea_default316"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">증가(increment):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 변수 값을 증가시켜 갱신 (통상 1씩)
+</span><a id="hevea_default317"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">무한 루프(infinite loop):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 종료 조건이 결코 만족되지 않거나 종료 조건이 없는 루프
+</span><a id="hevea_default318"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">반복(iteration):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 재귀함수 호출이나 루프를 사용하여 명령문을 반복 실행
+</span><a id="hevea_default319"></a></dd></dl><span style="font-size:medium">
+</span><h2 id="sec73" class="section"><span style="font-weight:bold;font-size:medium;color:black">6.10   연습문제</span></h2>
+<div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 1  <em>
+사용자가 “done”을 입력할 때까지 반복적으로 숫자를 읽는 프로그램을 작성하세요.
+“done”이 입력되면, 총계, 갯수, 평균을 출력하세요.
+만약 숫자가 아닌 다른 것을 입력하게되면, <span style="font-family:monospace">try</span>와 <span style="font-family:monospace">except</span>를 사용하여 사용자 실수를 탐지해서
+오류 메시지를 출력하고 다음 숫자로 건너 뛰게 하세요.</em></span><pre class="verbatim"><span style="font-weight:bold;font-size:medium;color:black"><em>Enter a number: 4
+Enter a number: 5
+Enter a number: bad data
+Invalid input
+Enter a number: 7
+Enter a number: done
+16 3 5.33333333333
+</em></span></pre></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 2  <em>
+위에서처럼 숫자 목록을 사용자로부터 입력받는 프로그램을 작성하세요. 
+평균값 대신에 숫자 목록 최대값과 최소값을 출력하세요.
+</em></span></div><span style="font-size:medium">
+</span><footer class="footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-offset-3 col-lg-6">
+<div class="row">
+<div class="col-xs-12 text-center">
+<small>&copy; rifyll theme, 2014, 
+                Powered by <a href="http://www.ibm.com/cloud-computing/kr/ko/softlayer/"><img src="/img/softlayer.png" width="47" height="23" alt="hosting services" /></a> </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<hr />
+<a href="book006.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book008.html"><img src="next_motif.gif" alt="Next" /></a>
+</body>
+</html>

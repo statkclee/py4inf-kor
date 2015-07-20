@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hevea 2.09" />
+<link rel="stylesheet" type="text/css" href="book.css" />
+<title>파일</title>
+</head>
+<body>
+<a href="book008.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book010.html"><img src="next_motif.gif" alt="Next" /></a>
+<hr />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="  xwMOOC와 함께 정보 불평등(digital divide)을 해소하는 것을 넘어 기회로 바꾸세요!" />
+<title> 불평등(Digital Divide)을 "기회"로. </title>
+<!-- stylesheets -->
+<link media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link media="all" rel="stylesheet" href="/assets/css/site.css" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59802572-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<h1 id="sec89" class="chapter"><span style="font-weight:bold;font-size:medium;color:black">Chapter 8  파일</span></h1>
+<p><a id="hevea_default408"></a><span style="font-size:medium">
+</span><a id="hevea_default409"></a></p><span style="font-size:medium">
+</span><h2 id="sec90" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.1  영속성(Persistence)</span></h2>
+<p><a id="hevea_default410"></a><span style="font-size:medium">
+</span><a id="hevea_default411"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">지금까지, 프로그램을 어떻게 작성하고 조건문, 함수, 반복을 사용하여 
+중앙처리장치(CPU, Central Processing Unit)에 프로그래머의 의도를 커뮤니케이션하는지 학습했다.
+주기억장치(Main Memory)에 어떻게 자료구조를 생성하고 사용하는지도 배웠다.
+CPU와 주기억장치는 소프트웨어가 동작하고 실행되는 곳이고, 모든 ”생각(thinking)”이 발생하는 장소다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 앞서 하드웨어 아키텍처를 논의했던 기억을 되살린다면,
+전원이 꺼지게 되면, CPU와 주기억장치에 저장된 모든 것이 지워진다.
+지금까지 작성한 프로그램은 파이썬을 배우기 위한 일시적으로 재미로 연습한 것에 불과하다.</span></p><div class="center"><span style="font-weight:bold;font-size:medium;color:black"><img src="book010.png" /></span></div><p><span style="font-weight:bold;font-size:medium;color:black">이번 장에서 보조 기억장치(Secondary Memory) 혹은 파일을 가지고 작업을 시작한다.
+보조 기억장치는 전원이 꺼져도 지워지지 않는다.
+혹은, USB 플래쉬 드라이브를 사용한 경우에는 프로그램으로부터 작성한 데이터는 시스템에서 제거되어 다른 시스템으로 전송될 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">우선 텍스트 편집기로 작성한 텍스트 파일을 읽고 쓰는 것에 초점을 맞출 것이다.
+나중에 데이터베이스 소프트웨어를 통해서 읽고 쓰도록 설계된 바이너리 파일 데이터베이스를 가지고 어떻게 작업하는지를 살펴볼 것이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec91" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.2  파일 열기</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default412"></a><span style="font-size:medium">
+</span><a id="hevea_default413"></a><span style="font-size:medium">
+</span><a id="hevea_default414"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">하드 디스크 파일을 읽거나 쓸려고 할 때, 파일을 열여야(open) 한다.
+파일을 열 때 각 파일 데이터가 어디에 저장되었는지를 알고 있는 운영체제와 커뮤니케이션 한다.
+파일을 열 때, 운영체제에 파일이 존재하는지 확인하고 이름으로 파일을 찾도록 요청한다. 
+이번 예제에서, 파이썬을 시작한 동일한 폴더에 저장된 <span style="font-family:monospace">mbox.txt</span> 파일을 연다. 
+<span style="font-family:monospace">www.py4inf.com/code/mbox.txt</span> 에서 파일을 다운로드할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; fhand = open('mbox.txt')
+&gt;&gt;&gt; print fhand
+&lt;open file 'mbox.txt', mode 'r' at 0x1005088b0&gt;
+</span></pre><p><a id="hevea_default415"></a></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">open</span>이 성공하면, 운영체제는 파일 핸들(file handle)을 반환한다.
+파일 핸들(file handle)은 파일에 담겨진 실제 데이터는 아니고, 
+대신에 데이터를 읽을 수 있도록 사용할 수 있는 ”핸들(handle)”이다.
+요청한 파일이 존재하고, 파일을 읽을 수 있는 적절한 권한이 있다면 이제 핸들이 여러분에게 주어졌다.</span></p><div class="center"><span style="font-weight:bold;font-size:medium;color:black"><img src="book011.png" /></span></div><p><span style="font-weight:bold;font-size:medium;color:black">파일이 존재하지 않는다면, <span style="font-family:monospace">open</span>은 역추적(traceback) 파일 열기 오류로 실패하고, 파일 콘텐츠에 접근할 핸들도 얻지 못한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; fhand = open('stuff.txt')
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+IOError: [Errno 2] No such file or directory: 'stuff.txt'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">나중에 <span style="font-family:monospace">try</span>와 <span style="font-family:monospace">except</span>를 가지고, 존재하지 않는 파일을 열려고 하는 상황을 좀더 우아하게 처리할 것이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec92" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.3  텍스트 파일과 라인</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">파이썬 문자열이 문자 순서(sequence)로 간주 되듯이 마찬가지로 텍스트 파일은 라인 순서(sequence)로 생각될 수 있다.
+예를 들어, 다음은 오픈 소스 프로젝트 개발 팀에서 다양한 참여자들의 전자우편 활동을 기록한 텍스트 파일 샘플이다.</span></p><pre><span style="font-weight:bold;font-size:large;color:blue">
+From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+Return-Path: &lt;postmaster@collab.sakaiproject.org&gt;
+Date: Sat, 5 Jan 2008 09:12:18 -0500
+To: source@collab.sakaiproject.org
+From: stephen.marquard@uct.ac.za
+Subject: [sakai] svn commit: r39772 - content/branches/
+Details: http://source.sakaiproject.org/viewsvn/?view=rev&amp;rev=39772
+...
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상호 의사소통한 전자우편 전체 파일은 <span style="font-family:monospace">www.py4inf.com/code/mbox.txt</span> 에서 접근 가능하고, 
+간략한 버젼 파일은 <span style="font-family:monospace">www.py4inf.com/code/mbox-short.txt</span>에서 얻을 수 있다.
+이들 파일은 다수 전자우편 메시지를 담고 있는 파일로 표준 포맷으로 되어 있다.
+"From "으로 시작하는 라인은 메시지 본문과 구별되고, "From: "으로 시작하는 라인은 본문 메시지의 일부다.
+더 자세한 정보는 <span style="font-family:monospace">en.wikipedia.org/wiki/Mbox</span>에서 찾을 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파일을 라인으로 쪼개기 위해서, 새줄(newline) 문자로 불리는 "줄의 끝(end of the line)"을 표시하는 특수 문자가 있다.</span></p><p><a id="hevea_default416"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬에서, 문자열 상수 역슬래쉬-n(<code>\n</code>)으로 새줄(newline) 문자를 표현한다.
+두 문자처럼 보이지만, 사실은 단일 문자다. 인터프리터에 ”stuff”에 입력한 후 변수를 살펴보면, 문자열에 <code>\n</code>가 있다.
+하지만, <span style="font-family:monospace">print</span>문을 사용하여 문자열을 출력하면, 문자열이 새줄 문자에 의해서 두 줄로 쪼개지는 것을 볼 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; stuff = 'Hello\nWorld!'
+&gt;&gt;&gt; stuff
+'Hello\nWorld!'
+&gt;&gt;&gt; print stuff
+Hello
+World!
+&gt;&gt;&gt; stuff = 'X\nY'
+&gt;&gt;&gt; print stuff
+X
+Y
+&gt;&gt;&gt; len(stuff)
+3
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">문자열 <code>'X\nY'</code>의 길이는 <em>3</em> 이다. 왜냐하면 새줄(newline) 문자도 한 문자이기 때문이다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">그래서, 파일 라인을 볼 때, 라인 끝을 표시하는 새줄(newline)로 불리는 눈에 보이지 않는 특수 문자가 각 줄의 끝에 있다고 <em>상상</em>할 필요가 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">그래서, 새줄(newline) 문자는 파일에 있는 문자를 라인으로 분리한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec93" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.4  파일 읽어오기</span></h2>
+<p><a id="hevea_default417"></a><span style="font-size:medium">
+</span><a id="hevea_default418"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">파일 핸들(file handle)이 파일 자료를 담고 있지 않지만, 
+<span style="font-family:monospace">for</span> 루프를 사용하여 파일 각 라인을 읽고 라인수를 세는 것을 쉽게 구축할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">fhand = open('mbox.txt')
+count = 0
+for line in fhand:
+    count = count + 1
+print 'Line Count:', count
+
+python open.py 
+Line Count: 132045
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파일 핸들을 <span style="font-family:monospace">for</span> 루프 순서(sequence)로 사용할 수 있다. 
+<span style="font-family:monospace">for</span> 루프는 단순히 파일 라인 수를 세고 전체 라인수를 출력한다.
+<span style="font-family:monospace">for</span> 루프를 대략 일반어로 풀어 말하면, "파일 핸들로 표현되는 파일 각 라인마다, <span style="font-family:monospace">count</span> 변수에 1 씩 더한다"</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">open</span> 함수가 전체 파일을 바로 읽지 못하는 이유는 파일이 수 기가 바이트 파일 크기를 가질 수도 있기 때문이다.
+<span style="font-family:monospace">open</span> 문장은 파일 크기에 관계없이 파일을 여는데 시간이 동일하게 걸린다. 
+실질적으로 <span style="font-family:monospace">for</span> 루프가 파일로부터 자료를 읽어오는 역할을 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">for</span> 루프를 사용해서 이 같은 방식으로 파일을 읽어올 때, 새줄(newline) 문자를 사용해서 파일 자료를 라인 단위로 쪼갠다.
+파이썬에서 새줄(newline) 문자까지 각 라인 단위로 읽고, 
+<span style="font-family:monospace">for</span> 루프가 매번 반복할 때마다 <span style="font-family:monospace">line</span> 변수에 새줄(newline)을 마지막 문자로 포함한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">for</span> 루프가 데이터를 한번에 한줄씩 읽어오기 때문에, 데이터를 저장할 주기억장치 저장공간을 소진하지 않고, 매우 큰 파일을 효과적으로 읽어서 라인을 셀 수 있다.
+각 라인별로 읽고, 세고, 그리고 나서 폐기되기 때문에, 매우 적은 저장공간을 사용해서 어떤 크기의 파일도 상기 프로그램을 사용하여 라인을 셀 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">만약 주기억장치 크기에 비해서 상대적으로 작은 크기의 파일이라는 것을 안다면, 
+전체 파일을 파일 핸들로 <span style="font-family:monospace">read</span> 메쏘드를 사용해서 하나의 문자열로 읽어올 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; fhand = open('mbox-short.txt')
+&gt;&gt;&gt; inp = fhand.read()
+&gt;&gt;&gt; print len(inp)
+94626
+&gt;&gt;&gt; print inp[:20]
+From stephen.marquar
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">상기 예제에서, <span style="font-family:monospace">mbox-short.txt</span> 전체 파일 콘텐츠(94,626 문자)를 변수 <span style="font-family:monospace">inp</span>로 바로 읽었다.
+문자열 슬라이싱을 사용해서 <span style="font-family:monospace">inp</span>에 저장된 문자열 자료 첫 20 문자를 출력한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파일이 이런 방식으로 읽혀질 때, 모든 라인과 새줄(newline)문자를 포함한 모든 문자는 변수 <span style="font-family:monospace">inp</span>에 대입된 매우 큰 문자열이다.
+파일 데이터가 컴퓨터 주기억장치가 안정적으로 감당해 낼 수 있을때만, 
+이런 형식의 <span style="font-family:monospace">open</span> 함수가 사용될 수 있다는 것을 기억하라.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">만약 주기억장치가 감당해 낼 수 없는 매우 파일 크기가 크다면, <span style="font-family:monospace">for</span>나 <span style="font-family:monospace">while</span> 루프를 사용해서 파일을 쪼개서 읽는 프로그램을 작성해야 한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec94" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.5  파일 검색</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">파일 데이터를 검색할 때, 흔한 패턴은 파일을 읽고, 대부분 라인은 건너뛰고, 특정 기준을 만족하는 라인만 처리하는 것이다.
+간단한 검색 메카니즘을 구현하기 위해서 파일을 읽는 패턴과 문자열 메쏘드를 조합한다.</span></p><p><a id="hevea_default419"></a><span style="font-size:medium">
+</span><a id="hevea_default420"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">예를 들어, 파일을 읽고, “From:”으로 시작하는 라인만 출력하고자 한다면, 
+startswith 문자열 메쏘드를 사용해서 원하는 접두사로 시작하는 라인만을 선택한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">fhand = open('mbox-short.txt')
+for line in fhand:
+    if line.startswith('From:') :
+        print line
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">이 프로그램이 실행하면 다음 출력값을 얻는다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">From: stephen.marquard@uct.ac.za
+
+From: louis@media.berkeley.edu
+
+From: zqian@umich.edu
+
+From: rjlowe@iupui.edu
+...
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">”From:”으로만 시작하는 라인만 출력하기 때문에 출력값은 훌륭해 보인다.
+하지만, 왜 여분으로 빈 라인이 보이는 걸까?
+원인은 눈에 보이지 않는 새줄(newline) 문자 때문이다.
+각 라인이 새줄(newline)로 끝나서 변수 line에 새줄(newline)이 포함되고 
+<span style="font-family:monospace">print</span>문이 추가로 새줄(newline)을 추가해서 결국 우리가 보기에는 두 줄 효과가 나타난다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">마지막 문자를 제외하고 모든 것을 출력하기 위해서 라인 슬라이싱(slicing)을 할수 있지만, 
+좀더 간단한 접근법은 다음과 같이 문자열 오른쪽 끝에서부터 공백을 벗겨내는 rstrip 메쏘드를 사용하는 것인다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if line.startswith('From:') :
+        print line
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면, 다음 출력값을 얻는다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">From: stephen.marquard@uct.ac.za
+From: louis@media.berkeley.edu
+From: zqian@umich.edu
+From: rjlowe@iupui.edu
+From: zqian@umich.edu
+From: rjlowe@iupui.edu
+From: cwen@iupui.edu
+...
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파일 처리 프로그램이 점점 더 복잡해짐에 따라 <span style="font-family:monospace">continue</span>를 사용해서 검색 루프(search loop)를 구조화할 필요가 있다.
+검색 루프의 기본 아이디어는 ”흥미로운” 라인을 집중적으로 찾고, ”흥미롭지 않은” 라인은 효과적으로 건너뛰는 것이다.
+그리고 나서 흥미로운 라인을 찾게되면, 그 라인에서 특정 연산을 수행하는 것이다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음과 같이 루프를 구성해서 흥미롭지 않은 라인은 건떠뛰는 패턴을 따르게 한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    # Skip 'uninteresting lines'
+    if not line.startswith('From:') :
+        continue
+    # Process our 'interesting' line
+    print line
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">프로그램의 출력값은 동일하다. 
+흥미롭지 않는 라인은 ”From:”으로 시작하지 않는 라인이라 <span style="font-family:monospace">continue</span>문을 사용해서 건너뛴다.
+”흥미로운” 라인 (즉, ”From:”으로 시작하는 라인)에 대해서는 연산처리를 수행한다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">find</span> 문자열 메쏘드를 사용해서 검색 문자열이 라인 어디에 있는지를 찾아주는 텍스트 편집기 검색기능을 모사(simulation)할 수 있다.
+<span style="font-family:monospace">find</span> 메쏘드는 다른 문자열 내부에 검색하는 문자열이 있는지 찾고, 문자열 위치를 반환하거나, 만약 문자열이 없다면 -1을 반환하기 때문에,
+“@uct.ac.za”(남아프리카 케이프 타운 대학으로부터 왔다) 문자열을 포함하는 라인을 검색하기 위해 다음과 같이 루프를 작성한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if line.find('@uct.ac.za') == -1 : 
+        continue
+    print line
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">출력결과는 다음과 같다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+X-Authentication-Warning: set sender to stephen.marquard@uct.ac.za using -f
+From: stephen.marquard@uct.ac.za
+Author: stephen.marquard@uct.ac.za
+From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008
+X-Authentication-Warning: set sender to david.horwitz@uct.ac.za using -f
+From: david.horwitz@uct.ac.za
+Author: david.horwitz@uct.ac.za
+...
+</span></pre><span style="font-size:medium">
+</span><h2 id="sec95" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.6  사용자가 파일명을 선택하게 만들기</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">매번 다른 파일을 처리할 때마다 파이썬 코드를 편집하고 싶지는 않다. 
+매번 프로그램이 실행될 때마다, 파일명을 사용자가 입력하도록 만드는 것이 좀더 유용할 것이다. 
+그래서 파이썬 코드를 바꾸지 않고, 다른 파일에 대해서도 동일한 프로그램을 사용하도록 만들자.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음과 같이 <code>raw_input</code>을 사용해서 사용자로부터 파일명을 읽어 프로그램을 실행하는 것이 단순하다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">fname = raw_input('Enter the file name: ')
+fhand = open(fname)
+count = 0
+for line in fhand:
+    if line.startswith('Subject:') :
+        count = count + 1
+print 'There were', count, 'subject lines in', fname
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">사용자로부터 파일명을 읽고 변수 <span style="font-family:monospace">fname</span>에 저장하고, 그 파일을 연다. 
+이제 다른 파일에 대해서도 반복적으로 프로그램을 실행할 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python search6.py 
+Enter the file name: mbox.txt
+There were 1797 subject lines in mbox.txt
+
+python search6.py 
+Enter the file name: mbox-short.txt
+There were 27 subject lines in mbox-short.txt
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">다음 절을 엿보기 전에, 상기 프로그램을 살펴보고 자신에게 다음을 질문해 보자.
+"여기서 어디가 잘못될 수 있는가?" 혹은 
+"이 작고 멋진 프로그램에 트레이스백(traceback)을 남기고 바로 끝나게 하여,
+결국 사용자 눈에는 좋지 않은 프로그램이라는 인상을 남길 수 있도록 우리의 친절한 사용자는 무엇을 할 수 있을까?</span></p><span style="font-size:medium">
+</span><h2 id="sec96" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.7  <span style="font-family:monospace">try, except, open</span> 사용하기</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">제가 여러분에게 엿보지 말라고 말씀드렸습니다. 이번이 마지막 기회입니다.
+사용자가 파일명이 아닌 뭔가 다른 것을 입력하면 어떻게 될까요?</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python search6.py 
+Enter the file name: missing.txt
+Traceback (most recent call last):
+  File "search6.py", line 2, in &lt;module&gt;
+    fhand = open(fname)
+IOError: [Errno 2] No such file or directory: 'missing.txt'
+
+python search6.py 
+Enter the file name: na na boo boo
+Traceback (most recent call last):
+  File "search6.py", line 2, in &lt;module&gt;
+    fhand = open(fname)
+IOError: [Errno 2] No such file or directory: 'na na boo boo'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">웃지마시구요, 사용자는 결국 여러분이 작성한 프로그램을 망가뜨리기 위해 고의든 악의를 가지든 가능한 모든 수단을 강구할 것입니다.
+사실, 소프트웨어 개발팀의 중요한 부분은 품질 보증(Quality Assurance, QA)이라는 조직이다. 
+품질보증 조직은 프로그래머가 만든 소프트웨어를 망가뜨리기 위해 가능한 말도 안 되는 것을 합니다.</span></p><p><a id="hevea_default421"></a><span style="font-size:medium">
+</span><a id="hevea_default422"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">사용자가 소프트웨어를 제품으로 구매하거나, 주문형으로 개발하는 프로그램에 대해 월급을 지급하던지 관계없이 
+품질보증 조직은 프로그램이 사용자에게 전달되기 전까지 프로그램 오류를 발견할 책임이 있다.
+그래서 품질보증 조직은 프로그래머의 최고의 친구다.</span></p><p><a id="hevea_default423"></a><span style="font-size:medium">
+</span><a id="hevea_default424"></a><span style="font-size:medium">
+</span><a id="hevea_default425"></a><span style="font-size:medium">
+</span><a id="hevea_default426"></a><span style="font-size:medium">
+</span><a id="hevea_default427"></a><span style="font-size:medium">
+</span><a id="hevea_default428"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램 오류를 찾았기 때문에, <span style="font-family:monospace">try</span>/<span style="font-family:monospace">except</span> 구조를 사용해서 오류를 우아하게 고쳐봅시다.
+<span style="font-family:monospace">open</span> 호출이 잘못될 수 있다고 가정하고, <span style="font-family:monospace">open</span> 호출이 실패할 때를 대비해서 다음과 같이 복구 코드를 추가한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">fname = raw_input('Enter the file name: ')
+try:
+    fhand = open(fname)
+except:
+    print 'File cannot be opened:', fname
+    exit()
+
+count = 0
+for line in fhand:
+    if line.startswith('Subject:') : 
+        count = count + 1
+print 'There were', count, 'subject lines in', fname
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">exit</span>함수가 프로그램을 끝낸다. 
+결코 돌아오지 않는 함수를 호출한 것이다.
+이제 사용자 혹은 품질 보증 조직에서 올바르지 않거나 어처구니 없는 파일명을 입력했을 때, 
+“catch”로 잡아서 우아하게 복구한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">python search7.py
+Enter the file name: mbox.txt
+There were 1797 subject lines in mbox.txt
+
+python search7.py
+Enter the file name: na na boo boo
+File cannot be opened: na na boo boo
+</span></pre><p><a id="hevea_default429"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬 프로그램을 작성할 때 <span style="font-family:monospace">open</span> 호출을 보호하는 것은 <span style="font-family:monospace">try</span>, <span style="font-family:monospace">except</span>의 적절한 사용 예제가 된다.
+”파이썬 방식(Python way)”으로 무언가를 작성할 때, ”파이썬스러운(Pythonic)”이라는 용어를 사용한다.
+상기 파일을 여는 예제는 파이썬스러운 방식의 좋은 예가 된다고 말한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파이썬에 좀더 자신감이 생기게 되면, 다른 파이썬 프로그래머와 동일한 문제에 대해 
+두 가지 동치하는 해답을 가지고 어떤 접근법이 좀더 "파이썬스러운지"에 대한 현답을 찾는데도 관여하게 된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">"좀더 파이썬스럽게" 되는 이유는 프로그래밍이 엔지니어링적인 면과 예술적인 면을 동시에 가지고 있기 때문이다.
+항상 무언가를 단지 작동하는 것에만 관심이 있지 않고, 프로그램으로 작성한 해결책이 좀더 우아하고, 다른 동료에 의해서 우아한 것으로 인정되기를 또한 원합니다.</span></p><span style="font-size:medium">
+</span><h2 id="sec97" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.8  파일에 쓰기</span></h2>
+<p><a id="hevea_default430"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">파일에 쓰기 위해서는 두 번째 매개 변수로 <code>'w'</code> 모드로 파일을 열어야 한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; fout = open('output.txt', 'w')
+&gt;&gt;&gt; print fout
+&lt;open file 'output.txt', mode 'w' at 0xb7eb2410&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파일이 이미 존재하는데 쓰기 모드에서 파일을 여는 것은 이전 데이터를 모두 지워버리고, 
+깨끗한 파일 상태에서 다시 시작되니 주의가 필요하다. 
+만약 파일이 존재하지 않는다면, 새로운 파일이 생성된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">파일 핸들 객체의 <span style="font-family:monospace">write</span> 메쏘드는 데이터를 파일에 저장한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; line1 = 'This here's the wattle,\n'
+&gt;&gt;&gt; fout.write(line1)
+</span></pre><p><a id="hevea_default431"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">다시 한번, 파일 객체는 마지막 포인터가 어디에 있는지 위치를 추적해서, 
+만약 <span style="font-family:monospace">write</span> 메쏘드를 다시 호출하게 되면, 새로운 데이터를 파일 끝에 추가한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">라인을 끝내고 싶을 때, 명시적으로 새줄(newline) 문자를 삽입해서 파일에 쓰도록 라인 끝을 필히 관리해야 한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">print</span>문은 자동적으로 새줄(newline)을 추가하지만, <span style="font-family:monospace">write</span> 메쏘드는 자동적으로 새줄(newline)을 추가하지는 않는다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; line2 = 'the emblem of our land.\n'
+&gt;&gt;&gt; fout.write(line2)
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파일 쓰기가 끝났을 때, 파일을 필히 닫아야 한다.
+파일을 닫는 것은 데이터 마지막 비트까지 디스크에 물리적으로 쓰여져서, 
+전원이 나가더라도 자료가 유실되지 않는 역할을 한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; fout.close()
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">파일 읽기로 연 파일을 닫을 수 있지만, 몇개 파일을 열어 놓았다면 약간 단정치 못하게 끝날 수 있습니다. 
+왜냐하면 프로그램이 종료될 때 열린 모든 파일이 닫혀졌는지 파이썬이 확인하기 때문이다. 
+파일에 쓰기를 할 때는, 파일을 명시적으로 닫아서 예기치 못한 일이 발생할 여지를 없애야 한다.</span></p><p><a id="hevea_default432"></a><span style="font-size:medium">
+</span><a id="hevea_default433"></a></p><span style="font-size:medium">
+</span><h2 id="sec98" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.9  디버깅</span></h2>
+<p><a id="hevea_default434"></a><span style="font-size:medium">
+</span><a id="hevea_default435"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">파일을 읽고 쓸 때, 공백 때문에 종종 문제에 봉착한다.
+이런 종류의 오류는 공백, 탭, 새줄(newline)이 눈에 보이지 않기 때문에 디버그하기도 쉽지 않다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; s = '1 2\t 3\n 4'
+&gt;&gt;&gt; print s
+1 2  3
+ 4
+</span></pre><p><a id="hevea_default436"></a><span style="font-size:medium">
+</span><a id="hevea_default437"></a><span style="font-size:medium">
+</span><a id="hevea_default438"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">내장함수 <span style="font-family:monospace">repr</span>이 도움이 될 수 있다. 
+인자로 임의 객체를 잡아 객체 문자열 표현으로 반환한다.
+문자열 공백문자는 역슬래쉬 순서(sequence)로 나타냅니다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&gt;&gt;&gt; print repr(s)
+'1 2\t 3\n 4'
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">디버깅에 도움이 될 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">여러분이 봉착하는 또 다른 문제는 다른 시스템에서는 라인 끝을 표기하기 위해서 다른 문자를 사용한다는 점이다.
+어떤 시스템은 <code>\n</code> 으로 새줄(newline)을 표기하고, 다른 시스템은 <code>\r</code>으로 반환 문자(return character)를 사용한다.
+둘다 모두 사용하는 시스템도 있다. 
+파일을 다른 시스템으로 이식한다면, 이러한 불일치가 문제를 야기한다.</span></p><p><a id="hevea_default439"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">대부분의 시스템에는 A 포맷에서 B 포멧으로 변환하는 응용프로그램이 있다.
+<span style="font-family:monospace">wikipedia.org/wiki/Newline</span> 에서 응용프로그램을 찾을 수 있고, 좀더 많은 것을 읽을 수 있다.
+물론, 여러분이 직접 프로그램을 작성할 수도 있다.</span></p><span style="font-size:medium">
+</span><h2 id="sec99" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.10  용어정의</span></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">잡기(catch):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> <span style="font-family:monospace">try</span>와 <span style="font-family:monospace">except</span> 문을 사용해서 프로그램이 끝나는 예외 상황을 방지하는 것.
+</span><a id="hevea_default440"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">새줄(newline):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 라인의 끝을 표기 위한 파일이나 문자열에 사용되는 특수 문자.
+</span><a id="hevea_default441"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">파이썬스러운(Pythonic):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 파이썬에서 우아하게 작동하는 기술. ”try와 catch를 사용하는 것은 파일이 없는 경우를 복구하는 파이썬스러운 방식이다.”
+</span><a id="hevea_default442"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">품질 보증(Quality Assurance, QA):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 소프트웨어 제품의 전반적인 품질을 보중하는데 집중하는 사람이나 조직.
+품질 보증은 소프트웨어 제품을 시험하고, 제품이 시장에 출시되기 전에 문제를 확인하는데 관여한다.
+</span><a id="hevea_default443"></a><span style="font-size:medium">
+</span><a id="hevea_default444"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">텍스트 파일(text file):</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 하드디스크 같은 영구 저장소에 저장된 일련의 문자 집합.
+</span><a id="hevea_default445"></a></dd></dl><span style="font-size:medium">
+</span><h2 id="sec100" class="section"><span style="font-weight:bold;font-size:medium;color:black">8.11  연습문제</span></h2>
+<div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 1  <em>
+파일을 읽고 한줄씩 파일의 내용을 모두 대문자로 출력하는 프로그램을 작성하세요.
+프로그램을 싱행하면 다음과 같이 보일 것입니다.</em></span><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue"><em>python shout.py
+Enter a file name: mbox-short.txt
+FROM STEPHEN.MARQUARD@UCT.AC.ZA SAT JAN  5 09:14:16 2008
+RETURN-PATH: &lt;POSTMASTER@COLLAB.SAKAIPROJECT.ORG&gt;
+RECEIVED: FROM MURDER (MAIL.UMICH.EDU [141.211.14.90])
+  BY FRANKENSTEIN.MAIL.UMICH.EDU (CYRUS V2.3.8) WITH LMTPA;
+  SAT, 05 JAN 2008 09:14:16 -0500
+</em></span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><em><span style="font-family:monospace">www.py4inf.com/code/mbox-short.txt</span>에서 파일을 다운로드 받으세요.
+</em></span></p></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 2  </span><p><span style="font-weight:bold;font-size:medium;color:black"><em>파일명을 입력받아, 파일을 읽고, 다음 형식의 라인을 찾는 프로그램을 작성하세요.</em></span></p><pre><span style="font-weight:bold;font-size:large;color:blue"><em>
+X-DSPAM-Confidence:  0.8475
+</em></span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><em>“X-DSPAM-Confidence:”로 시작하는 라인을 만나게 되면, 부동 소수점 숫자를 뽑아내기 위해 해당 라인을 별도로 보관하세요.
+라인 수를 세고, 라인으로부터 스팸 신뢰값의 총계를 계산하세요. 
+파일의 끝에 도달할 했을 때, 평균 스팸 신뢰도를 출력하세요.</em></span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue"><em>Enter the file name: mbox.txt
+Average spam confidence: 0.894128046745
+
+Enter the file name: mbox-short.txt
+Average spam confidence: 0.750718518519
+</em></span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><em><span style="font-family:monospace">mbox.txt</span>와 <span style="font-family:monospace">mbox-short.txt</span> 파일에 작성한 프로그램을 시험하세요.
+</em></span></p></div><div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 3  </span><p><span style="font-weight:bold;font-size:medium;color:black"><em>때때로, 프로그래머가 지루해지거나, 약간 재미를 목적으로, 프로그램에 무해한 부활절 달걀(Easter Egg, <span style="font-family:monospace">en.wikipedia.org/wiki/Easter_egg_(media)</span>)을 넣습니다.
+사용자가 파일명을 입력하는 프로그램을 변형시켜, ’na na boo boo’로 파일명을 정확하게 입력했을 때, 재미있는 메시지를 출력하는 프로그램을 작성하세요.
+파일이 존재하거나, 존재하지 않는 다른 모든 파일에 대해서도 정상적으로 작동해야 합니다. 
+여기 프로그램을 실행한 견본이 있습니다.</em></span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue"><em>python egg.py 
+Enter the file name: mbox.txt
+There were 1797 subject lines in mbox.txt
+
+python egg.py 
+Enter the file name: missing.tyxt
+File cannot be opened: missing.tyxt
+
+python egg.py 
+Enter the file name: na na boo boo
+NA NA BOO BOO TO YOU - You have been punk'd!
+</em></span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><em>프로그램에 부활절 달걀을 넣도록 격려하지는 않습니다. 단지 연습입니다.</em></span></p></div><span style="font-size:medium">
+</span><footer class="footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-offset-3 col-lg-6">
+<div class="row">
+<div class="col-xs-12 text-center">
+<small>&copy; rifyll theme, 2014, 
+                Powered by <a href="http://www.ibm.com/cloud-computing/kr/ko/softlayer/"><img src="/img/softlayer.png" width="47" height="23" alt="hosting services" /></a> </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<hr />
+<a href="book008.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book010.html"><img src="next_motif.gif" alt="Next" /></a>
+</body>
+</html>

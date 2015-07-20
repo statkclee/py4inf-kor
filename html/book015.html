@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hevea 2.09" />
+<link rel="stylesheet" type="text/css" href="book.css" />
+<title>웹서비스 사용하기</title>
+</head>
+<body>
+<a href="book014.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book016.html"><img src="next_motif.gif" alt="Next" /></a>
+<hr />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="  xwMOOC와 함께 정보 불평등(digital divide)을 해소하는 것을 넘어 기회로 바꾸세요!" />
+<title> 불평등(Digital Divide)을 "기회"로. </title>
+<!-- stylesheets -->
+<link media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link media="all" rel="stylesheet" href="/assets/css/site.css" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59802572-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<h1 id="sec159" class="chapter"><span style="font-weight:bold;font-size:medium;color:black">Chapter 14  웹서비스 사용하기</span></h1>
+<p><span style="font-weight:bold;font-size:medium;color:black">
+프로그램을 사용하여 HTTP상에서 문서를 가져와서 파싱하는 것이 익숙해지면, 
+다른 프로그램(즉, 브라우져에서 HTML로 보여지지 않는 것)에서 활용되도록 특별히 설계된 문서를 생성하는 것은 그다지 오래 걸리지 않는다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">웹상에서 데이터를 교환할 때 두 가지 형식이 많이 사용된다.
+XML(“eXtensible Markup Language”)은 오랜 기간 사용되어져 왔고 문서-형식(document-style) 데이터를 교환하는데 가장 적합하다.
+딕셔너리, 리스트 혹은 다른 내부 정보를 프로그램으로 서로 교환할 때, JSON(JavaScript Object Notation, <span style="font-family:monospace">www.json.org</span>)을 사용한다. 
+두 가지 형식에 대해 모두 살펴볼 것이다.</span></p><span style="font-size:medium">
+</span><h2 id="sec160" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.1  XML(eXtensible Markup Language)</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">
+XML은 HTML과 매우 유사하지만, XML이 좀더 HTML보다 구조화되었다.
+여기 XML 문서 샘플이 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">&lt;person&gt;
+  &lt;name&gt;Chuck&lt;/name&gt;
+  &lt;phone type="intl"&gt;
+     +1 734 303 4456
+   &lt;/phone&gt;
+   &lt;email hide="yes"/&gt;
+&lt;/person&gt;
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">종종 XML문서를 나무 구조(tree structure)로 생각하는 것이 도움이 된다. 
+최상단 <span style="font-family:monospace">person</span> 태그가 있고, <span style="font-family:monospace">phone</span> 같은 다른 태그는 부모 노드의 <em>자식(children)</em> 노드로 표현된다.</span></p><div class="center"><span style="font-weight:bold;font-size:medium;color:black"><img src="book014.png" /></span></div><span style="font-size:medium">
+</span><h2 id="sec161" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.2  XML 파싱</span></h2>
+<p><a id="hevea_default763"></a><span style="font-size:medium">
+</span><a id="hevea_default764"></a><span style="font-size:medium">
+</span><a id="hevea_default765"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">다음은 XML을 파싱하고 XML에서 데이터 요소를 추출하는 간단한 응용프로그램이다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import xml.etree.ElementTree as ET
+
+data = "'
+&lt;person&gt;
+  &lt;name&gt;Chuck&lt;/name&gt;
+  &lt;phone type="intl"&gt;
+     +1 734 303 4456
+   &lt;/phone&gt;
+   &lt;email hide="yes"/&gt;
+&lt;/person&gt;"'
+
+tree = ET.fromstring(data)
+print 'Name:',tree.find('name').text
+print 'Attr:',tree.find('email').get('hide')
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">fromstring</span>을 호출하여 XML 문자열 표현을 XML 노드 ’나무(tree)’로 변환한다.
+XML이 나무구조로 되었을 때, XML에서 데이터 일부분을 추출하기 위해서 호출하는 메쏘드가 연달아 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">find</span> 함수는 XML 나무를 훑어서 특정한 태그와 매칭되는 노드(node)를 검색한다. 
+각 노드는 텍스트, 속성(즉, hide 같은), 그리고 ”자식(child)” 노드로 구성된다. 
+각 노드는 노드 나무의 최상단이 될 수 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">Name: Chuck
+Attr: yes
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">ElementTree</span>같은 XML 파서를 사용하는 것은 장점이 있다.
+상기 예제의 XML은 매우 간단하지만,
+적합한 XML에 관해서 규칙이 많이 있고, XML 구문 규칙에 얽매이지 않고 <span style="font-family:monospace">ElementTree</span>를 사용해서 XML에서 데이터를 추출할 수 있다.</span></p><span style="font-size:medium">
+</span><h2 id="sec162" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.3  노드 반복하기</span></h2>
+<p><a id="hevea_default766"></a><span style="font-size:medium">
+</span><a id="hevea_default767"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">종종 XML이 다중 노드를 가지고 있어서 모든 노드를 처리하는 루프를 작성할 필요가 있다.
+다음 프로그램에서 모든 <span style="font-family:monospace">user</span> 노드를 루프로 반복한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import xml.etree.ElementTree as ET
+
+input = "'
+&lt;stuff&gt;
+    &lt;users&gt;
+        &lt;user x="2"&gt;
+            &lt;id&gt;001&lt;/id&gt;
+            &lt;name&gt;Chuck&lt;/name&gt;
+        &lt;/user&gt;
+        &lt;user x="7"&gt;
+            &lt;id&gt;009&lt;/id&gt;
+            &lt;name&gt;Brent&lt;/name&gt;
+        &lt;/user&gt;
+    &lt;/users&gt;
+&lt;/stuff&gt;"'
+
+stuff = ET.fromstring(input)
+lst = stuff.findall('users/user')
+print 'User count:', len(lst)
+
+for item in lst:
+    print 'Name', item.find('name').text
+    print 'Id', item.find('id').text
+    print 'Attribute', item.get('x')
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black"><span style="font-family:monospace">findall</span> 메쏘드는 파이썬 리스트의 하위 나무를 가져온다.
+리스트는 XML 나무에서 <span style="font-family:monospace">user</span> 구조를 표현한다. 
+그리고 나서, <span style="font-family:monospace">for</span> 루프를 작성해서 각 <span style="font-family:monospace">user</span> 노드 값을 확인하고 <span style="font-family:monospace">name</span>, <span style="font-family:monospace">id</span> 텍스트 요소와 <span style="font-family:monospace">user</span> 노드에서 <span style="font-family:monospace">x</span> 속성도 출력한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">User count: 2
+Name Chuck
+Id 001
+Attribute 2
+Name Brent
+Id 009
+Attribute 7
+</span></pre><span style="font-size:medium">
+</span><h2 id="sec163" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.4  JSON(JavaScript Object Notation)</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default768"></a><span style="font-size:medium">
+</span><a id="hevea_default769"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">JSON 형식은 자바스크립트 언어에서 사용되는 객체와 배열 형식에서 영감을 얻었다.
+하지만 파이썬이 자바스크립트 이전에 개발되어서 딕셔너리와 리스트의 파이썬 구문이 JSON 구문에 영향을 주었다.
+그래서 JSON 포맷이 거의 파이썬 리스트와 딕셔너리의 조합과 일치한다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">상기 간단한 XML에 대략 상응하는 JSON으로 작성한 것이 다음에 있다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">{
+  "name" : "Chuck",
+  "phone" : {
+    "type" : "intl",
+    "number" : "+1 734 303 4456"
+   },
+   "email" : {
+     "hide" : "yes"
+   }
+}
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">몇가지 차이점에 주목하세요. 첫째로 XML에서는 ”phone” 태그에 ”intl”같은 속성을 추가할 수 있다.
+JSON 에서는 단지 키-값 페어(key-value pair)다. 
+또한 XML ”person” 태그는 사라지고 외부 중괄호 세트로 대체되었다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">일반적으로 JSON 구조가 XML 보다 간단하다. 
+왜냐하면, JSON 이 XML보다 적은 역량을 보유하기 때문이다.
+하지만 JSON 이 딕셔너리와 리스트의 조합에 <em>직접</em> 매핑된다는 장점이 있다.
+그리고, 거의 모든 프로그래밍 언어가 파이썬 딕셔너리와 리스트에 상응하는 것을 갖고 있어서,
+JSON 이 협업하는 두 프로그램 사이에서 데이터를 교환하는 매우 자연스러운 형식이 된다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">XML 에 비해서 상대적으로 단순하기 때문에, JSON 이 응용프로그램 간 거의 모든 데이터를 교환하는데 있어 빠르게 선택되고 있다. </span></p><span style="font-size:medium">
+</span><h2 id="sec164" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.5  JSON 파싱하기</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">
+딕셔너리(객체)와 리스트를 중첩함으로써 JSON을 생성한다. 
+이번 예제에서, user 리스트를 표현하는데, 각 user가 키-값 페어(key-value pair, 즉, 딕셔너리)다.
+그래서 리스트 딕셔너리가 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음 프로그램에서 내장된 json 라이브러리를 사용하여 JSON을 파싱하여 데이터를 읽어온다.
+이것을 상응하는 XML 데이터, 코드와 비교해 보세요. 
+JSON은 조금 덜 정교해서 사전에 미리 리스트를 가져오고, 리스트가 사용자이고, 각 사용자가 키-값 페어 집합임을 알고 있어야 한다. 
+JSON은 좀더 간략(장점)하고 하지만 좀더 덜 서술적(단점)이다. </span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import json
+
+input = "'
+[
+  { "id" : "001",
+    "x" : "2",
+    "name" : "Chuck"
+  } ,
+  { "id" : "009",
+    "x" : "7",
+    "name" : "Chuck"
+  } 
+]"'
+
+info = json.loads(input)
+print 'User count:', len(info)
+
+for item in info:
+    print 'Name', item['name']
+    print 'Id', item['id']
+    print 'Attribute', item['x']
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">JSON과 XML에서 데이터를 추출하는 코드를 비교하면, json.loads()을 통해서 파이썬 리스트를 얻는다.
+for 루프로 파이썬 리스트를 훑고, 리스트 내부의 각 항목은 파이썬 딕셔너리로 각 사용자별 다양한 정보를 추출하기 위해서 파이썬 인덱스 연산자를 사용한다. 
+JSON을 파싱하면, 네이티브 파이썬 객체와 구조가 생성된다.
+반환된 데이터가 단순히 네이티브 파이썬 구조체이기 때문에, 파싱된 JSON을 활용하는데 JSON 라이브러리를 사용할 필요는 없다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램 출력은 정확하게 상기 XML 버젼과 동일한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">User count: 2
+Name Chuck
+Id 001
+Attribute 2
+Name Brent
+Id 009
+Attribute 7
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">일반적으로 웹서비스에 대해서 XML에서 JSON으로 옮겨가는 산업 경향이 뚜렷하다.
+JSON이 프로그래밍 언어에서 이미 갖고 있는 네이티브 자료 구조와 좀더 직접적이며 간단히 매핑되기 때문에,
+JSON을 사용할 때 파싱하고 데이터 추출하는 코드가 더욱 간단하고 직접적이다.
+하지만 XML 이 JSON 보다 좀더 자기 서술적이고 XML 이 강점을 가지는 몇몇 응용프로그램 분야가 있다.
+예를 들어, 대부분의 워드 프로세서는 JSON보다는 XML을 사용하여 내부적으로 문서를 저장한다. </span></p><span style="font-size:medium">
+</span><h2 id="sec165" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.6  API(Application Program Interfaces, 응용 프로그램 인터페이스)</span></h2>
+<p><span style="font-weight:bold;font-size:medium;color:black">이제 HTTP를 사용하여 응용프로그램간에 데이터를 교환할 수 있게 되었다. 
+또한, XML 혹은 JSON을 사용하여 응용프로그램간에도 복잡한 데이터를 주고 받을 수 있는 방법을 습득했다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음 단계는 상기 학습한 기법을 사용하여 응용프로그램 간에 ”계약(contract)”을 정의하고 문서화한다.
+응용프로그램-대-응용프로그램 계약에 대한 일반적 명칭은 API 응용 프로그램 인터페이스(Application Program Interface) 다. 
+API를 사용할 때, 일반적으로 하나의 프로그램이 다른 응용 프로그램에서 사용할 수 있는 가능한 서비스 집합을 생성한다.
+또한, 다른 프로그램이 서비스에 접근하여 사용할 때 지켜야하는 API (즉, ”규칙”)도 게시한다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">다른 프로그램에서 제공되는 서비스에 접근을 포함하여 프로그램 기능을 개발할 때, 
+이러한 개발법을 SOA, Service-Oriented Architecture(서비스 지향 아키텍처)라고 부른다.
+SOA 개발 방식은 전반적인 응용 프로그램이 다른 응용 프로그램 서비스를 사용하는 것이다. 
+반대로, SOA가 아닌 개발방식은 응용 프로그램이 하나의 독립된 응용 프로그램으로 구현에 필요한 모든 코드를 담고 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">웹을 사용할 때 SOA 사례를 많이 찾아 볼 수 있다. 
+웹사이트 하나를 방문해서 비행기표, 호텔, 자동차를 단일 사이트에서 예약완료한다. 
+호텔관련 데이터는 물론 항공사 컴퓨터에 저장되어 있지 않다.
+대신에 항공사 컴퓨터는 호텔 컴퓨터와 계약을 맺어 호텔 데이터를 가져와서 사용자에게 보여준다.
+항공사 사이트를 통해서 사용자가 호텔 예약을 동의할 경우, 항공사 사이트에서 호텔 시스템의 또다른 웹서비스를 통해서 실제 예약을 한다.
+전체 거래(transaction)를 완료하고 카드 결재를 진행할 때, 다른 컴퓨터가 프로세스에 관여하여 처리한다.</span></p><div class="center"><span style="font-weight:bold;font-size:medium;color:black"><img src="book015.png" /></span></div><p><span style="font-weight:bold;font-size:medium;color:black">서비스 지향 아키텍쳐는 많은 장점이 있다. 
+(1) 항상 단 하나의 데이터만 유지관리한다. 
+이중으로 중복 예약을 원치 않는 호텔 같은 경우에 매우 중요하다. 
+(2) 데이터 소유자가 데이터 사용에 대한 규칙을 정한다. 
+이러한 장점으로, SOA 시스템은 좋은 성능과 사용자 요구를 모두 만족하기 위해서 신중하게 설계되어야 한다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">응응프로그램이 웹상에 이용가능한 API로 서비스 집합을 만들 때, 웹서비스(web services)라고 부른다.</span></p><span style="font-size:medium">
+</span><h2 id="sec166" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.7  구글 지오코딩 웹서비스(Google Geocoding Web Service)</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default770"></a><span style="font-size:medium">
+</span><a id="hevea_default771"></a><span style="font-size:medium">
+</span><a id="hevea_default772"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">구글이 자체적으로 구축한 대용량 지리 정보 데이터베이스를 누구나 이용할 수 있게 하는 훌륭한 웹서비스가 있다.
+“Ann Arbor, MI” 같은 지리 검색 문자열을 지오코딩 API 에 넣으면, 
+검색 문자열이 의미하는 지도상에 위치와 근처 주요 지형지물 정보를 나름 최선을 다해서 예측 제공한다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">지오코딩 서비스는 무료지만 사용량이 제한되어 있어서, 상업적 응용프로그램에 API를 무제한 사용할 수는 없다.
+하지만, 최종 사용자가 자유형식 입력 박스에 위치정보를 입력하는 설문 데이터가 있다면,
+구글 API를 사용하여 데이터를 깔끔하게 정리하는데는 유용하다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black"><em>구글 지오코딩 API 같은 무료 API를 사용할 때, 자원 사용에 대한 지침을 준수해야 한다.
+너무나 많은 사람이 서비스를 남용하게 되면, 구글은 무료 서비스를 중단하거나, 상당부분 줄일 수 있다. 
+(When you are using a free API like Google’s geocoding API, you need
+to be respectful in your use of these resources. If too many people abuse the
+service, Google might drop or significantly curtail its free service.
+</em></span><a id="hevea_default773"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">서비스에 대해서 자세한 사항을 온라인 문서를 정독할 수 있지만, 
+무척 간단해서 브라우저에 다음 URL을 입력해서 테스트까지 할 수 있다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">http://maps.googleapis.com/maps/api/geocode/json?sensor=false &amp;address=Ann+Arbor%2C+MI</span></p><p><span style="font-weight:bold;font-size:medium;color:black">웹프라우저에 붙여넣기 전에, URL만 뽑아냈고 URL에서 모든 공백을 제거했는지 확인하세요.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음은 간단한 응용 프로그램이다. 
+사용자가 검색 문자열을 입력하고 구글 지오코딩 API를 호출하여 반환된 JSON에서 정보를 추출한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+import json
+
+serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
+
+while True:
+    address = raw_input('Enter location: ')
+    if len(address) &lt; 1 : break
+
+    url = serviceurl + urllib.urlencode({'sensor':'false', 
+          'address': address})
+    print 'Retrieving', url
+    uh = urllib.urlopen(url)
+    data = uh.read()
+    print 'Retrieved',len(data),'characters'
+
+    try: js = json.loads(str(data))
+    except: js = None
+    if 'status' not in js or js['status'] != 'OK':
+        print '==== Failure To Retrieve ===='
+        print data
+        continue
+
+    print json.dumps(js, indent=4)
+
+    lat = js["results"][0]["geometry"]["location"]["lat"]
+    lng = js["results"][0]["geometry"]["location"]["lng"]
+    print 'lat',lat,'lng',lng
+    location = js['results'][0]['formatted_address']
+    print location
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">프로그램이 사용자로부터 검색 문자열을 받는다. 
+적절히 인코딩된 매개 변수로 검색문자열을 변환하여 URL을 만든다.
+그리고 나서 urllib을 사용하여 구글 지오코딩 API에서 텍스트를 가져온다.
+고정된 웹페이지와 달리, 반환되는 데이터는 전송한 매개변수와 구글 서버에 저장된 지리정보 데이터에 따라 달라진다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">JSON 데이터를 가져오면, json 라이브러리로 파싱하고 전송받은 데이터가 올바른지 확인하는 몇가지 절차를 거친 후에 찾고자 하는 정보를 추출한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램 출력결과는 다음과 같다. (몇몇 JSON 출력은 의도적으로 삭제했다.)</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">$ python geojson.py
+Enter location: Ann Arbor, MI
+Retrieving http://maps.googleapis.com/maps/api/
+  geocode/json?sensor=false&amp;address=Ann+Arbor%2C+MI
+Retrieved 1669 characters
+{
+    "status": "OK", 
+    "results": [
+        {
+            "geometry": {
+                "location_type": "APPROXIMATE", 
+                "location": {
+                    "lat": 42.2808256, 
+                    "lng": -83.7430378
+                }
+            }, 
+            "address_components": [
+                {
+                    "long_name": "Ann Arbor", 
+                    "types": [
+                        "locality", 
+                        "political"
+                    ], 
+                    "short_name": "Ann Arbor"
+                } 
+            ], 
+            "formatted_address": "Ann Arbor, MI, USA", 
+            "types": [
+                "locality", 
+                "political"
+            ]
+        }
+    ]
+}
+lat 42.2808256 lng -83.7430378
+Ann Arbor, MI, USA
+Enter location:
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">다양한 구글 지오코딩 API의 XML과 JSON을 좀더 살펴보기 위해서 <span style="font-family:monospace">www.py4inf.com/code/geojson.py</span>, <span style="font-family:monospace">www.py4inf.com/code/geoxml.py</span>을 다운로드 받아보기 바란다.</span></p><span style="font-size:medium">
+</span><h2 id="sec167" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.8  보안과 API 사용</span></h2>
+<p><span style="font-size:medium">
+</span><a id="hevea_default774"></a><span style="font-size:medium">
+</span><a id="hevea_default775"></a></p><p><span style="font-weight:bold;font-size:medium;color:black">상용업체 API를 사용하기 위해서는 일종의 ”API키(API key)”가 일반적으로 필요하다.
+서비스 제공자 입장에서 누가 서비스를 사용하고 있으며 각 사용자가 얼마나 사용하고 있는를 알고자 한다.
+상용 API 제공업체는 서비스에 대한 무료 사용자와 유료 사용자에 대한 구분을 두고 있다.
+특정 기간 동안 한 개인 사용자가 사용할 수 있는 요청수에 대해 제한을 두는 정책을 두고 있다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">때때로 API키를 얻게 되면, API를 호출할 때 POST 데이터의 일부로 포함하거나 URL의 매개변수로 키를 포함시킨다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">또 다른 경우에는 업체가 서비스 요청에 대한 보증을 강화해서 공유키와 비밀번호를 암호화된 메시지 형식으로 보내도록 요구한다. 
+인터넷을 통해서 서비스 요청을 암호화하는 일반적인 기술을 OAuth라고 한다.
+<span style="font-family:monospace">http://www.oauth.net</span> 사이트에서 OAuth 프로토콜에 대해 더 많은 정보를 만날 수 있다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">트위터 API가 점차적으로 가치있게 됨에 따라 트위터가 공개된 API에서 API를 매번 호출할 때마다 OAuth 인증을 거치도록 API를 바뀌었다. 
+다행스럽게도 편리한 OAuth 라이브러리가 많이 있다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">그래서 명세서를 읽고 아무것도 없는 상태에서 OAuth 구현하는 것을 필할 수 있게 되었다. 
+이용 가능한 라이브러리는 복잡성도 다양한만틈 기능적으로도 다양하다. 
+OAuth 웹사이트에서 다양한 OAuth 라이브러리 정보를 확인할 수 있다. </span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음 샘플 프로그램으로 <span style="font-family:monospace">www.py4inf.com/code</span> 사이트에서 twurl.py, hidden.py, 
+oauth.py, twitter1.py 파일을 다운로드 받아서 컴퓨터 한 폴더에 저장한다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 사용하기 위해서 트위터 계정이 필요하고, 파이썬 코드를 응용프로그램으로 인증하고,
+키, 암호, 토큰, 토큰 암호를 설정해야 한다. 
+hidden.py 파일을 편집하여 4개 문자열을 파일에 적절한 변수에 저장한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">    def auth() :
+        return { "consumer_key" : "h7L...GNg",
+            "consumer_secret" : "dNK...7Q",
+            "token_key" : "101...GI",
+            "token_secret" : "H0yM...Bo" }
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">트위터 웹서비스는 다음 URL을 사용하여 접근한다.</span></p><p><span style="font-family:monospace;font-weight:bold;font-size:medium;color:black">https://api.twitter.com/1.1/statuses/user_timeline.json</span></p><p><span style="font-weight:bold;font-size:medium;color:black">하지만, 모든 비밀 정보가 추가되면, URL은 다음과 같이 보인다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">https://api.twitter.com/1.1/statuses/user_timeline.json?count=2
+&amp;oauth_version=1.0&amp;oauth_token=101...SGI&amp;screen_name=drchuck
+&amp;oauth_nonce=09239679&amp;oauth_timestamp=1380395644
+&amp;oauth_signature=rLK...BoD&amp;oauth_consumer_key=h7Lu...GNg
+&amp;oauth_signature_method=HMAC-SHA1
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">OAuth 보안 요구사항을 충족하기 위해 추가된 다양한 매개 변수 의미를 좀더 자세히 알고자 한다면,
+OAuth 명세서를 읽어보기 바란다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">트위터로 실행한 프로그램에서 oauth.py, twurl.py 두개 파일에 모든 복잡함을 감추었다.
+hidden.py에 암호를 설정해서 URL을 twurl.augment() 함수에 전송했고,
+라이브러리 코드는 URL에 필요한 매개 변수를 추가했다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">twitter1.py 프로그램은 특정 트위터 사용자 타임라인을 가져와서 JSON 형식 문자열로 반환한다.
+단순하게 문자열의 첫 250 문자만 출력한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+import twurl
+
+TWITTER_URL='https://api.twitter.com/1.1/statuses/user_timeline.json'
+
+while True:
+    print "
+    acct = raw_input('Enter Twitter Account:')
+    if ( len(acct) &lt; 1 ) : break
+    url = twurl.augment(TWITTER_URL,
+        {'screen_name': acct, 'count': '2'} )
+    print 'Retrieving', url
+    connection = urllib.urlopen(url)
+    data = connection.read()
+    print data[:250]
+    headers = connection.info().dict
+    # print headers
+    print 'Remaining', headers['x-rate-limit-remaining']
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">프로그램을 실행하면 다음 결과물을 출력한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">Enter Twitter Account:drchuck
+Retrieving https://api.twitter.com/1.1/ ...
+[{"created_at":"Sat Sep 28 17:30:25 +0000 2013","
+id":384007200990982144,"id_str":"384007200990982144",
+"text":"RT @fixpert: See how the Dutch handle traffic 
+intersections: http:\/\/t.co\/tIiVWtEhj4\n#brilliant",
+"source":"web","truncated":false,"in_rep
+Remaining 178
+
+Enter Twitter Account:fixpert
+Retrieving https://api.twitter.com/1.1/ ...
+[{"created_at":"Sat Sep 28 18:03:56 +0000 2013",
+"id":384015634108919808,"id_str":"384015634108919808",
+"text":"3 months after my freak bocce ball accident, 
+my wedding ring fits again! :)\n\nhttps:\/\/t.co\/2XmHPx7kgX",
+"source":"web","truncated":false,
+Remaining 177
+
+Enter Twitter Account:
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">반환된 타임라인 데이터와 함께 트위터는 또한 HTTP 응답 헤더에 요청사항에 대한 메타 데이터도 반환한다.
+특히 헤더에 있는 x-rate-limit-remaining정보는 한동안 서비스를 이용 못하게 되기 전까지 얼마나 많은 요청을 할 수 있는가하는 정보를 담고 있다. 
+API 요청을 매번 할 때마다 남은 숫자가 줄어드는 것을 확인할 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">다음 예제애서, 사용자의 트위터 친구 정보를 가져와서 JSON 파싱을 하고 친구에 대한 정보를 추출한다.
+파싱 후에 JSON을 가져 와서, 좀더 많은 필드를 추출할 때 데이터를 자세히 살펴보는데 도움이 되도록 문자 4개로 들여쓰기한 ”보기좋은 출력(pretty-print)”을 한다.</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">import urllib
+import twurl
+import json
+
+TWITTER_URL = 'https://api.twitter.com/1.1/friends/list.json'
+
+while True:
+    print "
+    acct = raw_input('Enter Twitter Account:')
+    if ( len(acct) &lt; 1 ) : break
+    url = twurl.augment(TWITTER_URL,
+        {'screen_name': acct, 'count': '5'} )
+    print 'Retrieving', url
+    connection = urllib.urlopen(url)
+    data = connection.read()
+    headers = connection.info().dict
+    print 'Remaining', headers['x-rate-limit-remaining']
+    js = json.loads(data)
+    print json.dumps(js, indent=4)
+
+    for u in js['users'] :
+        print u['screen_name']
+        s = u['status']['text']
+        print '  ',s[:50]
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">JSON은 중첩된 파이썬 리스트와 딕셔너리 집합이기 때문에, 
+인덱스 연산과 <span style="font-family:monospace">for</span> 루프를 조합해서 매우 적은 양의 코드로 반환된 데이터 구조를 훑어볼 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">프로그램 결과는 다음과 같다. (페이지에 맞도록 몇몇 데이터 항목을 줄였다.)</span></p><pre class="verbatim"><span style="font-weight:bold;font-size:large;color:blue">Enter Twitter Account:drchuck
+Retrieving https://api.twitter.com/1.1/friends ...
+Remaining 14
+{
+    "next_cursor": 1444171224491980205, 
+    "users": [
+        {
+            "id": 662433, 
+            "followers_count": 28725, 
+            "status": {
+                "text": "@jazzychad I just bought one .__.", 
+                "created_at": "Fri Sep 20 08:36:34 +0000 2013", 
+                "retweeted": false, 
+            }, 
+            "location": "San Francisco, California", 
+            "screen_name": "leahculver", 
+            "name": "Leah Culver", 
+        }, 
+        {
+            "id": 40426722, 
+            "followers_count": 2635, 
+            "status": {
+                "text": "RT @WSJ: Big employers like Google ...", 
+                "created_at": "Sat Sep 28 19:36:37 +0000 2013", 
+            }, 
+            "location": "Victoria Canada", 
+            "screen_name": "_valeriei", 
+            "name": "Valerie Irvine", 
+    ], 
+    "next_cursor_str": "1444171224491980205"
+}
+leahculver
+   @jazzychad I just bought one .__.
+_valeriei
+   RT @WSJ: Big employers like Google, AT&amp;amp;T are h
+ericbollens
+   RT @lukew: sneak peek: my LONG take on the good &amp;a
+halherzog
+   Learning Objects is 10. We had a cake with the LO,
+scweeker
+   @DeviceLabDC love it! Now where so I get that "etc
+
+Enter Twitter Account:
+</span></pre><p><span style="font-weight:bold;font-size:medium;color:black">출력 마지막은 drchuck 트위터 계정에서 가장 최근 친구 5명을 <span style="font-family:monospace">for</span> 루프로 읽고 친구의 가장 마지막 상태 정보를 출력한다. 
+반환된 JSON에는 이용가능한 더 많은 데이터가 있다.
+또한, 프로그램 출력을 보게 되면, 특정 계정의 “find the friends”가 일정 기간동안 실행 가능한 타임라인 질의 숫자와 다른 사용량에 제한을 두고 있음을 볼 수 있다.</span></p><p><span style="font-weight:bold;font-size:medium;color:black">이와 같은 보안 API키는 누가 트위터 API를 사용하고 어느 정도 수준으로 트위터를 사용하는지에 대해서 트위트가 확고한 신뢰를 갖게 한다. 
+사용량에 한계를 두고 서비스를 제공하는 방식은 단순히 개인적인 목적으로 데이터 검색을 할 수는 있지만, 하루에 수백만 API 호출로 데이터를 추출하여 제품을 개발 못하게 제한하는 기능도 동시에 한다.</span></p><span style="font-size:medium">
+</span><h2 id="sec168" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.9  용어정의</span></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">API:</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 응용 프로그램 인터페이스(Application Program Interface) - 
+두 응용 프로그램 컴포넌트 간에 상호작용하는 패턴을 정의하는 응용 프로그램 간의 계약.
+</span><a id="hevea_default776"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">ElementTree:</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> XML데이터를 파싱하는데 사용되는 파이썬 내장 라이브러리.
+</span><a id="hevea_default777"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">JSON:</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> JavaScript Object Notation- 자바스크립트 객체(JavaScript Objects) 구문을 기반으로
+구조화된 데이터 마크업(markup)을 허용하는 형식.
+</span><a id="hevea_default778"></a><span style="font-size:medium">
+</span><a id="hevea_default779"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">REST:</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> REpresentational State Transfer -
+HTTP 프로토콜을 사용하여 응용 프로그램 내부에 자원에 접근을 제공하는 일종의 웹서비스 스타일.
+</span><a id="hevea_default780"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">SOA:</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 서비스 지향 아키텍처(Service Oriented Architecture) - 
+응용 프로그램이 네트워크에 연결된 컴포넌트로 구성될 때.
+</span><a id="hevea_default781"></a><span style="font-size:medium">
+</span><a id="hevea_default782"></a></dd><dt class="dt-description"><span style="font-weight:bold;font-size:medium;color:black">XML:</span></dt><dd class="dd-description"><span style="font-weight:bold;font-size:medium;color:black"> 확장 마크업 언어(eXtensible Markup Language) - 
+구조화된 데이터의 마크업을 허용하는 형식.
+</span><a id="hevea_default783"></a><span style="font-size:medium">
+</span><a id="hevea_default784"></a></dd></dl><span style="font-size:medium">
+</span><h2 id="sec169" class="section"><span style="font-weight:bold;font-size:medium;color:black">14.10  Exercises</span></h2>
+<div class="theorem"><span style="font-weight:bold;font-size:medium;color:black">Exercise 1  <em>
+데이터를 가져와서 두 문자 국가 코드를 출력하도록 <span style="font-family:monospace">www.py4inf.com/code/geojson.py</span> 혹은
+<span style="font-family:monospace">www.py4inf.com/code/geoxml.py</span>을 수정하세요.
+오류 검사 기능을 추가하여 국가 코드가 없더라도 프로그램이 역추적(traceback)이 생성하지 않도록 하세요.
+프로그램이 정상 작동하면, “Atlantic Ocean”을 검색하고 어느 국가에도 속하지 않는 지역을 처리할 수 있는지 확인하세요. </em></span></div><span style="font-size:medium">
+</span><footer class="footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-offset-3 col-lg-6">
+<div class="row">
+<div class="col-xs-12 text-center">
+<small>&copy; rifyll theme, 2014, 
+                Powered by <a href="http://www.ibm.com/cloud-computing/kr/ko/softlayer/"><img src="/img/softlayer.png" width="47" height="23" alt="hosting services" /></a> </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<hr />
+<a href="book014.html"><img src="previous_motif.gif" alt="Previous" /></a>
+<a href="index.html"><img src="contents_motif.gif" alt="Up" /></a>
+<a href="book016.html"><img src="next_motif.gif" alt="Next" /></a>
+</body>
+</html>
