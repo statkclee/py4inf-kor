@@ -1,0 +1,206 @@
+/*
+ * 
+ * CloudSocial ILE Menu Styles
+ * 17 Feb 2009
+ * 
+ */
+#ileBox {
+  position:fixed;
+	top:0px;
+	left:0px;
+/*
+	z-index:100;
+*/
+}
+#ileBox.topLeft {
+	width: auto;
+	height: auto;
+	top:2px;
+	left:20px;
+	padding: 0 2px;
+}
+#ileBox.topRight {
+	width:200px;
+	left:auto;
+	top:0px;
+	right:20px;
+}
+#ileBox.bottomLeft {
+	width:200px;
+	left:20px;
+	top:auto;
+	bottom: 0px;
+}
+#ileBox.bottomRight {
+	width:200px;
+	left:auto;
+	top:auto;
+	bottom:0px;
+	right:20px;
+}
+#ileBox.sideRight {
+	width:auto;
+	height:200px;
+	left:auto;
+	right:0px;
+	top:50%;
+}
+#ileBox.sideLeft {
+	width:auto;
+	height:200px;
+	left:0px;
+	top:50%;
+}
+
+.main-menu {
+  font-weight:bold;
+  color:#000;
+  text-align: center;
+  font-size: 1.1em;
+	height: 28px;
+	background: #DCDCDC;
+	border: 1px solid #778899;
+}
+
+.menu-item {
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+	height: 28px;
+	width: 28px;
+}
+.menu-item:hover {
+	background: white;
+}
+.menu-item img {
+	height: 24px;
+	width: 24px;
+	padding: 2px;
+	cursor: pointer;
+}
+
+#ileBoxGrabImg {
+	cursor: hand;
+}
+
+.ileToolFrame {
+	background: white;
+	border: none;
+	padding:0;
+	margin: 0;
+}
+
+/**
+ * CloudSocial Dock Styles
+ */
+#cs_dock_wrapper {
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	font: normal normal normal 12px helvetica, arial, sans-serif;
+}
+
+#cs_dock {
+	position: relative;
+	height: 28px;/*
+
+	background: #C0C0C0 none no-repeat scroll top left;
+	border: 2px solid #808080;
+	border-bottom: none;
+*/
+	margin: 0 2em;
+	z-index: 100;
+}
+
+div.cs_dock_tool {
+	height: 28px;
+	width: 28px;
+	float: left;
+	cursor: pointer;
+}
+div.cs_dock_tool img {
+	height: 24px;
+	width: 24px;
+	padding: 2px;
+}
+div.cs_dock_tool:hover {
+	background: #FFFFFF;
+	background: #CCCCCC url(images/ui-bg_highlight-soft_75_cccccc_1x100.png) repeat-x scroll 50% 50%;
+}
+div.cs_dock_tool span.cs_dock_position {
+	display: none;
+}
+div.cs_dock_tool span.cs_dock_tooltip {
+	display: none;
+	position: absolute;
+	bottom: 30px;
+	padding: 4px 6px;
+	margin-left: 4px;
+	z-index: 101;
+}
+div.cs_dock_tool:hover span.cs_dock_tooltip {
+	display: inline;/*
+
+	background: #192B33;
+	color: #DBCEB9;
+*/
+	font-weight: bold;
+}
+
+div.cs_dock_right {
+	float: right;
+	display: inline;
+}
+div.cs_dock_right p#cs_dock_branding {
+	margin: 0;
+	padding: 0;
+	padding-top: 7px;
+	padding-right: 8px;
+}
+
+div.cs_tool_window {
+	display: none;
+	position: absolute;
+	bottom: 28px;
+	left: 0;
+	right: auto;
+	min-width: 125px;
+	min-height: 100px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #AAAAAA;
+	background: #ffffff;
+	z-index: 5;  /* base window layer */
+}
+
+div.cs_tool_header {
+	height: 20px;
+	margin: 2px 2px 0 2px;
+	z-index: 9;
+}
+div.cs_tool_header h3 {
+	font-size: 15px;
+	margin: 3px 0 0 3px;
+}
+div.cs_tool_header:hover {
+	cursor: move;
+}div.cs_tool_header:hover span.tool_grab {
+	background-image: url(jquery-smoothness/images/ui-icons_454545_256x240.png);
+}
+
+div.cs_tool_actions {
+	float: right;
+	display: inline;
+	padding: 2px 3px 0 0;
+}
+div.cs_tool_actions span {
+	float: left;
+	margin-left: 3px;
+}
+div.cs_tool_actions span.tool_close {
+	background-image: url(jquery-smoothness/images/ui-icons_888888_256x240.png);
+}
+div.cs_tool_actions span.tool_close:hover {
+	cursor: pointer;
+	background-image: url(jquery-smoothness/images/ui-icons_454545_256x240.png);
+}
